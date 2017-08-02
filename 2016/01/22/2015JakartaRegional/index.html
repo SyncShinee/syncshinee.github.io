@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Regional," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="今天我们做了亚洲区域赛雅加达赛区的题目，感觉简单题蛮多的，有四道中等偏难的题我们就不会了……感觉平时的区域赛训练只是为了保持手感，难题的突破还是需要靠刷专题的。  题目链接 代码链接">
+<meta name="keywords" content="Regional">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2015 Jakarta Regional Analysis">
+<meta property="og:url" content="http://yoursite.com/2016/01/22/2015JakartaRegional/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="今天我们做了亚洲区域赛雅加达赛区的题目，感觉简单题蛮多的，有四道中等偏难的题我们就不会了……感觉平时的区域赛训练只是为了保持手感，难题的突破还是需要靠刷专题的。  题目链接 代码链接">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-24T14:38:59.266Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2015 Jakarta Regional Analysis">
+<meta name="twitter:description" content="今天我们做了亚洲区域赛雅加达赛区的题目，感觉简单题蛮多的，有四道中等偏难的题我们就不会了……感觉平时的区域赛训练只是为了保持手感，难题的突破还是需要靠刷专题的。  题目链接 代码链接">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/22/2015JakartaRegional/"/>
+
+
+
+
+
+  <title>2015 Jakarta Regional Analysis | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/22/2015JakartaRegional/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2015 Jakarta Regional Analysis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-22T20:27:39+08:00">
+                2016-01-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>今天我们做了亚洲区域赛雅加达赛区的题目，感觉简单题蛮多的，有四道中等偏难的题我们就不会了……感觉平时的区域赛训练只是为了保持手感，难题的突破还是需要靠刷专题的。</p>
+<ul>
+<li><a href="http://acm.hust.edu.cn/vjudge/contest/view.action?cid=104601#overview" target="_blank" rel="external">题目链接</a></li>
+<li><a href="https://github.com/SyncShinee/ACM-ICPC/tree/master/ACMContest/2015JakartaRegional" target="_blank" rel="external">代码链接</a></li>
+</ul>
+<a id="more"></a>
+<h2 id="A-Arithmetical-CAPTCHA"><a href="#A-Arithmetical-CAPTCHA" class="headerlink" title="A. Arithmetical CAPTCHA"></a>A. Arithmetical CAPTCHA</h2><p>签到题，枚举三个符号的情况即可</p>
+<h2 id="B-Udin-and-Ucok"><a href="#B-Udin-and-Ucok" class="headerlink" title="B. Udin and Ucok"></a>B. Udin and Ucok</h2><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>博弈</p>
+<h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>有$n$个球排成一行，有两个人轮流操作，每个人每次从当前存在的球中选择一个，将它和它相邻的左右两个球（如果有相邻的）拿走，球被拿走后两边不会合并。直到一个人不能再操作为止，这个人就会输。问是否先手必胜。</p>
+<h3 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h3><p>首先，我们可以大出sg表，在sg表打好后，我们可以发现，除了前面有几项是特殊的外，其他的都以$34$为循环节。</p>
+<h2 id="C-Counting-Partition"><a href="#C-Counting-Partition" class="headerlink" title="C. Counting Partition"></a>C. Counting Partition</h2><p>未解决</p>
+<h2 id="D-An-ICPC-Problem-without-Statement"><a href="#D-An-ICPC-Problem-without-Statement" class="headerlink" title="D. An ICPC Problem without Statement"></a>D. An ICPC Problem without Statement</h2><h3 id="知识点-1"><a href="#知识点-1" class="headerlink" title="知识点"></a>知识点</h3><p>贪心？ + 枚举</p>
+<h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出$n$个数，每个数的范围为$-2 \dots 2$，再给出两个数$A$、$B$，要从这$n$个数中选择$p$个（$A \leq p \leq B$），使得它们的乘积最大。输出方案。</p>
+<p>等待<code>Ruclion</code>更新</p>
+<h2 id="E-Awesome-Cipher-Machine"><a href="#E-Awesome-Cipher-Machine" class="headerlink" title="E. Awesome Cipher Machine"></a>E. Awesome Cipher Machine</h2><p>未解决</p>
+<h2 id="F-Problem-on-Group-Trip"><a href="#F-Problem-on-Group-Trip" class="headerlink" title="F. Problem on Group Trip"></a>F. Problem on Group Trip</h2><p>签到题，按题意做就行</p>
+<h2 id="G-Dungeon-Trap"><a href="#G-Dungeon-Trap" class="headerlink" title="G. Dungeon Trap"></a>G. Dungeon Trap</h2><h3 id="知识点-2"><a href="#知识点-2" class="headerlink" title="知识点"></a>知识点</h3><p>最短路</p>
+<h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出$n \times m$的地图，地图上有两个格子为分别为A和B，其他的格子中为$0 \dots 9$的数字，格子中数字为$0$表示该格子不能走。我们每次可以取出一个格子中的数（相应格子中的数会变为0），直到A与B不再联通后就不能再取了，问最后我们能取出的数字的和最大为多少。</p>
+<h3 id="做法-1"><a href="#做法-1" class="headerlink" title="做法"></a>做法</h3><p>我们考虑最后剩余的数字和，题意相当于要使剩余的格子中的数字最小，也就是找一条从A到B的路径，使得<strong>该路径上的数字和减去该路径上的数字的最大值</strong>最小。由于每个格子上的数字不超过$9$，我们可以枚举最大值是几，之后再找出满足最大值为我们枚举的值的从A到B的最短路。为了找出这样的最短路，我们需要从A和B分别求一遍最大值不超过我们枚举的值的单源最短路，之后再将它们合并。</p>
+<h2 id="H-Harvest-Season"><a href="#H-Harvest-Season" class="headerlink" title="H. Harvest Season"></a>H. Harvest Season</h2><p>未解决</p>
+<h2 id="I-National-Disaster"><a href="#I-National-Disaster" class="headerlink" title="I. National Disaster"></a>I. National Disaster</h2><h2 id="J-Alien-Abduction-3"><a href="#J-Alien-Abduction-3" class="headerlink" title="J. Alien Abduction 3"></a>J. Alien Abduction 3</h2><p>未解决</p>
+<h2 id="K-Amplified-Energy"><a href="#K-Amplified-Energy" class="headerlink" title="K. Amplified Energy"></a>K. Amplified Energy</h2><h3 id="知识点-3"><a href="#知识点-3" class="headerlink" title="知识点"></a>知识点</h3><p>dp + log优化</p>
+<h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出n个分数组成的数列，再给出m个单独的分数，我们要从中挑出一段连续的数列，可以选择用m个单独的分数来替换其中的某几个分数（每个数只能用一次），要求替换后的数列的乘积最大，输出方案。</p>
+<h3 id="做法-2"><a href="#做法-2" class="headerlink" title="做法"></a>做法</h3><p>经典的dp题目。注意n个数相乘可能会太大，由于不要求输出最大值，我们可以采用取log的方式来优化。</p>
+<h2 id="L-Summation-and-Divisor"><a href="#L-Summation-and-Divisor" class="headerlink" title="L. Summation and Divisor"></a>L. Summation and Divisor</h2><h3 id="知识点-4"><a href="#知识点-4" class="headerlink" title="知识点"></a>知识点</h3><p>性质</p>
+<h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出$n$行，每行$m_i$个数，我们从每行中取出一个数，把它们加起来，则一共有$\prod m_i$种情况，我们要求所有情况的最大公约数</p>
+<h3 id="做法-3"><a href="#做法-3" class="headerlink" title="做法"></a>做法</h3><p>我们最开始想枚举所有的情况来计算最大公约数，但是发现情况数太多，根本枚举不完。后来想到了化为判定问题的解法：我们先随便找出一个和，那么最终结果一定在这个和的约数中，因此我们只需枚举它的约数，再判定即可。</p>
+<p>判定的方法大概为：首先，每一行模当前数的余数必须一样，其次，每行的模当前数的余数的和必须能被当前数整除。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Regional/" rel="tag"># Regional</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/21/2015DaejeonRegional/" rel="next" title="2015 Daejeon Regional Analysis">
+                <i class="fa fa-chevron-left"></i> 2015 Daejeon Regional Analysis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/29/ICPCCamp2016/" rel="prev" title="ICPC Camp 2016 日记">
+                ICPC Camp 2016 日记 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Arithmetical-CAPTCHA"><span class="nav-number">1.</span> <span class="nav-text">A. Arithmetical CAPTCHA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Udin-and-Ucok"><span class="nav-number">2.</span> <span class="nav-text">B. Udin and Ucok</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点"><span class="nav-number">2.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意"><span class="nav-number">2.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法"><span class="nav-number">2.3.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Counting-Partition"><span class="nav-number">3.</span> <span class="nav-text">C. Counting Partition</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-An-ICPC-Problem-without-Statement"><span class="nav-number">4.</span> <span class="nav-text">D. An ICPC Problem without Statement</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-1"><span class="nav-number">4.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-1"><span class="nav-number">4.2.</span> <span class="nav-text">题目大意</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Awesome-Cipher-Machine"><span class="nav-number">5.</span> <span class="nav-text">E. Awesome Cipher Machine</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Problem-on-Group-Trip"><span class="nav-number">6.</span> <span class="nav-text">F. Problem on Group Trip</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Dungeon-Trap"><span class="nav-number">7.</span> <span class="nav-text">G. Dungeon Trap</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-2"><span class="nav-number">7.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-2"><span class="nav-number">7.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-1"><span class="nav-number">7.3.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H-Harvest-Season"><span class="nav-number">8.</span> <span class="nav-text">H. Harvest Season</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-National-Disaster"><span class="nav-number">9.</span> <span class="nav-text">I. National Disaster</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-Alien-Abduction-3"><span class="nav-number">10.</span> <span class="nav-text">J. Alien Abduction 3</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-Amplified-Energy"><span class="nav-number">11.</span> <span class="nav-text">K. Amplified Energy</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-3"><span class="nav-number">11.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-3"><span class="nav-number">11.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-2"><span class="nav-number">11.3.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-Summation-and-Divisor"><span class="nav-number">12.</span> <span class="nav-text">L. Summation and Divisor</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-4"><span class="nav-number">12.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-4"><span class="nav-number">12.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-3"><span class="nav-number">12.3.</span> <span class="nav-text">做法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

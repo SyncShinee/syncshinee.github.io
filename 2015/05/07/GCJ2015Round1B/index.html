@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="CodeJam," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="五一假期，和lch一起打了Google CodeJam 2015 Round1的第二场。由于我第一场已经晋级，第二场看不到题目了，所以就借lch的账号读了读题。 这次的题目比较坑，全部是贪心题。第一题如果细节没有考虑清楚就会WA，第三题又是那种第一感觉就没思路的题目，不过lch最终还是第一题过了大数据，二三题过了小数据，以50分300多名的成绩进入Round2了。">
+<meta name="keywords" content="CodeJam">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Google CodeJam 2015 Round1B 总结">
+<meta property="og:url" content="http://yoursite.com/2015/05/07/GCJ2015Round1B/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="五一假期，和lch一起打了Google CodeJam 2015 Round1的第二场。由于我第一场已经晋级，第二场看不到题目了，所以就借lch的账号读了读题。 这次的题目比较坑，全部是贪心题。第一题如果细节没有考虑清楚就会WA，第三题又是那种第一感觉就没思路的题目，不过lch最终还是第一题过了大数据，二三题过了小数据，以50分300多名的成绩进入Round2了。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-18T10:10:04.247Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Google CodeJam 2015 Round1B 总结">
+<meta name="twitter:description" content="五一假期，和lch一起打了Google CodeJam 2015 Round1的第二场。由于我第一场已经晋级，第二场看不到题目了，所以就借lch的账号读了读题。 这次的题目比较坑，全部是贪心题。第一题如果细节没有考虑清楚就会WA，第三题又是那种第一感觉就没思路的题目，不过lch最终还是第一题过了大数据，二三题过了小数据，以50分300多名的成绩进入Round2了。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/05/07/GCJ2015Round1B/"/>
+
+
+
+
+
+  <title>Google CodeJam 2015 Round1B 总结 | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/05/07/GCJ2015Round1B/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Google CodeJam 2015 Round1B 总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-07T15:51:09+08:00">
+                2015-05-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>五一假期，和<code>lch</code>一起打了Google CodeJam 2015 Round1的第二场。由于我第一场已经晋级，第二场看不到题目了，所以就借<code>lch</code>的账号读了读题。</p>
+<p>这次的题目比较坑，全部是贪心题。第一题如果细节没有考虑清楚就会WA，第三题又是那种第一感觉就没思路的题目，不过<code>lch</code>最终还是第一题过了大数据，二三题过了小数据，以50分300多名的成绩进入Round2了。</p>
+<a id="more"></a>
+<h2 id="A-Counter-Culture"><a href="#A-Counter-Culture" class="headerlink" title="A.Counter Culture"></a>A.Counter Culture</h2><p>题目大意：</p>
+<p>对一个数$i$，有两种操作：</p>
+<blockquote>
+<ol>
+<li>将$i$加$1$</li>
+<li>将$i$反转</li>
+</ol>
+</blockquote>
+<p>问把$14变成$n$最少的步数是多少。</p>
+<p>通过手动模拟，可以发现规律。</p>
+<p>如果我们要达到的数是一个$k$位数，那么我们首先应该把$14变成一个$k$位数，之后再变到$n$。</p>
+<p>而为了快速的增加位数，一个明显最优的策略就是将当前数的最后一位变成$9$，然后通过反转，把$9$放到前面，之后再不停的加$1$。</p>
+<p>通过观察：$1 -&gt; 19 -&gt; 91 -&gt; 109 -&gt; 901 -&gt; 1009 -&gt; 9001$</p>
+<p>我们发现， $901$ 变成$1009 -&gt; 9001$，并不如变成$1099-&gt; 9901$好。</p>
+<p>那么我们可以得出第二个结论：在变到某个数时(位数相同),应该将这个数分成两半，先将当前数的后半段变成目标数的前半段反转之后的数，之后将当前数反转，然后将当前数变到目标数。</p>
+<p>至此，总体思路已经有了，先不停地增加位数，直到位数相等，之后根据结论二，求出最终结果。</p>
+<p>需要注意的是，如果目标数的最后一位是$0$，由于将位数增加够之后，第一位必然是$1$，因此无法达到末尾是$0$的情况，对这种情况，先将目标数减一正常求出结果，之后再加一。</p>
+<p>另外，如果要求的是数前半段是$’1000’$的形式，则不需要反转。</p>
+<h2 id="B-Noisy-Neighbors"><a href="#B-Noisy-Neighbors" class="headerlink" title="B.Noisy Neighbors"></a>B.Noisy Neighbors</h2><p>题目大意：给出$r×c$的网格，在网格中选$n$个格子，使得这些格子相邻的边最少。</p>
+<p>这也是一道贪心的题目。</p>
+<p>首先我们可以发现，对格子进行黑白染色，如果$n \leq \frac{r*c}{2}$，那么通过只选一种颜色的格子，可以做到没有相邻的边。</p>
+<p>如果$n &gt; \frac{r*c}{2}$，贪心的策略是，分两种情况，一种是填满黑色的格子，之后选白色的格子填使答案最小，另一种是先填满白色的格子，之后选黑色的格子填使答案最小。</p>
+<p>这两种情况中较小的那个即为答案。</p>
+<p>当时以为只有优先填黑色格子才是最优的，然而发现按照这样做，样例都不对。于是就以为贪心是错的。没有想到分情况讨论……</p>
+<h2 id="C-Hiking-Deer"><a href="#C-Hiking-Deer" class="headerlink" title="C.Hiking Deer"></a>C.Hiking Deer</h2><p>题目大意：有一只鹿绕着一个圆走一圈，它可以在任意时刻改变速度为任意值。在这个圆上还有一些人，给出他们的初始位置(角度)，和走完一圈的时间，这些人会永远在这个圆上走。问这只鹿在走一圈的过程中至少会有几次和人相遇。</p>
+<p>这道题真的是一点思路都没有……如果我比赛中遇到的话也是只能写写有两个人的时候的小数据。</p>
+<p>后来看官方的<a href="https://code.google.com/codejam/contest/8224486/dashboard#s=a&amp;a=2" target="_blank" rel="external">analysis</a>，才明白是如何贪心的。</p>
+<p>首先，我们可以发现，鹿并没有必要在中途改变速度。</p>
+<p>那么我们先考虑一个人的情况。如果鹿跑的足够快，在人到达原点之前就走完了一圈，那么他和人相遇的次数为1，如果它跑的慢了一点，在人第一次到达原点和第二次到达原点之间跑完一圈，那么它就不会与人相遇，如果它再慢一点，在人第二次到达原点和第三次到达原点之间跑完一圈，那么它还是会与人相遇一次，如果再慢，就是两次、三次，以此类推。</p>
+<p>基于此，我们可以通过计算所有人到达原点的时间，对这个时间进行排序，之后枚举鹿到达原点的时间，如果鹿是第一次和这个人相遇，则减少一次相遇次数，之后每次相遇都增加一次相遇次数。在这个过程中取最小值即可。</p>
+<p>这个算法ans的初始值为n，它的含义是，鹿最开始以极短的时间跑完一圈，超过了所有人。</p>
+<p>由于每个人只会有一次减一的操作，之后的全都是加一，因此在$ans$大于$2×n$之后就没有必要继续找了。</p>
+<p>排序可以用set，每个人每次只往set里添加他当前到达原点的时间，在把它取出来之后再将这个时间加上这个人跑一圈的时间放入set中。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/CodeJam/" rel="tag"># CodeJam</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/05/02/BUAASummerTrials2/" rel="next" title="北航暑期集训选拔赛第二场总结">
+                <i class="fa fa-chevron-left"></i> 北航暑期集训选拔赛第二场总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/10/InverseElement/" rel="prev" title="求逆元的N种方法">
+                求逆元的N种方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Counter-Culture"><span class="nav-number">1.</span> <span class="nav-text">A.Counter Culture</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Noisy-Neighbors"><span class="nav-number">2.</span> <span class="nav-text">B.Noisy Neighbors</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Hiking-Deer"><span class="nav-number">3.</span> <span class="nav-text">C.Hiking Deer</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

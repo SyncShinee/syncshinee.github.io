@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="帝都弱校连萌," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="刚刚进行了为期5周的ACM集训，通过这次集训的确发现自己还有很大的不足，这次没有没有出线也并不意外，收拾心情，来年再战！ 这是北邮新生排位赛第二场。">
+<meta name="keywords" content="帝都弱校连萌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUPT新生暑假个人排位赛02 Solution">
+<meta property="og:url" content="http://yoursite.com/2014/08/25/bupt2solution/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="刚刚进行了为期5周的ACM集训，通过这次集训的确发现自己还有很大的不足，这次没有没有出线也并不意外，收拾心情，来年再战！ 这是北邮新生排位赛第二场。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2015-05-07T07:07:30.538Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BUPT新生暑假个人排位赛02 Solution">
+<meta name="twitter:description" content="刚刚进行了为期5周的ACM集训，通过这次集训的确发现自己还有很大的不足，这次没有没有出线也并不意外，收拾心情，来年再战！ 这是北邮新生排位赛第二场。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/08/25/bupt2solution/"/>
+
+
+
+
+
+  <title>BUPT新生暑假个人排位赛02 Solution | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/08/25/bupt2solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BUPT新生暑假个人排位赛02 Solution</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-08-25T08:40:30+08:00">
+                2014-08-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>刚刚进行了为期5周的ACM集训，通过这次集训的确发现自己还有很大的不足，这次没有没有出线也并不意外，收拾心情，来年再战！</p>
+<p>这是北邮新生排位赛第二场。<br><a id="more"></a></p>
+<h2 id="A-丁神去谷歌"><a href="#A-丁神去谷歌" class="headerlink" title="A. 丁神去谷歌"></a><a href="http://code.bupt.edu.cn/problem/p/416/" target="_blank" rel="external">A. 丁神去谷歌</a></h2><p>这是一道比较水的题。只要按照它给定的规则找出最大的一项即可。我们可以定义一个结构并重载他的&lt;运算符，这样for一遍就行了，如果用sort的话有可能会超时。</p>
+<p>附<a href="/pages/bupt2/bupt2a/">源代码</a></p>
+<h2 id="B-丁神又去谷歌"><a href="#B-丁神又去谷歌" class="headerlink" title="B. 丁神又去谷歌"></a><a href="http://code.bupt.edu.cn/problem/p/417/" target="_blank" rel="external">B. 丁神又去谷歌</a></h2><p>很裸的一道01背包，注意开long long。</p>
+<p>附<a href="/pages/bupt2/bupt2b/">源代码</a></p>
+<h2 id="C-goblin"><a href="#C-goblin" class="headerlink" title="C. goblin"></a><a href="http://code.bupt.edu.cn/problem/p/426/" target="_blank" rel="external">C. goblin</a></h2><p>题目大意是求在1～n的排列中满足每位数都比与他相邻的两个数大或比他相邻两个数小的排列的个数。</p>
+<p>不难发现满足这种条件的排列只有两种情况：1.&lt;&gt;&lt;&gt;&lt;&gt;… ，2.&gt;&lt;&gt;&lt;&gt;&lt;… ，即M型和W型。我们可以发现这两种情况的个数是相等的。</p>
+<p>设1～i的排列中M型排列的个数为f[i],W型排列的个数是g[i]。我们考虑最后一个数i在W型排列中放置的位置为j,则在j前面的j-1个数仍为W型，在j后面的i-j个数为M型。因此我们可以写出状态转移方程:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">g[i] = max(C[i<span class="number">-1</span>][j<span class="number">-1</span>] * g[j<span class="number">-1</span>] * f[i-j])</div></pre></td></tr></table></figure>
+<p>又由于f[i] = g[i]，因此该方程可写为<code>g[i] = max(C[i-1][j-1] * g[j-1] * g[i-j])</code>。最后只需要输出<code>2*f[n]</code>。</p>
+<p>附<a href="/pages/bupt2/bupt2c/">源代码</a></p>
+<h2 id="D-学姐逗学弟"><a href="#D-学姐逗学弟" class="headerlink" title="D. 学姐逗学弟"></a><a href="http://code.bupt.edu.cn/problem/p/427/" target="_blank" rel="external">D. 学姐逗学弟</a></h2><p>这是一道博弈论的题目。题目大意是在一个n个节点的树的节点上随机放置m个石子。两人轮流操作，每次操作必须把所有石子都向下移动一步（即把这个石子移动到他所在节点的子节点），如果一个石子已经移动到了叶子节点则不需要对它进行操作。在所有石子都无法移动的时候游戏结束，无法移动的人判为输。问先手是否必胜。</p>
+<p>这是一道every-sg问题。</p>
+<p>由于石子之间相互没有影响，对这个博弈问题，我们可以把它看成m个博弈问题，即有m棵树，每棵树上仅有1个石子，每次操作必须对这m棵树都进行操作。</p>
+<p>由于树的结构相同，我们可以先求出树中每个节点是必败节点还是必胜节点，此外，由于游戏是在所有石子都无法移动之后才结束，那么我们只需要考虑移动步数最多的节点。</p>
+<p>对所有节点来说，如果这个节点是必败的，那么我们希望这个节点的移动步数尽量少，否则我们希望他尽量多。在求出所有结点的移动步数之后我们只需比较所有放置了石子的节点中的必败节点和必胜节点的移动步数的最大值即可得知先手是否必胜。</p>
+<p>若必胜节点的步数的最大值大于必败节点则先手必胜。</p>
+<p>附<a href="/pages/bupt2/bupt2d/">源代码</a></p>
+<h2 id="E-木头人足球赛"><a href="#E-木头人足球赛" class="headerlink" title="E. 木头人足球赛"></a><a href="http://code.bupt.edu.cn/problem/p/425/" target="_blank" rel="external">E. 木头人足球赛</a></h2><p>题目大意是在一场足球比赛中，所有人都是不能动的，对方的11名球员每人都有一个圆型的控制范围，如果球进入他们的控制范围就会被拦截。现在给出对方球员的的位置和每个圆的半径，并给出你的坐标和球门坐标，问你是否可以把球射入球门。（球只会沿直线运动）</p>
+<p>这是一道有点恶心的计算机几何问题。对每个圆我们可以求出圆的两条切线，则如果射出的球在这两条切线之间的话就会被拦截。</p>
+<p>我们求出所有圆的切线所对应的弧度范围，并求并集。如果球门所对应的弧度范围在这个区间之内的话就无法完成射门，否则可以成功射门。</p>
+<p>附<a href="/pages/bupt2/bupt2e/">源代码</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/帝都弱校连萌/" rel="tag"># 帝都弱校连萌</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/07/15/bupt1solution/" rel="next" title="BUPT新生暑假个人排位赛01 Solution">
+                <i class="fa fa-chevron-left"></i> BUPT新生暑假个人排位赛01 Solution
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/08/25/bupt3solution/" rel="prev" title="BUPT新生暑假个人排位赛03 Solution">
+                BUPT新生暑假个人排位赛03 Solution <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-丁神去谷歌"><span class="nav-number">1.</span> <span class="nav-text">A. 丁神去谷歌</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-丁神又去谷歌"><span class="nav-number">2.</span> <span class="nav-text">B. 丁神又去谷歌</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-goblin"><span class="nav-number">3.</span> <span class="nav-text">C. goblin</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-学姐逗学弟"><span class="nav-number">4.</span> <span class="nav-text">D. 学姐逗学弟</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-木头人足球赛"><span class="nav-number">5.</span> <span class="nav-text">E. 木头人足球赛</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

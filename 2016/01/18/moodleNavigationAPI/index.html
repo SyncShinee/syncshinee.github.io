@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Moodle API," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="概述Moodle Navigation API提供了用于对Moodle的导航系统进行设置的一些接口。">
+<meta name="keywords" content="Moodle API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moodle API文档 —— Navigation API">
+<meta property="og:url" content="http://yoursite.com/2016/01/18/moodleNavigationAPI/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="概述Moodle Navigation API提供了用于对Moodle的导航系统进行设置的一些接口。">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="https://docs.moodle.org/dev/images_dev/f/f1/assignmentmenu.png">
+<meta property="og:updated_time" content="2016-01-18T15:01:40.563Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Moodle API文档 —— Navigation API">
+<meta name="twitter:description" content="概述Moodle Navigation API提供了用于对Moodle的导航系统进行设置的一些接口。">
+<meta name="twitter:image" content="https://docs.moodle.org/dev/images_dev/f/f1/assignmentmenu.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/18/moodleNavigationAPI/"/>
+
+
+
+
+
+  <title>Moodle API文档 —— Navigation API | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/18/moodleNavigationAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Moodle API文档 —— Navigation API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-18T20:26:01+08:00">
+                2016-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Moodle Navigation API提供了用于对Moodle的导航系统进行设置的一些接口。</p>
+<a id="more"></a>
+<h2 id="导航栏-Navigaton-是什么"><a href="#导航栏-Navigaton-是什么" class="headerlink" title="导航栏(Navigaton)是什么"></a>导航栏(Navigaton)是什么</h2><p>理解moodle中的导航栏是非常重要的。从moodle2.0开始，我们就致力于把导航栏变得规范化，使其贯穿moodle系统的始终，并且使moodle具有更好的层次结构。导航栏可以通过页面对象<code>$PAGE</code>获取，也就是你用来设置页面的标题、页眉、和javaScript请求等东西的对象。导航栏利用<code>$PAGE</code>中包含的信息来为网站生成一个导航结构。</p>
+<p>导航结构可以通过三个变量获取：</p>
+<ul>
+<li>$PAGE-&gt;navigation : 主导航结构，其中包含允许用户浏览的一些其他的可访问的页面</li>
+<li>$PAGE-&gt;settingsnav : ‘设置’导航结构，其中包含允许用户编辑的设置</li>
+<li>$PAGE-&gt;navbar ： 导航条(navbar)是一个用于面包屑导航（breadcrumbs）的特殊的结构</li>
+</ul>
+<h2 id="导航栏不是什么"><a href="#导航栏不是什么" class="headerlink" title="导航栏不是什么"></a>导航栏不是什么</h2><p>导航栏<strong>不是</strong>导航栏版块（navigation block）或设置版块（setting block）！这两个版块是用于展示导航栏结构的，导航栏板块其实是<code>$PAGE-&gt;navigation</code>,设置板块是<code>$PAGE-&gt;settingsnav</code>,这两个板块都是以板块（blocks）的形式开发、渲染的。</p>
+<ol>
+<li>导航栏是一个后端（back-end）结构，不能直接展示到页面上。</li>
+<li>导航栏板块和设置板块将后端的导航栏结构展示出来，但是不会对它进行修改。</li>
+</ol>
+<blockquote>
+<p>在MVC（model-view-controller）模型中， <code>$PAGE-&gt;navigation</code>, <code>$PAGE-&gt;settingsnav</code>, 和 <code>$PAGE-&gt;navbar</code> 都属于models， 板块（blocks）属于views。</p>
+</blockquote>
+<h2 id="导航栏的运行机制"><a href="#导航栏的运行机制" class="headerlink" title="导航栏的运行机制"></a>导航栏的运行机制</h2><p>主导航结构可以通过<code>$PAGE-&gt;navigation</code>访问。主导航板块和设置板块都与你当前访问的页面上下文有关，它取决于$PAGE对象的属性：</p>
+<ul>
+<li>$PAGE-&gt;context moodle上下文，可以直接概括出用户当前所在页面的性质</li>
+<li>$PAGE-&gt;course 是当前用户浏览的页面所属的课程。如果当前的context是<code>CONTEXT_COURSE</code>或者更高层级的上下文，那么这个属性是必不可少的。当然，这个属性在context是其他层级的时候也有可能会用到，例如<code>CONTEXT_USER</code>。</li>
+<li>$PAGE-&gt;cm 当前所在的课程模块， 这个属性在context是<code>CONTEXT_MODULE</code>或者更高层级的上下文时是必不可少的。</li>
+<li>$PAGE-&gt;url 用于匹配当前活动的导航条目</li>
+</ul>
+<p>几乎每个页面都通过函数<code>$PAGE-&gt;url()</code>来设置<code>$PAGE-&gt;url</code>，然而，许多页面都不显式的设定<code>$PAGE</code>的context，course和cm。当你调用<code>require_login()</code>函数并给它传入course或cm时，它会自动的进行下述设置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> ($cm) &#123;</div><div class="line">    $PAGE-&gt;set_cm($cm, $course); <span class="comment">// sets up global $COURSE</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    $PAGE-&gt;set_course($course);<span class="comment">// sets up global $COURSE</span></div></pre></td></tr></table></figure>
+<p>一个页面只有在以下几种情况下才必须要显式的设置context，course或cm：</p>
+<ol>
+<li>require_login() 调用出错</li>
+<li>当且页面使用的context为 CONTEXT_SYSTEM, CONTEXT_COURSECAT, or CONTEXT_USER（调用<code>$PAGE-&gt;set_context()</code>）</li>
+<li>当且页面在使用课程或课程模块，但是它也使用了上述的context（调用 <code>$PAGE-&gt;set_course()</code> 或 <code>$PAGE-&gt;set_cm()</code>）</li>
+</ol>
+<p>在对$PAGE对象进行设置之前无法生成导航结构。它只有在第一次使用的时候或有东西要访问它的时候或代码尝试向里面添加东西的时候才会生成。导航结构以一种特定的顺序进行初始化：</p>
+<ol>
+<li>主导航结构</li>
+<li>‘设置’导航结构</li>
+<li>导航条（不需要生成，因为它仅包含简单的文本和渲染效果）</li>
+</ol>
+<h2 id="导航栏扩展"><a href="#导航栏扩展" class="headerlink" title="导航栏扩展"></a>导航栏扩展</h2><h3 id="代码扩展（Code-extension）"><a href="#代码扩展（Code-extension）" class="headerlink" title="代码扩展（Code extension）"></a>代码扩展（Code extension）</h3><p>这种方式是指在运行时通过代码对其进行扩展。这意味着你在任何地方都可以很容易的对导航栏进行扩展。当然，只有你的代码被执行的时候，这个扩展才会被显示到网页上。（你应该将代码放在lib.php的函数中）</p>
+<p>下面的这些例子是从moodle论坛中的<a href="https://moodle.org/mod/forum/discuss.php?d=152391" target="_blank" rel="external"> General Developer Forum: Moodle 2 - how to set up breadcrumbs for a module page</a>这篇帖子中截取的，其中包含了许多moodle的开发方法，很值得一读。</p>
+<h4 id="主导航板块（Navigation）"><a href="#主导航板块（Navigation）" class="headerlink" title="主导航板块（Navigation）"></a>主导航板块（Navigation）</h4><p>这是对主导航结构做的扩展</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$previewnode = $PAGE-&gt;navigation-&gt;add(get_string(<span class="string">'preview'</span>), <span class="keyword">new</span> moodle_url(<span class="string">'/a/link/if/you/want/one.php'</span>), navigation_node::TYPE_CONTAINER);</div><div class="line">$thingnode = $previewnode-&gt;add(get_string(<span class="string">'name of thing'</span>), <span class="keyword">new</span> moodle_url(<span class="string">'/a/link/if/you/want/one.php'</span>));</div><div class="line">$thingnode-&gt;make_active();</div></pre></td></tr></table></figure>
+<p>上面几行代码在主导航栏的底部增加了预览节点，并且增加了该节点下的子节点thingnode。最后一行代码使该thingnode变得活跃，这是为了在用户访问的url与你给出的url相同时，会自动的更新导航条</p>
+<p>下面的是对课程导航结构做的扩展。你需要首先知道 课程id并保证已经调用过require_login($courseorid)，这是为了使主导航板块切换到课程的导航结构。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$coursenode = $PAGE-&gt;navigation-&gt;find($courseid, navigation_node::TYPE_COURSE);</div><div class="line">$thingnode = $coursenode-&gt;add(get_string(<span class="string">'Name of thing'</span>), <span class="keyword">new</span> moodle_url(<span class="string">'/a/link/if/you/want/one.php'</span>));</div><div class="line">$thingnode-&gt;make_active();</div></pre></td></tr></table></figure>
+<p>第一行代码通过传入参数courseid和导航节点类型TYPE_COURSE在导航结构中找到了课程节点（course node）。我们在这里做的事是向课程节点下添加一个新节点。</p>
+<p>需要注意的是，moodle中按照字典序来加载插件，因此插件b可以看到插件a新建的节点，而插件a不能看到插件b新建的节点。</p>
+<h4 id="设置板块（seeting-Navigation）"><a href="#设置板块（seeting-Navigation）" class="headerlink" title="设置板块（seeting Navigation）"></a>设置板块（seeting Navigation）</h4><p>向设置板块中添加内容和主导航板块非常相似。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$settingnode = $PAGE-&gt;settingsnav-&gt;add(get_string(<span class="string">'setting'</span>), <span class="keyword">new</span> moodle_url(<span class="string">'/a/link/if/you/want/one.php'</span>), navigation_node::TYPE_CONTAINER);</div><div class="line">$thingnode = $settingnode-&gt;add(get_string(<span class="string">'Name of thing'</span>), <span class="keyword">new</span> moodle_url(<span class="string">'/a/link/if/you/want/one.php'</span>));</div><div class="line">$thingnode-&gt;make_active();</div></pre></td></tr></table></figure>
+<h4 id="向主导航板块中添加设置节点（setting-folder）"><a href="#向主导航板块中添加设置节点（setting-folder）" class="headerlink" title="向主导航板块中添加设置节点（setting folder）"></a>向主导航板块中添加设置节点（setting folder）</h4><p>一个设置节点的例子可以在网站的administration / Plugins / Activity modules / Assignment中看到。</p>
+<p><img src="https://docs.moodle.org/dev/images_dev/f/f1/assignmentmenu.png" alt="pic1"></p>
+<p>向一个板块（block）的setting.php文件中添加带有设置节点（setting folder）的导航节点（navigation folder）的例子如下:</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"> </div><div class="line">defined(<span class="string">'MOODLE_INTERNAL'</span>) || <span class="keyword">die</span>;</div><div class="line"> </div><div class="line"><span class="comment">// Create folder / submenu in block menu, modsettings for activity modules, localplugins for Local plugins. </span></div><div class="line"><span class="comment">// The default folders are defined in admin/settings/plugins.php.</span></div><div class="line">$ADMIN-&gt;add(<span class="string">'blocksettings'</span>, <span class="keyword">new</span> admin_category(<span class="string">'blocksamplefolder'</span>,</div><div class="line">        get_string(<span class="string">'pluginname'</span>, <span class="string">'mod_sample'</span>)));</div><div class="line"> </div><div class="line"><span class="comment">// Create settings block.</span></div><div class="line">$settings = <span class="keyword">new</span> admin_settingpage($section, get_string(<span class="string">'settings'</span>, <span class="string">'block_sample'</span>));</div><div class="line"><span class="keyword">if</span> ($ADMIN-&gt;fulltree) &#123;</div><div class="line">    $settings-&gt;add(<span class="keyword">new</span> admin_setting_configcheckbox(<span class="string">'block_sample_checkbox'</span>, get_string(<span class="string">'checkbox'</span>, <span class="string">'block_sample'</span>),</div><div class="line">        get_string(<span class="string">'checkboxdescription'</span>, <span class="string">'block_kronoshtml'</span>), <span class="number">0</span>));</div><div class="line">&#125;</div><div class="line"> </div><div class="line"><span class="comment">// This adds the settings link to the folder/submenu.</span></div><div class="line">$ADMIN-&gt;add(<span class="string">'blocksamplefolder'</span>, $settings);</div><div class="line"><span class="comment">// This adds a link to an external page.</span></div><div class="line">$ADMIN-&gt;add(<span class="string">'blocksamplefolder'</span>, <span class="keyword">new</span> admin_externalpage(<span class="string">'block_sample_page'</span>, get_string(<span class="string">'externalpage'</span>, <span class="string">'block_sample'</span>),</div><div class="line">        $CFG-&gt;wwwroot.<span class="string">'/blocks/sample/sample.php'</span>));</div><div class="line"><span class="comment">// Prevent Moodle from adding settings block in standard location.</span></div><div class="line">$settings = <span class="keyword">null</span>;</div></pre></td></tr></table></figure>
+<h4 id="导航条（Navbar）"><a href="#导航条（Navbar）" class="headerlink" title="导航条（Navbar）"></a>导航条（Navbar）</h4><p>下面是对导航条的扩展</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$PAGE-&gt;navbar-&gt;ignore_active();</div><div class="line">$PAGE-&gt;navbar-&gt;add(get_string(<span class="string">'preview'</span>), <span class="keyword">new</span> moodle_url(<span class="string">'/a/link/if/you/want/one.php'</span>));</div><div class="line">$PAGE-&gt;navbar-&gt;add(get_string(<span class="string">'name of thing'</span>), <span class="keyword">new</span> moodle_url(<span class="string">'/a/link/if/you/want/one.php'</span>));</div></pre></td></tr></table></figure>
+<p>上述代码使导航条忽略当前所在的真实页面，而使用你刚刚在主导航板块添加的导航结构</p>
+<h3 id="插件的回调函数（Plugin-Callbacks）"><a href="#插件的回调函数（Plugin-Callbacks）" class="headerlink" title="插件的回调函数（Plugin Callbacks）"></a>插件的回调函数（Plugin Callbacks）</h3><p>有一些特定的插件中的函数可以使导航栏寻找并调用，目前只有三种插件支持这种通过回调函数实现的扩展方式。</p>
+<p>理想情况下，在”Administration / Site administration”结构树中的所有条目都应该在setting.php中被实现，但是有时一些条目会被更早的通过直接修改导航结构的方式添加到admin setting树中。（例如添加外部页面的链接）</p>
+<h4 id="课程模块（Module，也叫活动模块（Activity-Module））"><a href="#课程模块（Module，也叫活动模块（Activity-Module））" class="headerlink" title="课程模块（Module，也叫活动模块（Activity Module））"></a>课程模块（Module，也叫活动模块（Activity Module））</h4><p>课程模块有两个回调函数，第一个是对主导航板块的扩展，第二个是对设置板块的扩展。这些回调函数在用户访问该课程模块下的页面是会被调用，并且只会对该课程模块下的导航结构进行扩展。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> </span>&#123;modulename&#125;_extend_navigation($&#123;modulename&#125;node, $course, $module, $cm)</div><div class="line"><span class="function"><span class="keyword">function</span> </span>&#123;modulename&#125;_extend_settings_navigation($settings, $&#123;modulename&#125;node)</div></pre></td></tr></table></figure>
+<h4 id="课程格式（Course-Formats）"><a href="#课程格式（Course-Formats）" class="headerlink" title="课程格式（Course Formats）"></a>课程格式（Course Formats）</h4><p>课程格式可以完全重定义一个课程的导航结构，当然，有一些相应的函数来确保课程的导航结构会被正确的生成。</p>
+<h4 id="课程报告（Course-Reports）"><a href="#课程报告（Course-Reports）" class="headerlink" title="课程报告（Course Reports）"></a>课程报告（Course Reports）</h4><p>默认的课程报告没有添加在主导航板块中，然而，一些回调函数允许他们这样做。</p>
+<h4 id="新的回调函数"><a href="#新的回调函数" class="headerlink" title="新的回调函数"></a>新的回调函数</h4><p>新版本（Moodle3.0）添加了一些新的回调函数，这里暂时不予介绍。</p>
+<h2 id="问题和解决方案"><a href="#问题和解决方案" class="headerlink" title="问题和解决方案"></a>问题和解决方案</h2><h3 id="我的当前页面已经添加到了导航栏中，但是为什么没有找到对应的条目？"><a href="#我的当前页面已经添加到了导航栏中，但是为什么没有找到对应的条目？" class="headerlink" title="我的当前页面已经添加到了导航栏中，但是为什么没有找到对应的条目？"></a>我的当前页面已经添加到了导航栏中，但是为什么没有找到对应的条目？</h3><p>首先你需要检查你为当前页面设置的url，它必须和你在导航栏中添加的节点的url保持一致。如果不一致的话，你有两种解决方法：</p>
+<ul>
+<li>使用$PAGE-&gt;set_url()修改你当前页面的url</li>
+<li>按照如下格式重新设置导航栏中相应节点的url</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">navigation_node::override_active_url(<span class="keyword">new</span> moodle_url(<span class="string">'/your/url/here.php'</span>, <span class="keyword">array</span>(<span class="string">'param'</span>=&gt;<span class="string">'value'</span>)));</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Moodle-API/" rel="tag"># Moodle API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/18/moodleFormAPI/" rel="next" title="Moodle API文档 —— Form API">
+                <i class="fa fa-chevron-left"></i> Moodle API文档 —— Form API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/19/moodlePageAPI/" rel="prev" title="Moodle API文档 —— Page API">
+                Moodle API文档 —— Page API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导航栏-Navigaton-是什么"><span class="nav-number">2.</span> <span class="nav-text">导航栏(Navigaton)是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导航栏不是什么"><span class="nav-number">3.</span> <span class="nav-text">导航栏不是什么</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导航栏的运行机制"><span class="nav-number">4.</span> <span class="nav-text">导航栏的运行机制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#导航栏扩展"><span class="nav-number">5.</span> <span class="nav-text">导航栏扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#代码扩展（Code-extension）"><span class="nav-number">5.1.</span> <span class="nav-text">代码扩展（Code extension）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主导航板块（Navigation）"><span class="nav-number">5.1.1.</span> <span class="nav-text">主导航板块（Navigation）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置板块（seeting-Navigation）"><span class="nav-number">5.1.2.</span> <span class="nav-text">设置板块（seeting Navigation）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#向主导航板块中添加设置节点（setting-folder）"><span class="nav-number">5.1.3.</span> <span class="nav-text">向主导航板块中添加设置节点（setting folder）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#导航条（Navbar）"><span class="nav-number">5.1.4.</span> <span class="nav-text">导航条（Navbar）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插件的回调函数（Plugin-Callbacks）"><span class="nav-number">5.2.</span> <span class="nav-text">插件的回调函数（Plugin Callbacks）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#课程模块（Module，也叫活动模块（Activity-Module））"><span class="nav-number">5.2.1.</span> <span class="nav-text">课程模块（Module，也叫活动模块（Activity Module））</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#课程格式（Course-Formats）"><span class="nav-number">5.2.2.</span> <span class="nav-text">课程格式（Course Formats）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#课程报告（Course-Reports）"><span class="nav-number">5.2.3.</span> <span class="nav-text">课程报告（Course Reports）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#新的回调函数"><span class="nav-number">5.2.4.</span> <span class="nav-text">新的回调函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题和解决方案"><span class="nav-number">6.</span> <span class="nav-text">问题和解决方案</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#我的当前页面已经添加到了导航栏中，但是为什么没有找到对应的条目？"><span class="nav-number">6.1.</span> <span class="nav-text">我的当前页面已经添加到了导航栏中，但是为什么没有找到对应的条目？</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

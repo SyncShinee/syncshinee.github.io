@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Moodle API," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="概述Moodle File API中介绍了Moodle管理文件的相关内容。如果你对该API的内部运行机制感兴趣，我们会在接下来的文档中介绍。本文档仅介绍File API的使用。和本API相关的还有Repository API，它介绍了用户如何从moodle中获取文件。">
+<meta name="keywords" content="Moodle API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moodle API文档 —— File API">
+<meta property="og:url" content="http://yoursite.com/2016/01/16/moodleFileAPI/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="概述Moodle File API中介绍了Moodle管理文件的相关内容。如果你对该API的内部运行机制感兴趣，我们会在接下来的文档中介绍。本文档仅介绍File API的使用。和本API相关的还有Repository API，它介绍了用户如何从moodle中获取文件。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-18T09:33:32.446Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Moodle API文档 —— File API">
+<meta name="twitter:description" content="概述Moodle File API中介绍了Moodle管理文件的相关内容。如果你对该API的内部运行机制感兴趣，我们会在接下来的文档中介绍。本文档仅介绍File API的使用。和本API相关的还有Repository API，它介绍了用户如何从moodle中获取文件。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/16/moodleFileAPI/"/>
+
+
+
+
+
+  <title>Moodle API文档 —— File API | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/16/moodleFileAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Moodle API文档 —— File API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-16T23:50:29+08:00">
+                2016-01-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Moodle File API中介绍了Moodle管理文件的相关内容。如果你对该API的内部运行机制感兴趣，我们会在接下来的文档中介绍。本文档仅介绍File API的使用。和本API相关的还有Repository API，它介绍了用户如何从moodle中获取文件。</p>
+<a id="more"></a>
+<h2 id="文件区"><a href="#文件区" class="headerlink" title="文件区"></a>文件区</h2><p>文件被存储在一个被称为文件区（File Areas）的结构中。一个文件由以下内容唯一标识：</p>
+<ul>
+<li>上下文id（<code>context id</code>）</li>
+<li>完整的组件名（<code>component name</code>）（使用Frankenstyle，在之后的文档中会介绍），例如’course’, ‘mod_forum’, ‘mod_glossary’, ‘block_html’。</li>
+<li>文件区类型（<code>file area type</code>），例如’intro’,’post’。</li>
+<li>一个唯一的项目id（<code>itemid</code>），通常项目id和一些依赖于文件区类型的东西相关。</li>
+</ul>
+<p>Moodle没有单独为文件区开辟空间来进行存储，它被隐式的存储在数据库的files表中。每一个子系统都只能访问它自己的文件区。例如，只有位于<code>/mod/assignment/*</code>目录下的文件可以访问组件名为<code>mod_assignment</code>的文件。</p>
+<h2 id="文件区的命名"><a href="#文件区的命名" class="headerlink" title="文件区的命名"></a>文件区的命名</h2><p>Moodle对于文件区的命名规范并没有严格的定义，但是我们强烈推荐来使用常见的单数名词来为文件区命名。（intro, post, attachment, description, …）</p>
+<h2 id="向用户提供文件"><a href="#向用户提供文件" class="headerlink" title="向用户提供文件"></a>向用户提供文件</h2><p>在使用文件时，你必须提供包括文件服务脚本（file serving script）在内的文件url，文件服务脚本通常为<code>pluginfile.php</code>。格式如下：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$url = $CFG-&gt;wwwroot/pluginfile.php/$contextid/$component/$filearea/arbitrary/extra/infomation.ext</div></pre></td></tr></table></figure>
+<p>例如：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$url = $CFG-&gt;wwwroot/pluginfile.php/$forumcontextid/mod_forum/post/$postid/image.jpg</div></pre></td></tr></table></figure>
+<p>不过，一般来说你没有必要使用这种直接写出url的方式。Moodle提供了名为<code>moodle_url::make_pluginfile_url()</code>的函数来获取文件的url。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$url = moodle_url::make_pluginfile_url($file-&gt;get_contextid(), $file-&gt;get_component(), $file-&gt;get_filearea(), $file-&gt;get_itemid(), $file-&gt;get_filepath(), $file-&gt;get_filename());</div></pre></td></tr></table></figure>
+<blockquote>
+<p>注意：如果你不需要’itemid’，那么你需要给该参数传入null，此时在url中会忽略itemid的信息。在下面提到的回调函数中，你也需要注意这个问题。</p>
+</blockquote>
+<p>文件服务脚本会根据相应的安全规范检查上下文id，组件名，文件区类型，并基于此提供文件服务。</p>
+<blockquote>
+<p>注意：在多数情况下，开发者开发第三方你插件时，pluginfile.php会在合适的插件中寻找回调函数。这些函数定义在lib.php中，并且以<code>component_name_pluginfile()</code>的形式命名。<code>arbitrary/extra/infomation.ext</code>会被传给回调函数。例如，位于mod_forum+post文件区的文件通过调用位于mod/forum/lib.php文件下的mod_forum_pluginfile()函数来提供文件服务。开发者的第三方插件中，<code>MYPLUGIN/lib.php</code>文件下的相应函数应参照如下模式书写。当然，细节方面会由于相应插件的文件访问权限不同而有所区别。（例如，作业附件只能被教师访问，而学生只能提交文件。讨论区中的附件只有在打开相应的帖子时才能被访问）</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">MYPLUGIN_pluginfile</span><span class="params">($course, $cm, $context, $filearea, $args, $forcedownload, array $options=array<span class="params">()</span>)</span> </span>&#123;</div><div class="line">    <span class="comment">// Check the contextlevel is as expected - if your plugin is a block, this becomes CONTEXT_BLOCK, etc.</span></div><div class="line">    <span class="keyword">if</span> ($context-&gt;contextlevel != CONTEXT_MODULE) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>; </div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">// Make sure the filearea is one of those used by the plugin.</span></div><div class="line">    <span class="keyword">if</span> ($filearea !== <span class="string">'expectedfilearea'</span> &amp;&amp; $filearea !== <span class="string">'anotherexpectedfilearea'</span>) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">// Make sure the user is logged in and has access to the module (plugins that are not course modules should leave out the 'cm' part).</span></div><div class="line">    require_login($course, <span class="keyword">true</span>, $cm);</div><div class="line"> </div><div class="line">    <span class="comment">// Check the relevant capabilities - these may vary depending on the filearea being accessed.</span></div><div class="line">    <span class="keyword">if</span> (!has_capability(<span class="string">'mod/MYPLUGIN:view'</span>, $context)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>;</div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">// Leave this line out if you set the itemid to null in make_pluginfile_url (set $itemid to 0 instead).</span></div><div class="line">    $itemid = array_shift($args); <span class="comment">// The first item in the $args array.</span></div><div class="line"> </div><div class="line">    <span class="comment">// Use the itemid to retrieve any relevant data records and perform any security checks to see if the</span></div><div class="line">    <span class="comment">// user really does have access to the file in question.</span></div><div class="line"> </div><div class="line">    <span class="comment">// Extract the filename / filepath from the $args array.</span></div><div class="line">    $filename = array_pop($args); <span class="comment">// The last item in the $args array.</span></div><div class="line">    <span class="keyword">if</span> (!$args) &#123;</div><div class="line">        $filepath = <span class="string">'/'</span>; <span class="comment">// $args is empty =&gt; the path is '/'</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        $filepath = <span class="string">'/'</span>.implode(<span class="string">'/'</span>, $args).<span class="string">'/'</span>; <span class="comment">// $args contains elements of the filepath</span></div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">// Retrieve the file from the Files API.</span></div><div class="line">    $fs = get_file_storage();</div><div class="line">    $file = $fs-&gt;get_file($context-&gt;id, <span class="string">'mod_MYPLUGIN'</span>, $filearea, $itemid, $filepath, $filename);</div><div class="line">    <span class="keyword">if</span> (!$file) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">false</span>; <span class="comment">// The file does not exist.</span></div><div class="line">    &#125;</div><div class="line"> </div><div class="line">    <span class="comment">// We can now send the file back to the browser - in this case with a cache lifetime of 1 day and no filtering. </span></div><div class="line">    <span class="comment">// From Moodle 2.3, use send_stored_file instead.</span></div><div class="line">    send_file($file, <span class="number">86400</span>, <span class="number">0</span>, $forcedownload, $options);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以使用一个API函数来自动生成这些url，通常为<code>file_rewrite_pluginfile_urls()</code>函数。</p>
+<h2 id="获取用户提交的文件"><a href="#获取用户提交的文件" class="headerlink" title="获取用户提交的文件"></a>获取用户提交的文件</h2><p>在之后的文档中会有介绍</p>
+<h2 id="代码范例"><a href="#代码范例" class="headerlink" title="代码范例"></a>代码范例</h2><p>需要注意的是，开发者们在不触及到moodle核心的情况下，通常不会直接使用文件API，表单元素(formslib elements)会自动帮助开发者解决这些问题。</p>
+<h3 id="浏览文件"><a href="#浏览文件" class="headerlink" title="浏览文件"></a>浏览文件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line">$browser = get_file_browser();</div><div class="line">$context = get_system_context();</div><div class="line"> </div><div class="line">$filearea = <span class="keyword">null</span>;</div><div class="line">$itemid   = <span class="keyword">null</span>;</div><div class="line">$filename = <span class="keyword">null</span>;</div><div class="line"><span class="keyword">if</span> ($fileinfo = $browser-&gt;get_file_info($context, $component, $filearea, $itemid, <span class="string">'/'</span>, $filename)) &#123;</div><div class="line">    <span class="comment">// build a Breadcrumb trail</span></div><div class="line">    $level = $fileinfo-&gt;get_parent();</div><div class="line">    <span class="keyword">while</span> ($level) &#123;</div><div class="line">        $path[] = <span class="keyword">array</span>(<span class="string">'name'</span>=&gt;$level-&gt;get_visible_name());</div><div class="line">        $level = $level-&gt;get_parent();</div><div class="line">    &#125;</div><div class="line">    $path = array_reverse($path);</div><div class="line">    $children = $fileinfo-&gt;get_children();</div><div class="line">    <span class="keyword">foreach</span> ($children <span class="keyword">as</span> $child) &#123;</div><div class="line">        <span class="keyword">if</span> ($child-&gt;is_directory()) &#123;</div><div class="line">            <span class="keyword">echo</span> $child-&gt;get_visible_name();</div><div class="line">            <span class="comment">// display contextid, itemid, component, filepath and filename</span></div><div class="line">            var_dump($child-&gt;get_params());</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="移动文件"><a href="#移动文件" class="headerlink" title="移动文件"></a>移动文件</h3><p>例如，如果你刚刚用如下路径创建了一个文件</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$from_zip_file = $CFG-&gt;dataroot . <span class="string">'/temp/backup/'</span> . $preferences-&gt;backup_unique_code .</div><div class="line">         <span class="string">'/'</span> . $preferences-&gt;backup_name;</div></pre></td></tr></table></figure>
+<p>而你希望将它移动到course_backup文件区中，那么只需要</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$context = get_context_instance(CONTEXT_COURSE, $preferences-&gt;backup_course);</div><div class="line"> $fs = get_file_storage();</div><div class="line"> $file_record = <span class="keyword">array</span>(<span class="string">'contextid'</span>=&gt;$context-&gt;id, <span class="string">'component'</span>=&gt;<span class="string">'course'</span>, <span class="string">'filearea'</span>=&gt;<span class="string">'backup'</span>,</div><div class="line">         <span class="string">'itemid'</span>=&gt;<span class="number">0</span>, <span class="string">'filepath'</span>=&gt;<span class="string">'/'</span>, <span class="string">'filename'</span>=&gt;$preferences-&gt;backup_name,</div><div class="line">         <span class="string">'timecreated'</span>=&gt;time(), <span class="string">'timemodified'</span>=&gt;time());</div><div class="line"> $fs-&gt;create_file_from_pathname($file_record, $from_zip_file);</div></pre></td></tr></table></figure>
+<h3 id="列出文件区的文件"><a href="#列出文件区的文件" class="headerlink" title="列出文件区的文件"></a>列出文件区的文件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$fs = get_file_storage();</div><div class="line">$files = $fs-&gt;get_area_files($contextid, <span class="string">'mod_assignment'</span>, <span class="string">'submission'</span>, $submission-&gt;id);</div><div class="line"><span class="keyword">foreach</span> ($files <span class="keyword">as</span> $f) &#123;</div><div class="line">    <span class="comment">// $f is an instance of stored_file</span></div><div class="line">    <span class="keyword">echo</span> $f-&gt;get_filename();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>或以链接的方式列出：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$out = <span class="keyword">array</span>();</div><div class="line"> </div><div class="line">$fs = get_file_storage();</div><div class="line">$files = $fs-&gt;get_area_files($contextid, <span class="string">'mod_assignment'</span>, <span class="string">'submission'</span>, $submission-&gt;id);</div><div class="line"> </div><div class="line"><span class="keyword">foreach</span> ($files <span class="keyword">as</span> $file) &#123;</div><div class="line">    $filename = $file-&gt;get_filename();</div><div class="line">    $url = moodle_url::make_file_url(<span class="string">'/pluginfile.php'</span>, <span class="keyword">array</span>($file-&gt;get_contextid(), <span class="string">'mod_assignment'</span>, <span class="string">'submission'</span>,</div><div class="line">            $file-&gt;get_itemid(), $file-&gt;get_filepath(), $filename));</div><div class="line">    $out[] = html_writer::link($url, $filename);</div><div class="line">&#125;</div><div class="line">$br = html_writer::empty_tag(<span class="string">'br'</span>);</div><div class="line"> </div><div class="line"><span class="keyword">return</span> implode($br, $out);</div></pre></td></tr></table></figure>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><p>下面给出了创建包含制定文本的文件的方式。这种方式和使用PHP函数<code>file_put_contents</code>是等价的。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$fs = get_file_storage();</div><div class="line"> </div><div class="line"><span class="comment">// Prepare file record object</span></div><div class="line">$fileinfo = <span class="keyword">array</span>(</div><div class="line">    <span class="string">'contextid'</span> =&gt; $context-&gt;id, <span class="comment">// ID of context</span></div><div class="line">    <span class="string">'component'</span> =&gt; <span class="string">'mod_mymodule'</span>,     <span class="comment">// usually = table name</span></div><div class="line">    <span class="string">'filearea'</span> =&gt; <span class="string">'myarea'</span>,     <span class="comment">// usually = table name</span></div><div class="line">    <span class="string">'itemid'</span> =&gt; <span class="number">0</span>,               <span class="comment">// usually = ID of row in table</span></div><div class="line">    <span class="string">'filepath'</span> =&gt; <span class="string">'/'</span>,           <span class="comment">// any path beginning and ending in /</span></div><div class="line">    <span class="string">'filename'</span> =&gt; <span class="string">'myfile.txt'</span>); <span class="comment">// any filename</span></div><div class="line"> </div><div class="line"><span class="comment">// Create file containing text 'hello world'</span></div><div class="line">$fs-&gt;create_file_from_string($fileinfo, <span class="string">'hello world'</span>);</div></pre></td></tr></table></figure>
+<p>如果你想基于一个真实的文件在moodle系统中创建文件，你可以使用<code>create_file_from_pathname()</code>函数。同样的，你也可以使用<code>create_file_from_storedfile()</code>函数来创建已经存在于moodle本地文件中的文件。一些细节可以浏览<code>lib/filestorage/file_storage.php</code>。</p>
+<p>和普通方法不同，这种方法不会覆盖掉已经存在的文件，如果你希望覆盖掉它，你只有先将其删除（如果存在的话）再重新创建该文件。</p>
+<h3 id="读取文件"><a href="#读取文件" class="headerlink" title="读取文件"></a>读取文件</h3><p>下面给出了一种读取文件的方式，这和<code>file_get_contents()</code>函数是等价的。</p>
+<blockquote>
+<p>注意：你<strong>只能</strong>在位于<code>mod/mymodule/*</code>目录下的代码中使用这种方法，其他代码中应使用<code>file_browser</code>来读取文件。</p>
+</blockquote>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line">$fs = get_file_storage();</div><div class="line"> </div><div class="line"><span class="comment">// Prepare file record object</span></div><div class="line">$fileinfo = <span class="keyword">array</span>(</div><div class="line">    <span class="string">'component'</span> =&gt; <span class="string">'mod_mymodule'</span>,     <span class="comment">// usually = table name</span></div><div class="line">    <span class="string">'filearea'</span> =&gt; <span class="string">'myarea'</span>,     <span class="comment">// usually = table name</span></div><div class="line">    <span class="string">'itemid'</span> =&gt; <span class="number">0</span>,               <span class="comment">// usually = ID of row in table</span></div><div class="line">    <span class="string">'contextid'</span> =&gt; $context-&gt;id, <span class="comment">// ID of context</span></div><div class="line">    <span class="string">'filepath'</span> =&gt; <span class="string">'/'</span>,           <span class="comment">// any path beginning and ending in /</span></div><div class="line">    <span class="string">'filename'</span> =&gt; <span class="string">'myfile.txt'</span>); <span class="comment">// any filename</span></div><div class="line"> </div><div class="line"><span class="comment">// Get file</span></div><div class="line">$file = $fs-&gt;get_file($fileinfo[<span class="string">'contextid'</span>], $fileinfo[<span class="string">'component'</span>], $fileinfo[<span class="string">'filearea'</span>],</div><div class="line">                      $fileinfo[<span class="string">'itemid'</span>], $fileinfo[<span class="string">'filepath'</span>], $fileinfo[<span class="string">'filename'</span>]);</div><div class="line"> </div><div class="line"><span class="comment">// Read contents</span></div><div class="line"><span class="keyword">if</span> ($file) &#123;</div><div class="line">    $contents = $file-&gt;get_content();</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    <span class="comment">// file doesn't exist - do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你不能直接访问位于磁盘中的文件，而应在临时文件区中创建该文件的备份，之后再访问该文件。创建备份可以使用<code>$file-&gt;copy_content_to($pathname)</code>。</p>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">$fs = get_file_storage();</div><div class="line"> </div><div class="line"><span class="comment">// Prepare file record object</span></div><div class="line">$fileinfo = <span class="keyword">array</span>(</div><div class="line">    <span class="string">'component'</span> =&gt; <span class="string">'mod_mymodule'</span>,</div><div class="line">    <span class="string">'filearea'</span> =&gt; <span class="string">'myarea'</span>,     <span class="comment">// usually = table name</span></div><div class="line">    <span class="string">'itemid'</span> =&gt; <span class="number">0</span>,               <span class="comment">// usually = ID of row in table</span></div><div class="line">    <span class="string">'contextid'</span> =&gt; $context-&gt;id, <span class="comment">// ID of context</span></div><div class="line">    <span class="string">'filepath'</span> =&gt; <span class="string">'/'</span>,           <span class="comment">// any path beginning and ending in /</span></div><div class="line">    <span class="string">'filename'</span> =&gt; <span class="string">'myfile.txt'</span>); <span class="comment">// any filename</span></div><div class="line"> </div><div class="line"><span class="comment">// Get file</span></div><div class="line">$file = $fs-&gt;get_file($fileinfo[<span class="string">'contextid'</span>], $fileinfo[<span class="string">'component'</span>], $fileinfo[<span class="string">'filearea'</span>], </div><div class="line">        $fileinfo[<span class="string">'itemid'</span>], $fileinfo[<span class="string">'filepath'</span>], $fileinfo[<span class="string">'filename'</span>]);</div><div class="line"> </div><div class="line"><span class="comment">// Delete it if it exists</span></div><div class="line"><span class="keyword">if</span> ($file) &#123;</div><div class="line">    $file-&gt;delete();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Moodle-API/" rel="tag"># Moodle API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/15/moodleDataManipulationAPI/" rel="next" title="Moodle API文档 —— Data manipulation API">
+                <i class="fa fa-chevron-left"></i> Moodle API文档 —— Data manipulation API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/17/2015DhakaRegional/" rel="prev" title="2015达卡区域赛总结">
+                2015达卡区域赛总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件区"><span class="nav-number">2.</span> <span class="nav-text">文件区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件区的命名"><span class="nav-number">3.</span> <span class="nav-text">文件区的命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#向用户提供文件"><span class="nav-number">4.</span> <span class="nav-text">向用户提供文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取用户提交的文件"><span class="nav-number">5.</span> <span class="nav-text">获取用户提交的文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码范例"><span class="nav-number">6.</span> <span class="nav-text">代码范例</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#浏览文件"><span class="nav-number">6.1.</span> <span class="nav-text">浏览文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#移动文件"><span class="nav-number">6.2.</span> <span class="nav-text">移动文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#列出文件区的文件"><span class="nav-number">6.3.</span> <span class="nav-text">列出文件区的文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建文件"><span class="nav-number">6.4.</span> <span class="nav-text">创建文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#读取文件"><span class="nav-number">6.5.</span> <span class="nav-text">读取文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#删除文件"><span class="nav-number">6.6.</span> <span class="nav-text">删除文件</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

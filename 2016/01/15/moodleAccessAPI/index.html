@@ -1,0 +1,765 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Moodle API," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Moodle中的Access API通过capabilities的方式向我们提供了判断当前用户权限的一些函数。它同样允许一些继承于moodle的模块来自定义新的capabilities. 概述moodle使用基于角色的访问控制模型。大多数的moodle实体（系统（system）、用户（users）、课程类别（course categories）、课程（courses）、课程模块（modules）、">
+<meta name="keywords" content="Moodle API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moodle API文档 —— Access API">
+<meta property="og:url" content="http://yoursite.com/2016/01/15/moodleAccessAPI/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="Moodle中的Access API通过capabilities的方式向我们提供了判断当前用户权限的一些函数。它同样允许一些继承于moodle的模块来自定义新的capabilities. 概述moodle使用基于角色的访问控制模型。大多数的moodle实体（系统（system）、用户（users）、课程类别（course categories）、课程（courses）、课程模块（modules）、">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-18T09:05:32.381Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Moodle API文档 —— Access API">
+<meta name="twitter:description" content="Moodle中的Access API通过capabilities的方式向我们提供了判断当前用户权限的一些函数。它同样允许一些继承于moodle的模块来自定义新的capabilities. 概述moodle使用基于角色的访问控制模型。大多数的moodle实体（系统（system）、用户（users）、课程类别（course categories）、课程（courses）、课程模块（modules）、">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/15/moodleAccessAPI/"/>
+
+
+
+
+
+  <title>Moodle API文档 —— Access API | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/15/moodleAccessAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Moodle API文档 —— Access API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-15T14:38:39+08:00">
+                2016-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Moodle中的Access API通过capabilities的方式向我们提供了判断当前用户权限的一些函数。它同样允许一些继承于moodle的模块来自定义新的capabilities.</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>moodle使用基于角色的访问控制模型。大多数的moodle实体（系统（system）、用户（users）、课程类别（course categories）、课程（courses）、课程模块（modules）、块（blocks））都有一个上下文（context），它们被组织在一个叫做上下文树（context tree）的树形结构中。角色是一个权限（capability）的集合，每一个capability通常代表一个用户能做什么事的能力。角色定义在大多数系统的上下文层级。角色定义可以被重写。用户访问控制则是通过查询用户所属的角色的定义来判断用户是否有相应的权限。</p>
+<p>所有未登录的用户自动获取定义在<code>$CFG-&gt;notloggedinroleid</code>中的默认角色，该角色不能被其他的任何角色引用。在自动以访客身份登录的模式（guest autologin）启用时，未登录的用户使用的默认角色则是定义在<code>$CFG-&gt;guestroleid</code>中的访客角色。当然，你也不能让其他角色引用访客角色。所有其他的经过身份验证的用户则自动获取定义在<code>$CFG-&gt;defaultuserroleid</code>中的默认角色。他们在打开首页时使用的默认角色则被定义在<code>$CFG-&gt;defaultfrontpageroleid</code>中。</p>
+<a id="more"></a>
+<h2 id="如何在插件中定义新的权限"><a href="#如何在插件中定义新的权限" class="headerlink" title="如何在插件中定义新的权限"></a>如何在插件中定义新的权限</h2><p>权限被定义在文件<code>db/access.php</code>中，是一个名为<code>$capabilities</code>的数组。它的命名规则为”插件类型/插件名:权限名”。</p>
+<p>举个栗子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$capabilities = array(</div><div class="line">    &apos;mod/folder:managefiles&apos; =&gt; array(</div><div class="line">        &apos;riskbitmask&apos; =&gt; RISK_SPAM,</div><div class="line">        &apos;captype&apos; =&gt; &apos;write&apos;,</div><div class="line">        &apos;contextlevel&apos; =&gt; CONTEXT_MODULE,</div><div class="line">        &apos;archetypes&apos; =&gt; array(</div><div class="line">            &apos;editingteacher&apos; =&gt; CAP_ALLOW</div><div class="line">        )</div><div class="line">    ),</div><div class="line"> );</div></pre></td></tr></table></figure>
+<p>其中的关键字的含义如下：</p>
+<ul>
+<li><code>riskbitmask</code>：该项权限相应的风险。关于risk在之后的文档中会有介绍。</li>
+<li><code>captype</code>：权限类型（读/写）。出于安全的考虑，系统会对访客和未登录用户规避写权限。</li>
+<li><code>contextlevel</code>：定义上下文的层级。即这项权限在被应用时所属的典型层次。当这项权限在多个层级被使用时，则定义为最低的一个层级。这保证了它可以被高级层级的权限重写。</li>
+<li><code>archetypes</code>：指定角色的默认值默认值和标准原型。这被用于插件的安装、更新、和重置角色的时候。archetypes定义在<code>mdl_role</code>表中。关于角色原型也会在之后的文档中介绍。</li>
+<li><code>clonepermissionsfrom</code>：当你想添加一个新的权限时，你可以让moodle复制在其中定义的所有角色的当前权限的集合。在定义一些较为庞大的权限时（例如管理员权限），这可能比使用archetypes要更方便。他的语法形如：<code>&#39;clonepermissionsfrom&#39; =&gt; &#39;moodle/quiz:attempt&#39;</code>。</li>
+</ul>
+<p>如果你对<code>db/assess.php</code>进行了任何形式的修改，那么你应该同时提高当前插件的版本号，从而使升级脚本可以对数据库进行相应的修改。如果你需要运行升级脚本，只需要以管理员账户登录moodle系统并根据提示进行操作即可。</p>
+<p>权限的名称被定义在插件的语言包中，其命名规则为”插件名:权限名”。例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$string[&apos;folder:managefiles&apos;] = &apos;Manage files in folder module&apos;;</div></pre></td></tr></table></figure>
+<h2 id="一些可能用到的函数和类"><a href="#一些可能用到的函数和类" class="headerlink" title="一些可能用到的函数和类"></a>一些可能用到的函数和类</h2><h3 id="上下文的获取"><a href="#上下文的获取" class="headerlink" title="上下文的获取"></a>上下文的获取</h3><p>在插件中，上下文的实体往往是唯一的。因为他们会被系统自动实例化和删除。</p>
+<p>通过对象id获取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$systemcontext = context_system::instance();</div><div class="line">$usercontext = context_user::instance($user-&gt;id);</div><div class="line">$categorycontext = context_coursecat::instance($category-&gt;id);</div><div class="line">$coursecontext = context_course::instance($course-&gt;id);</div><div class="line">$contextmodule = context_module::instance($cm-&gt;id);</div></pre></td></tr></table></figure>
+<p>通过上下文id获取：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$context = context::instance_by_id($contextid);</div></pre></td></tr></table></figure>
+<p>注意：</p>
+<ul>
+<li>如果上下文不能正常创建会抛出异常</li>
+<li>被删除的用户不会再有上下文</li>
+</ul>
+<h3 id="判断某个用户是否具有指定的权限"><a href="#判断某个用户是否具有指定的权限" class="headerlink" title="判断某个用户是否具有指定的权限"></a>判断某个用户是否具有指定的权限</h3><p>在实现访问控制时，我们会通过询问“用户有能力做某事吗？”来实现，而不是“用户有某个角色吗？”</p>
+<h4 id="has-capability"><a href="#has-capability" class="headerlink" title="has_capability()"></a>has_capability()</h4><p><code>has_capability()</code>是访问控制中最重要的一个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function has_capability($capability, context $context, $user = null, $doanything = true)</div></pre></td></tr></table></figure>
+<p>在检查某个用户是否具有指定的权限时，我们会这样使用它：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$context = context_module::instance($cm-&gt;id);</div><div class="line">has_capability(&apos;mod/folder:managefiles&apos;, $context)</div></pre></td></tr></table></figure>
+<p>默认情况下上述代码是在检查当前用户的权限，当然你也可以传入用户id用以检查指定用户的权限。</p>
+<p>一般来说，在检查管理员的所有权限时，都应该返回true，在写代码时应注意这一点。</p>
+<h4 id="require-capability"><a href="#require-capability" class="headerlink" title="require_capability()"></a>require_capability()</h4><p><code>require_capability()</code>函数也是很常见的，它会在用户没有该项权限时抛出访问控制异常（access control exception）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">function require_capability($capability, context $context, $userid = null, $doanything = true, $errormessage = &apos;nopermissions&apos;, $stringfile = &apos;&apos;)</div></pre></td></tr></table></figure>
+<h3 id="和选课相关函数"><a href="#和选课相关函数" class="headerlink" title="和选课相关函数"></a>和选课相关函数</h3><p>会在之后的文档中介绍</p>
+<h3 id="其他相关的函数"><a href="#其他相关的函数" class="headerlink" title="其他相关的函数"></a>其他相关的函数</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">function require_login($courseorid = NULL, $autologinguest = true, $cm = NULL, $setwantsurltome = true, $preventredirect = false)</div><div class="line">function require_course_login($courseorid, $autologinguest = true, $cm = NULL, $setwantsurltome = true, $preventredirect = false)</div><div class="line"> function get_users_by_capability(context $context, $capability, $fields = &apos;&apos;, $sort = &apos;&apos;, $limitfrom = &apos;&apos;, $limitnum = &apos;&apos;,</div><div class="line">                                  $groups = &apos;&apos;, $exceptions = &apos;&apos;, $doanything_ignored = null, $view_ignored = null, $useviewallgroups = false)</div><div class="line">function isguestuser($user = null)</div><div class="line">function isloggedin()</div><div class="line">function is_siteadmin($user_or_id = null)</div><div class="line">function is_guest(context $context, $user = null)</div><div class="line">function is_viewing(context $context, $user = null, $withcapability = &apos;&apos;)</div></pre></td></tr></table></figure>
+<h4 id="require-login"><a href="#require-login" class="headerlink" title="require_login()"></a>require_login()</h4><p>每个插件脚本在设置了<code>$PAGE-&gt;url</code>之后，都应该执行<code>require_login</code>或<code>require_course_login</code>。</p>
+<p>这个函数做了以下几件事：</p>
+<ul>
+<li>它确保用户在访问任何一门课程或活动时都是已经登录的（未登录的用户不能进入任何课程）</li>
+<li>用户是否以访客身份登录</li>
+<li>验证用户是否具有访问隐藏的课程和活动的权限</li>
+<li>验证访问具有<code>experimental groupmembersonly</code> 权限的内容</li>
+<li>验证用户是否已选课或者具有<code>&#39;moodle/course:view&#39;</code>权限或者是在访问一些允许访客浏览的内容</li>
+<li>添加用户访问该课程的log记录</li>
+</ul>
+<h4 id="require-course-login"><a href="#require-course-login" class="headerlink" title="require_course_login()"></a>require_course_login()</h4><p>这个函数应该只用于活动（activities）中，它会允许用户读取首页的内容而不会在log日志中记录。例如浏览资源文件、阅读词条列表等等。</p>
+<h4 id="isguestuser-isloggedin-and-is-siteadmin"><a href="#isguestuser-isloggedin-and-is-siteadmin" class="headerlink" title="isguestuser(), isloggedin() and is_siteadmin()"></a>isguestuser(), isloggedin() and is_siteadmin()</h4><p>这些函数在过去需要首先限制特殊账户的访问。现在已经不需要了。因为任何具有<strong>写</strong>权限或者有<strong>风险</strong>的权限都已经在<code>has_capability()</code>中自动了规避了这些用户。</p>
+<p>强烈建议在活动（activity）模块中使用 <code>is_siteadmin()</code>,否则请务必准确地使用权限和选课信息。</p>
+<h4 id="is-guest-is-viewing-and-is-enrolled"><a href="#is-guest-is-viewing-and-is-enrolled" class="headerlink" title="is_guest(), is_viewing() and is_enrolled()"></a>is_guest(), is_viewing() and is_enrolled()</h4><p>为了访问课程的数据，这些函数中至少要有一个返回true</p>
+<ul>
+<li><code>is_enrolled()</code>: 用户在<code>user_enrolments</code>表中有活动记录</li>
+<li><code>is_viewing()</code>: 用户具有’moodle/course:view’权限（可以访问，但不是参与者）</li>
+<li><code>is_guest()</code>: 访客用户被一些课程模块允许暂时访问</li>
+</ul>
+<h4 id="get-users-by-capability"><a href="#get-users-by-capability" class="headerlink" title="get_users_by_capability()"></a>get_users_by_capability()</h4><p>它会返回具有某种权限的所有用户的列表。它会忽略选课信息，因此只应在课程上下文之上被使用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Moodle-API/" rel="tag"># Moodle API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/31/2015Multi-University3/" rel="next" title="2015 Multi-University Training Contest 3总结">
+                <i class="fa fa-chevron-left"></i> 2015 Multi-University Training Contest 3总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/15/moodleDataManipulationAPI/" rel="prev" title="Moodle API文档 —— Data manipulation API">
+                Moodle API文档 —— Data manipulation API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何在插件中定义新的权限"><span class="nav-number">2.</span> <span class="nav-text">如何在插件中定义新的权限</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些可能用到的函数和类"><span class="nav-number">3.</span> <span class="nav-text">一些可能用到的函数和类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文的获取"><span class="nav-number">3.1.</span> <span class="nav-text">上下文的获取</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#判断某个用户是否具有指定的权限"><span class="nav-number">3.2.</span> <span class="nav-text">判断某个用户是否具有指定的权限</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#has-capability"><span class="nav-number">3.2.1.</span> <span class="nav-text">has_capability()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#require-capability"><span class="nav-number">3.2.2.</span> <span class="nav-text">require_capability()</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#和选课相关函数"><span class="nav-number">3.3.</span> <span class="nav-text">和选课相关函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其他相关的函数"><span class="nav-number">3.4.</span> <span class="nav-text">其他相关的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#require-login"><span class="nav-number">3.4.1.</span> <span class="nav-text">require_login()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#require-course-login"><span class="nav-number">3.4.2.</span> <span class="nav-text">require_course_login()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#isguestuser-isloggedin-and-is-siteadmin"><span class="nav-number">3.4.3.</span> <span class="nav-text">isguestuser(), isloggedin() and is_siteadmin()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#is-guest-is-viewing-and-is-enrolled"><span class="nav-number">3.4.4.</span> <span class="nav-text">is_guest(), is_viewing() and is_enrolled()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#get-users-by-capability"><span class="nav-number">3.4.5.</span> <span class="nav-text">get_users_by_capability()</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

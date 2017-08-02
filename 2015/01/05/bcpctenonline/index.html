@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="帝都弱校连萌," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="这次网络赛题目都不算太难，3天的时间在和HJK童鞋讨论后共做出了11题，一些题目也是讨论了很久才想通的，感觉是一场质量不错的比赛。">
+<meta name="keywords" content="帝都弱校连萌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="第十届北航程序设计竞赛网络赛题解">
+<meta property="og:url" content="http://yoursite.com/2015/01/05/bcpctenonline/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="这次网络赛题目都不算太难，3天的时间在和HJK童鞋讨论后共做出了11题，一些题目也是讨论了很久才想通的，感觉是一场质量不错的比赛。">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://yoursite.com/img/bcpc/10-online-h.png">
+<meta property="og:updated_time" content="2015-05-07T07:03:25.261Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="第十届北航程序设计竞赛网络赛题解">
+<meta name="twitter:description" content="这次网络赛题目都不算太难，3天的时间在和HJK童鞋讨论后共做出了11题，一些题目也是讨论了很久才想通的，感觉是一场质量不错的比赛。">
+<meta name="twitter:image" content="http://yoursite.com/img/bcpc/10-online-h.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/01/05/bcpctenonline/"/>
+
+
+
+
+
+  <title>第十届北航程序设计竞赛网络赛题解 | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/01/05/bcpctenonline/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">第十届北航程序设计竞赛网络赛题解</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-01-05T23:30:25+08:00">
+                2015-01-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这次网络赛题目都不算太难，3天的时间在和<code>HJK</code>童鞋讨论后共做出了11题，一些题目也是讨论了很久才想通的，感觉是一场质量不错的比赛。<br><a id="more"></a></p>
+<p>###A.C.D.F.L.M  </p>
+<p>水题，也不贴代码了，只要仔细想一下就很容易想出解法的。</p>
+<p>###B.AC自动机+状态压缩</p>
+<p>题目大意是求n的倍数中{包含给出的k个（k&lt;=5）数字}的最小的数</p>
+<p>我们先根据给出的<code>k</code>个数字建立AC自动机，设状态<code>f[i][j][mask]</code>为当前的数字mod<code>n</code>为<code>i</code>，并且当前在自动机的<code>j</code>号节点上，当前数字中已经出现过<code>mask</code>这个集合中的串了。 则初态为<code>f[0][0][0]</code>，终态是<code>f[0][x][全集]</code>。</p>
+<p>所以我们需要找一条从初态到终态的路径，使得走过的路径构成的数字串尽可能小。数字最小首先要位数最小，然后字典序最小。所以只需要从初态开始宽度优先搜索，按字典序的顺序扩展状态，第一个访问到的终态的路径就是答案。</p>
+<p>在AC自动机中每走一步，都需要看当前的后缀是否为某几个数字（通过last数组），f数组需保存走到这个状态的最后一个节点，以及这个节点是从那个节点转移过来的（三个下标），找到答案后递归输出结果。</p>
+<p>注意数字串是不能有前导0的，最后答案里也不会出现-1。 时间复杂度为O(nmlogX2^m)</p>
+<p>###E.dp+容斥</p>
+<p>题目大意是算两个概率：</p>
+<ol>
+<li>n个点每个点的值都不小于f1</li>
+<li>n个点中有不少于连续k个点的值不小于f2  （每个点可取值的范围为1~p）要求的结果是p=p(1)∪p(2)</li>
+</ol>
+<p>根据容斥原理 <code>p=p(1)+p(2)-p(12)</code>  而 <code>p(12) = p1 × p(2|1)</code></p>
+<p>第一种情况的概率很容易求得</p>
+<p>第二种情况可通过dp求得：</p>
+<ul>
+<li>设计状态<code>f[i]</code>表示仅考虑前i个数，满足所求限制的概率。</li>
+<li>第i个数有两种选择：小于f2或大于等于f2</li>
+<li>若第i个数小于f2，则<code>f[i] = f[i-1]</code></li>
+<li>若第i个数大于等于f2，则<code>f[i] = f[i-1] + f[i-k-1] × p(连续k-1个数大于等于f2) × p(第k个数小于f2)</code></li>
+</ul>
+<p>最后的表达式：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (i &lt; k)</div><div class="line">	f[i] = f[i<span class="number">-1</span>];</div><div class="line"><span class="keyword">else</span> <span class="keyword">if</span> (i == k)&#123;</div><div class="line">	f[i] = <span class="built_in">pow</span>(tp, k);</div><div class="line">&#125;</div><div class="line"><span class="keyword">else</span> &#123;</div><div class="line">	f[i] = f[i<span class="number">-1</span>] + <span class="built_in">pow</span>(tp, k)*(<span class="number">1</span>-tp)*(<span class="number">1</span>-f[i-k<span class="number">-1</span>]);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>tp表示大于等于f2的概率。求p（2|1）只需要修改tp的值即可</p>
+<p>另外，由于2*k&gt;n因此最多只有一段满足连续k个点的值不小于f2，可以直接算出概率</p>
+<p>###G.dp | 悬线法</p>
+<p>题目大意给出一个矩形，矩形中每个点都为W或B求所有的矩形满足举行中既有W又有B</p>
+<p>我们可以通过dp找出所有的只含W或B的矩形。</p>
+<p><code>f[i][j]</code>表示以点<code>(i,j)</code>为右下角的仅含某种矩形的个数</p>
+<p>仅考虑只含W的矩形。首先预处理出每个<code>(i,j)</code>当前列的W字符的高度。</p>
+<p>对<code>f[i][j]</code>而言，若<code>h[i][j]&gt;=h[i][j-1]</code>那么对以<code>(i-1,j)</code>为右下角的每一个矩形，都一一对应一个以(I,j)为右下角的矩形，<code>f[i][j] = f[i-1][j]</code></p>
+<p>若<code>h[i][j]&lt;h[i][j-1]</code>，那么我们找出在第j列前第一个高度小于<code>h[i][j]</code>的列t，那么在这两节列之间的矩形可取宽度最宽为j-t，高度最高为<code>h[i][j]</code>的所有矩形，另外，对每一个<code>f[i][t]</code>都唯一对应一个<code>f[i][j]</code>因此</p>
+<p><code>f[i][j] =  f[i][sta[top]] + (j-sta[top])*h[i][j]</code></p>
+<p><code>Sta[top]</code>为单调栈，用来存储第一个小于<code>h[i][j]</code>的列标号。</p>
+<p>仅含B的矩形用类似方法也可得出</p>
+<p>最终结果为<code>Ans=sum-sum（W）-sum（B）</code></p>
+<p>###H.建图优化+MST</p>
+<p>题目大意：给出平面上n个点，求最小生成树。这n个点分布在三条平行于y轴的直线上。</p>
+<p>显然对于同一条垂直于横坐标轴的直线上的点，只有相邻两个点间的边需要建。 对于不在同一条垂直于横坐标轴的直线上的两个点，考虑Kruskal算法的实现过程。</p>
+<p><img src="/img/bcpc/10-online-h.png" alt="pic"></p>
+<p>1、2号边都比3号边要短，所以在枚举到3号边的时候，a、b两点必然已连通，b、c两点必然已连通。所以a、c两点也连通了。所以3号边有没有都无所谓。</p>
+<p>因此每个点只需与纵坐标比不比自己小的最小的一个点还有纵坐标不比自己大的最大的一个点连边，连出的图类似锯齿形。边的数量为O(n)级别,求最小生成树即可。</p>
+<p>###I.数位dp</p>
+<p>题目大意：<br>设函数f(x)为一个数各个位上数字之积。现给出L,R,X，求[L,R]之间有多少符合的i使得<code>f(i)=x</code>;<br>我们设<code>dp[i][sta][limit][zero]</code>表示枚举到第i个位置，当前位置的乘积为sta的符合条件的个数。（limit和zero用来记录当前是否有前置0，是否为限制位）</p>
+<p>则我们要求的结果是<code>dp[len-1][x][1][0]+dp[len-2][x][0][1]</code></p>
+<p>但是状态太多，我们只保存在limit为0且zero为0时的dp[i][sta]这样，每次计算不需要清空dp数组。</p>
+<p>转移方程：</p>
+<p>zero为0时:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> last = lim ? dig[pos] : <span class="number">9</span>;</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= last; ++i) &#123;</div><div class="line">	<span class="keyword">if</span> (sta % i == <span class="number">0</span>) &#123;</div><div class="line">		<span class="keyword">if</span> (i == dig[pos] &amp;&amp; lim) &#123;</div><div class="line">			ans += dp(pos<span class="number">-1</span>, sta/i, <span class="number">1</span>, <span class="number">0</span>);</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">else</span> &#123;</div><div class="line">			ans += dp(pos<span class="number">-1</span>, sta/i, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>zero为1时：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">ans += dp(pos<span class="number">-1</span>, sta, <span class="number">0</span>, <span class="number">1</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= <span class="number">9</span>; ++i) &#123;</div><div class="line">	<span class="keyword">if</span> (sta % i == <span class="number">0</span>) &#123;</div><div class="line">		ans += dp(pos<span class="number">-1</span>, sta/i, <span class="number">0</span>, <span class="number">0</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>数位dp每次只保存没有限制的状态，这样dp数组可以重复利用。</p>
+<p>###J.数学公式</p>
+<p>题目大意：求把n的全排列的每一种情况通过交换两个数的位置变为1..n所需要的交换次数的期望</p>
+<p>如果每个pi向他应该在的位置连一条边，注意到每个点有且仅有两条边（可能是自环），那么最终的图一定是k个互相没有交集的环。而且每条长度为i的环需要的交换次数为i-1，因此这题转换为求长度为i的环出现的概率。</p>
+<p>我们从n个点中选取i个，那么除这i个之外的点随便排，这i个点由于要成环，那么我们固定一个点，剩余的点可以随便排。</p>
+<p>公式为<code>p(i) = C(n,i) × (n-i)! × (i-1)! / n!</code></p>
+<p>另外，设f[i]表示i的全排列变为1..n所需的交换次数的期望，我们可以写出一个简单的递推式:<code>f[i] = 1/n × f[i-1] + (n-1)/n × (f[i-1]+1)</code></p>
+<p>这个递推式两边同乘i!，可得出<code>g[i] = i × g[i-1] + (i-1) × (i-1)!</code></p>
+<p>其中 <code>g[i] = i! × f[i]</code></p>
+<p>我们要求的就是<code>g[n]</code></p>
+<p>###K.状压dp</p>
+<p>题目大意为给定一棵有向树，每个节点有ci,pi两个属性，给每个节点定一个<code>[0,m]</code>的值<code>qi</code>。 节点i的权值为<code>ci∗| j| |ci−qi| &gt; |cj−qj|,j是i的后代节点 |</code>。 树的权值为所有节点权值之和。问树的权值为S的方案个数。</p>
+<p>每个点可取的状态有m种，显然不能直接状压，我们设<code>f[k][sta][sum]</code>表示当前节点中满足<code>|ci−qi|&lt;=k</code>的点的集合为<code>sta</code>，且当前权值和为<code>sum</code>的状态数。</p>
+<p>那么我们枚举<code>sta</code>的子集<code>mask</code>，<code>mask</code>中的点权值为<code>k</code>，其余点权值小于<code>k</code>，则状态转移方程为<code>f[k][sta][sum] += dp[i-1][sta-mask][l]</code></p>
+<p>其中<code>l=sum-∑pj × |subtree[j]∪opt|,j属于mask，subtree[j]为j的后代的集合</code>。</p>
+<p>但是枚举子集的子集时间复杂度为3^n，难以承受。</p>
+<p>我们发现题目也保证了当父亲节点的标号一定小于当前节点的标号，因此只要我们按照节点的标号从小往大枚举，就不会有重复计算的问题。转移方程为<code>f[k][sta]sum] += f[k][sta-j][l]</code>。</p>
+<p>其中<code>l=sum-pj∗|subtree[j]∪opt|</code></p>
+<p>还需注意到我们可以压缩一维空间：</p>
+<p><code>f[sta][sum] += f[sta-j][l]</code>;</p>
+<p>代码稍后会附上。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/帝都弱校连萌/" rel="tag"># 帝都弱校连萌</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/08/25/bupt3solution/" rel="next" title="BUPT新生暑假个人排位赛03 Solution">
+                <i class="fa fa-chevron-left"></i> BUPT新生暑假个人排位赛03 Solution
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/19/BUAASummerTrials1/" rel="prev" title="北航暑期集训选拔赛第一场总结">
+                北航暑期集训选拔赛第一场总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview sidebar-panel sidebar-panel-active">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

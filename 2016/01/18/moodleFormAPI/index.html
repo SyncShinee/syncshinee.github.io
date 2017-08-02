@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Moodle API," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="概述Web表单在moodle中的创建方式是使用forms API，它提供了所有的html元素(例如checkbox, radio, textbox等)，并且更加安全易用。">
+<meta name="keywords" content="Moodle API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moodle API文档 —— Form API">
+<meta property="og:url" content="http://yoursite.com/2016/01/18/moodleFormAPI/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="概述Web表单在moodle中的创建方式是使用forms API，它提供了所有的html元素(例如checkbox, radio, textbox等)，并且更加安全易用。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-18T15:40:01.587Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Moodle API文档 —— Form API">
+<meta name="twitter:description" content="概述Web表单在moodle中的创建方式是使用forms API，它提供了所有的html元素(例如checkbox, radio, textbox等)，并且更加安全易用。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/18/moodleFormAPI/"/>
+
+
+
+
+
+  <title>Moodle API文档 —— Form API | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/18/moodleFormAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Moodle API文档 —— Form API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-18T00:17:12+08:00">
+                2016-01-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Web表单在moodle中的创建方式是使用forms API，它提供了所有的html元素(例如checkbox, radio, textbox等)，并且更加安全易用。</p>
+<a id="more"></a>
+<h2 id="Form-API的特性"><a href="#Form-API的特性" class="headerlink" title="Form API的特性"></a>Form API的特性</h2><ul>
+<li>在主流屏幕阅读器（Dragon、JAWS等）上进行过测试和优化</li>
+<li>使用tableless layout</li>
+<li>通过required_param, optional_param 和 session key等方式对表单中的数据进行了安全性检查</li>
+<li>支持多种客户端</li>
+<li>可以方便的添加moodle帮助按钮</li>
+<li>通过File API提供对文件仓库的支持</li>
+<li>提供了自定义的多种表单元素</li>
+<li>加入了重复元素的支持</li>
+<li>加入了高级表单元素</li>
+</ul>
+<h2 id="Form-API的使用"><a href="#Form-API的使用" class="headerlink" title="Form API的使用"></a>Form API的使用</h2><p>为了在moodle中创建一个表单，你必须新建一个继承于moodleform类的类，并且重写它的definition()函数来加入你想要的表单元素。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//moodleform is defined in formslib.php</span></div><div class="line"><span class="keyword">require_once</span>(<span class="string">"$CFG-&gt;libdir/formslib.php"</span>);</div><div class="line"> </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">simplehtml_form</span> <span class="keyword">extends</span> <span class="title">moodleform</span> </span>&#123;</div><div class="line">    <span class="comment">//Add elements to form</span></div><div class="line">    <span class="keyword">public</span> <span class="function"><span class="keyword">function</span> <span class="title">definition</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">global</span> $CFG;</div><div class="line"> </div><div class="line">        $mform = <span class="keyword">$this</span>-&gt;_form; <span class="comment">// Don't forget the underscore! </span></div><div class="line"> </div><div class="line">        $mform-&gt;addElement(<span class="string">'text'</span>, <span class="string">'email'</span>, get_string(<span class="string">'email'</span>)); <span class="comment">// Add elements to your form</span></div><div class="line">        $mform-&gt;setType(<span class="string">'email'</span>, PARAM_NOTAGS);                   <span class="comment">//Set type of element</span></div><div class="line">        $mform-&gt;setDefault(<span class="string">'email'</span>, <span class="string">'Please enter email'</span>);        <span class="comment">//Default value</span></div><div class="line">            ...</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//Custom validation should be added here</span></div><div class="line">    <span class="function"><span class="keyword">function</span> <span class="title">validation</span><span class="params">($data, $files)</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> <span class="keyword">array</span>();</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>之后可以在其他地方实例化该表单类。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//include simplehtml_form.php</span></div><div class="line"><span class="keyword">require_once</span>(<span class="string">'PATH_TO/simplehtml_form.php'</span>);</div><div class="line"> </div><div class="line"><span class="comment">//Instantiate simplehtml_form </span></div><div class="line">$mform = <span class="keyword">new</span> simplehtml_form();</div><div class="line"> </div><div class="line"><span class="comment">//Form processing and displaying is done here</span></div><div class="line"><span class="keyword">if</span> ($mform-&gt;is_cancelled()) &#123;</div><div class="line">    <span class="comment">//Handle form cancel operation, if cancel button is present on form</span></div><div class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> ($fromform = $mform-&gt;get_data()) &#123;</div><div class="line">  <span class="comment">//In this case you process validated data. $mform-&gt;get_data() returns data posted in form.</span></div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">  <span class="comment">// this branch is executed if the form is submitted but the data doesn't validate and the form should be redisplayed</span></div><div class="line">  <span class="comment">// or on the first display of the form.</span></div><div class="line"> </div><div class="line">  <span class="comment">//Set default data (if any)</span></div><div class="line">  $mform-&gt;set_data($toform);</div><div class="line">  <span class="comment">//displays the form</span></div><div class="line">  $mform-&gt;display();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="表单元素"><a href="#表单元素" class="headerlink" title="表单元素"></a>表单元素</h2><h3 id="基础表单元素"><a href="#基础表单元素" class="headerlink" title="基础表单元素"></a>基础表单元素</h3><ul>
+<li>button</li>
+<li>checkbox</li>
+<li>radio</li>
+<li>select</li>
+<li>multi-select</li>
+<li>password</li>
+<li>hidden</li>
+<li>html -div element</li>
+<li>static -显示一个静态的文本</li>
+<li>text</li>
+<li>textarea</li>
+</ul>
+<h3 id="自定义的表单元素"><a href="#自定义的表单元素" class="headerlink" title="自定义的表单元素"></a>自定义的表单元素</h3><ul>
+<li>advcheckbox -高级的复选框</li>
+<li>passworddunmask -允许以明文方式查看的密码输入框元素</li>
+<li>recaptcha</li>
+<li>selectyesno</li>
+<li>selectwithlink</li>
+<li>data_selector</li>
+<li>date_time_selector</li>
+<li>duration</li>
+<li>editor</li>
+<li>filepicker -上传单个文件</li>
+<li>filemanager -批量上传文件</li>
+<li>tags</li>
+<li>addGroup</li>
+<li>modgrade</li>
+<li>modvisible</li>
+<li>choosecoursefile</li>
+<li>grading</li>
+<li>questioncategory</li>
+</ul>
+<p>上述元素的具体使用方法会在后面的文档中介绍</p>
+<h2 id="可能会用到的函数"><a href="#可能会用到的函数" class="headerlink" title="可能会用到的函数"></a>可能会用到的函数</h2><h3 id="add-action-buttons"><a href="#add-action-buttons" class="headerlink" title="add_action_buttons();"></a>add_action_buttons();</h3><p>你通常可以使用这个帮助函数来帮你自动在表单最后添加所有的action按钮。传入的两个参数允许你设置是否需要cancel按钮并设置submit按钮的显示文字(通过get_string()函数获取)，默认的显示文字是通过<code>get_string(&#39;savechanges&#39;)</code>函数来获取到的。注意要使用<code>$this</code>而不是<code>$mform</code>。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$this-&gt;add_action_buttons();</div></pre></td></tr></table></figure>
+<h3 id="setDefault"><a href="#setDefault" class="headerlink" title="setDefault()"></a>setDefault()</h3><p>设置元素的默认值</p>
+<h3 id="disableif"><a href="#disableif" class="headerlink" title="disableif()"></a>disableif()</h3><p>对表单中的任何元素或元素组你可以有条件的将其设置为不可见。</p>
+<h3 id="addRule"><a href="#addRule" class="headerlink" title="addRule()"></a>addRule()</h3><p>给客户端/服务器的确认增加一条规则，例如文本必须为email格式</p>
+<h3 id="setHelpButton"><a href="#setHelpButton" class="headerlink" title="setHelpButton()"></a>setHelpButton()</h3><p>为一个表单元素设置弹出样式的帮助框</p>
+<h3 id="addHelpButton"><a href="#addHelpButton" class="headerlink" title="addHelpButton()"></a>addHelpButton()</h3><p>为一个表单元素添加一个弹出样式的帮助狂</p>
+<h3 id="setType"><a href="#setType" class="headerlink" title="setType()"></a>setType()</h3><p>它的参数用来指定提交的数据的类型</p>
+<h3 id="disable-form-chage-checker"><a href="#disable-form-chage-checker" class="headerlink" title="disable_form_chage_checker()"></a>disable_form_chage_checker()</h3><p>默认情况下，在你进行了修改后没有进行保存就尝试离开当前页面的时候，所有的moodle表单会弹出一个”你确定要离开吗？”的对话框。有时候不需要这样的机制，你就可以通过调用<code>$mform-&gt;disable_form_change_checker()</code>来取消这一功能。</p>
+<h2 id="设置元素组"><a href="#设置元素组" class="headerlink" title="设置元素组"></a>设置元素组</h2><p>在之后的文档中会介绍</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Moodle-API/" rel="tag"># Moodle API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/17/2015DhakaRegional/" rel="next" title="2015达卡区域赛总结">
+                <i class="fa fa-chevron-left"></i> 2015达卡区域赛总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/18/moodleNavigationAPI/" rel="prev" title="Moodle API文档 —— Navigation API">
+                Moodle API文档 —— Navigation API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Form-API的特性"><span class="nav-number">2.</span> <span class="nav-text">Form API的特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Form-API的使用"><span class="nav-number">3.</span> <span class="nav-text">Form API的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#表单元素"><span class="nav-number">4.</span> <span class="nav-text">表单元素</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#基础表单元素"><span class="nav-number">4.1.</span> <span class="nav-text">基础表单元素</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义的表单元素"><span class="nav-number">4.2.</span> <span class="nav-text">自定义的表单元素</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能会用到的函数"><span class="nav-number">5.</span> <span class="nav-text">可能会用到的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#add-action-buttons"><span class="nav-number">5.1.</span> <span class="nav-text">add_action_buttons();</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setDefault"><span class="nav-number">5.2.</span> <span class="nav-text">setDefault()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#disableif"><span class="nav-number">5.3.</span> <span class="nav-text">disableif()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addRule"><span class="nav-number">5.4.</span> <span class="nav-text">addRule()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setHelpButton"><span class="nav-number">5.5.</span> <span class="nav-text">setHelpButton()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#addHelpButton"><span class="nav-number">5.6.</span> <span class="nav-text">addHelpButton()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setType"><span class="nav-number">5.7.</span> <span class="nav-text">setType()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#disable-form-chage-checker"><span class="nav-number">5.8.</span> <span class="nav-text">disable_form_chage_checker()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置元素组"><span class="nav-number">6.</span> <span class="nav-text">设置元素组</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

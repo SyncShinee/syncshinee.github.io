@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Multi-University," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="昨天，一年一度的多校联合又开始了。第一场我们队仅做出三道题。其中两道是比较快就想到思路的，另外一道虽然刚开始就想到了正解，但由于感觉数据范围较大，所以纠结了好久才过。其他几题总是感觉思路欠缺一点。不过比去年做多校时的情况已经好了很多，至少赛后能够做出大部分题了。">
+<meta name="keywords" content="Multi-University">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2015 Multi-University Training Contest 1总结">
+<meta property="og:url" content="http://yoursite.com/2015/07/22/2015Multi-University1/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="昨天，一年一度的多校联合又开始了。第一场我们队仅做出三道题。其中两道是比较快就想到思路的，另外一道虽然刚开始就想到了正解，但由于感觉数据范围较大，所以纠结了好久才过。其他几题总是感觉思路欠缺一点。不过比去年做多校时的情况已经好了很多，至少赛后能够做出大部分题了。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2015-07-27T02:39:55.168Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2015 Multi-University Training Contest 1总结">
+<meta name="twitter:description" content="昨天，一年一度的多校联合又开始了。第一场我们队仅做出三道题。其中两道是比较快就想到思路的，另外一道虽然刚开始就想到了正解，但由于感觉数据范围较大，所以纠结了好久才过。其他几题总是感觉思路欠缺一点。不过比去年做多校时的情况已经好了很多，至少赛后能够做出大部分题了。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/07/22/2015Multi-University1/"/>
+
+
+
+
+
+  <title>2015 Multi-University Training Contest 1总结 | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/22/2015Multi-University1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2015 Multi-University Training Contest 1总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-22T11:24:39+08:00">
+                2015-07-22
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>昨天，一年一度的多校联合又开始了。第一场我们队仅做出三道题。其中两道是比较快就想到思路的，另外一道虽然刚开始就想到了正解，但由于感觉数据范围较大，所以纠结了好久才过。其他几题总是感觉思路欠缺一点。不过比去年做多校时的情况已经好了很多，至少赛后能够做出大部分题了。</p>
+<a id="more"></a>
+<ul>
+<li><p><a href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=2015+Multi-University+Training+Contest+1&amp;source=1&amp;searchmode=source" target="_blank" rel="external">题目链接</a></p>
+</li>
+<li><p><a href="https://github.com/SyncShinee/ACM-ICPC/tree/master/ACMContest/2015Multi-UniversityTraining/Contest1" target="_blank" rel="external">代码链接</a></p>
+</li>
+</ul>
+<h1 id="1001-OO’s-Sequence"><a href="#1001-OO’s-Sequence" class="headerlink" title="1001. OO’s Sequence"></a>1001. OO’s Sequence</h1><hr>
+<p>简单的统计问题。</p>
+<p>题目大意：给出数列a[1..n]，定义函数f(l, r)为在[l, r]区间内没有其他数是a[i]的因子的i(l &lt;= i &lt;= r)的个数。求 sum(f[i][j])(1 &lt;= i &lt;= n, 1 &lt;= j &lt;= n)</p>
+<p>我们考虑每个数字a[i]对答案的贡献。即看他在几个区间内满足题目要求的性质。</p>
+<p>我们可以找出他左边第一个是他的因子的数和右边第一个是他的因子的数的位置，分别记为l, r。那么他对答案的贡献就为区间的个数：(i - l) × (j - r)。</p>
+<p>由于每个a[i]均不大，仅有10000，我们可以O(n*100)的时间内预处理出l r数组。</p>
+<h1 id="1002-Assignment"><a href="#1002-Assignment" class="headerlink" title="1002. Assignment"></a>1002. Assignment</h1><hr>
+<p>也是一道统计问题。</p>
+<p>题目大意：对于给定的序列a[1..n]，求出其所有的满足区间中任意两数的差都小于k的区间个数。</p>
+<p>我们当时是采用了一种比较丑的算法来解决这道题的。</p>
+<p>我们枚举每个数，并强制认为它是区间中的最小值，然后看它前面和后面最长能延伸到哪，这个也可以采用和第一题相似的预处理。即预处理出每个数前后第一个比他大于等于k的数(在第一个比他大的数的基础上二分)和第一个比他小的数。之后区间个数的算法也和第一题相同。</p>
+<p>标准解法是通过ST求出区间最大和最小值，枚举区间起点后根据ST函数二分区间终点，或根据单调性O(n)的推过去。</p>
+<h1 id="1003-Bombing-plan"><a href="#1003-Bombing-plan" class="headerlink" title="1003. Bombing plan"></a>1003. Bombing plan</h1><hr>
+<p>树形dp</p>
+<p>题目大意:一个树,n~1e5个点,每个点有一个权值,表示可以如果炸掉它,就可以免费炸掉距离他小于等于w[i]的点.每个点的权值&lt;=100; 问最少炸几个可以全部炸完.</p>
+<p>首先是一个点有一定范围的树上的dp.以前做过的是可以开二维dp[i][j],i是被j点控制的,j不限于i的子树. 但是这道题不能开二维,但是因为权值小于等于100,所以 用g[i][j]表示i为根的子树,从外面获取了炸到i的fa j的长度的权利.</p>
+<p>i点是1,i的儿子是2…. 这样j=0就是没有外界提供. 考虑转移g[i][j]:对于儿子v, 并不是单纯的g[v][j-1],而是对于v来说,从外界获取的小于等于j-1的g, 以及v可以向外面扩充的所有的j.(因为并不一定缺恰好i-1最好,我们先定义的都是恰好,可能反倒向外扩充一个东西更好). </p>
+<p>所以我们要额外维护一个f[u][i],表示的是可以向外扩充i的距离的最小值.这样我们再根据实际重新定义下:f[u][i]指u点向外扩充大于等于i的最小值,g[u][i]表示u点从fa需要获取的小于等于i的长度的最小值,可能也往外放,(只要小于等于获取的值就行).</p>
+<p>这样怎么转移? f[u][i]是横叉dp过去,强制当前的是要提供i的,其他的都用g[i]就行. g[u][i]每一个点都用g[v][i-1]. 然后重点来了,我们这样算出来的是恰好值,需要每一个点算完之后 都弄成实际意义的小于等于的值.</p>
+<p>重点：</p>
+<ol>
+<li>树上一个点有控制范围.多开一维描述范围. </li>
+<li>g不够用,想明白恰好和满足限制下最小值的区别,额外增加f </li>
+<li>f和g的转移,之后再取最值.</li>
+</ol>
+<h1 id="1004-Candy-Distribution"><a href="#1004-Candy-Distribution" class="headerlink" title="1004. Candy Distribution"></a>1004. Candy Distribution</h1><hr>
+<p>一道比较难想的dp</p>
+<p>题目大意：有n种糖果，每一种有ai 个，将糖果分给A，B两个人，两人得到的数量相同，问一共有多少种分法。N &lt;= 200 ai &lt;= 200 </p>
+<p>一共糖果的数量有40000种，考虑f[][][] 表示第i 种糖果分完时A有j 个糖果，B有k 个糖果状态太多。<br>因为只要求两者数量相同，f[][] 表示第I 种糖果分完时，两者糖果数量的差值。</p>
+<p>但是直接求得话复杂度是nw^2.于是我们考虑每个f[i][j] 对 f[i+1][j] 的贡献。可以知道：</p>
+<p>F[i][j] -&gt; f[i+1][j] 的贡献是 f[i][j] * ((a[i]/2) + 1)</p>
+<p>F[i][j] -&gt; f[i+1][j-1] 的贡献是 f[i][j] * (((a[i]-1)/2) + 1)</p>
+<p>F[i][j] -&gt; f[i+1][j-2] 的贡献是 f[i][j] * (((a[i]-2)/2) + 1) </p>
+<p>那么j的差值每增加2 贡献的倍数就少了1</p>
+<p>分奇偶对下一层进行标记，例如1 2 3 4 3 2 1这样的等差数列，只需在1的时候另差值加一，在4的时候把差值减回来，相当于等差数列二次差分。</p>
+<h1 id="1005-Pocket-Cube"><a href="#1005-Pocket-Cube" class="headerlink" title="1005. Pocket Cube"></a>1005. Pocket Cube</h1><hr>
+<p>不做评价</p>
+<h1 id="1006-Tree-chain-problem"><a href="#1006-Tree-chain-problem" class="headerlink" title="1006. Tree chain problem"></a>1006. Tree chain problem</h1><hr>
+<p>树形dp+链上统计</p>
+<p>题目大意：给出一棵树,n~1e5,然后给出m~1e5条特殊的链,每个链有一个权值.现在在树上挑选不相交的链,使得最后的拿到的权值最大.</p>
+<p>看一个点,是树形dp,但是发现如果u是root,枚举过u的链,发现要暴力求和链上周围的点的dp和.这样会超时. 于是想到快速求一条链的和. </p>
+<p>为了好写,我们把求链上连接的儿子的dp值的和转化到链上的权值. sum[u]指u的所有儿子的dp和,这个好想,那么一条链上的其实就是(sum[u] - 所有链上儿子d+链上儿子的sum-链上儿子儿子的d….),总结就是链上除了root,其他的点权值都是sum[v]-d[v].而root的权值是sum[root].</p>
+<p>我们是算d[u]的时候才用的,当时d[u]肯定就是0. 所以求链上的权值和. 我们有两种求法 </p>
+<ol>
+<li><p>邓爷教的标序+lca. 这样求的是路径,我们用一种常用的方法,把i的值归到i到他fa的那条边上. 这样我们求路径+sum[root]就行了. </p>
+</li>
+<li><p>用树链剖分. 映射到树状数组上,每次求和.</p>
+</li>
+</ol>
+<h1 id="1007-Tricks-Device"><a href="#1007-Tricks-Device" class="headerlink" title="1007. Tricks Device"></a>1007. Tricks Device</h1><hr>
+<p>基础图论</p>
+<p>题目大意：对于给出的图，有一个人要从1走到n，并且他只会走最初的最短路。另一个人不想让他走到n，于是他需要删一些边。问最少删几条边第一个人就无法通过最开始的最短路走到n了，以及最多删几条边之后第一个人仍能通过最短路走到n。</p>
+<p>首先，需要通过spfa找出所有的最短路。在找出所有最短路后，第二问就相当于将所有位于最短路上的边长视为1，再求一遍1到n的最短路。由于这个由最短路组成的是一个DAG，所以可以通过dp来解决这个问题。</p>
+<p>对于第一问，这相当于求由最短路组成的图的最小割。我们虽然最开始就想到了用最大流来求，但由于数据范围较大，以为还会有其他的解法。于是YY了一个半dp半贪心的方法。交上去发现WA了，后来我们发现那种解法是错的，于是就改成了网络流，本来以为会TLE，不过发现居然A了……</p>
+<h1 id="1008-Unstable"><a href="#1008-Unstable" class="headerlink" title="1008. Unstable"></a>1008. Unstable</h1><hr>
+<p>计算几何</p>
+<p>题目大意：平面上有四个点A、B、C、D，E、F分别是AB、CD的中点，已知AB、BC、CD、DA、EF的长度，求出满足该长度的A B C D四点坐标</p>
+<p>根据中点的性质，做辅助线得到一个三边长度都已知的三角形，这样，我们固定两个点的坐标，即可得到第三点的坐标（通过求两个圆的交点）。之后做法类似。</p>
+<p>这道题的重点是如何构造出一个三边均已知的三角形。</p>
+<h1 id="1009-Annoying-problem"><a href="#1009-Annoying-problem" class="headerlink" title="1009. Annoying problem"></a>1009. Annoying problem</h1><hr>
+<p>树上的统计问题。</p>
+<p>题目大意：给出一个带边权的树，有两种操作：</p>
+<ol>
+<li>将节点x放入集合</li>
+<li>将节点x移除集合</li>
+</ol>
+<p>问每次操作后，将所有在集合里面的点连起来的子树的权值和最小是多少。</p>
+<p>这道题刚开始没什么思路。后来想到了用set来记录集合中的元素。如果要插入一个点x，就要看x和集合中所有点的LCA最近是多少，也想到了通过找比x小的最大的和比x大的最小的两个节点，然后比较他们的LCA，找出其中较近的LCA，之后在将对应边上的权值加上去。删点操作类似。</p>
+<p>但是如何维护权值和的变化没有想清楚。LCA由于之前接触的较少(之前也是自己利用dfs序YY的一种野生写法)，写起来有点卡。</p>
+<p>赛后发现我们的想法已经和正解非常接近了。我们通过维护每个点到根结点的距离dist就可以方便的维护权值变化。在找到比x小的最大的节点和比x大的最小的节点之后，不用比较两个LCA到底该取哪个，而是通过统一的公式<code>dist[x] - dist[lca(l, x)] - dist[lca(r, x)] + dist[lca(l, r)]</code>来计算权值和的增减。</p>
+<h1 id="1010-Y-sequence"><a href="#1010-Y-sequence" class="headerlink" title="1010. Y sequence"></a>1010. Y sequence</h1><hr>
+<p>数学+迭代</p>
+<p>题目大意：Yellowstar likes integers so much that he listed all positive integers in ascending order,but he hates those numbers which can be written as a^b (a, b are positive integers,2&lt;=b&lt;=r),so he removed them all.Yellowstar calls the sequence that formed by the rest integers“Y sequence”.When r=3,The first few items of it are：<br>2,3,5,6,7,10……<br>Given positive integers n and r，you should output Y(n)(the n-th number of Y sequence.It is obvious that Y(1)=2 whatever r is).<br>n&lt;=2*10^18,2&lt;=r&lt;=62,T&lt;=30000.</p>
+<p>首先正着想,给出一个n,求出它里面有几个合法的数. 先去掉2, 再去掉3,在加上6…就是这样容斥. 和莫比乌斯函数一样.提供符号. 然后容次来算, 注意. 之后二分合法的x,就是结果. </p>
+<p>但是 </p>
+<p>这道题时间卡的很紧,有下面的优化; </p>
+<ol>
+<li><p>容斥大于62的值直接不算.因为只有1,那么我们把一都不算,他们就都是0了,因此容次就大约是60的复杂度.(用莫比乌斯打表也一样) </p>
+</li>
+<li><p>每次算不二分,而是用迭代. 最终结果x-f(x)=n, 我们写x=n+f(x).先把n当x算n+f(n),这个值一定小于等于x,那么就n+f(ans) 这个值也一定小于等于x,并且一直都是小于等于,并且一直再增加. 于是几次迭代就得到了.</p>
+</li>
+</ol>
+<p>重点：</p>
+<ol>
+<li>发现容次直接可以正着算有几个. </li>
+<li>容次的优化,去掉1之后很多0. </li>
+<li>二分和迭代的学习</li>
+</ol>
+<h1 id="1011-Solid-Geometry-Homework"><a href="#1011-Solid-Geometry-Homework" class="headerlink" title="1011. Solid Geometry Homework"></a>1011. Solid Geometry Homework</h1><hr>
+<p>二分图染色</p>
+<p>题目大意：三维空间中有一些无限的平面和球面，这些面将空间分为了几块，现在需要用红黄两种颜色对这些空间进行染色，并使相邻的两个空间的颜色不相同。此外，已经确定了一些点的颜色是黄色，问是否能够成功染色，以及另外一些点的颜色是什么。</p>
+<p>由于比赛时通过的人数较少，当时并没有看这道题。</p>
+<p>我们可以发现，如果平面全都是无限延伸的，那么将所有相邻的空间之间连边的话，所得的图是一个二分图。</p>
+<p>我们仅需要考虑给出的点所在的空间。如果两个点所在的空间是相邻的，那么他们仅对一个曲面是在异侧的，对其余曲面皆在同侧。</p>
+<p>因此我们将每一个点代入所有曲面方程，大于0返回1，小于0返回0，并将所有值异或起来，这样得到的函数即为这个点要染的颜色(因为这样满足相邻的点的函数值不同，且仅有两个函数值)。</p>
+<p>之后我们可以检查所有颜色是黄色的点是否函数值相同，如果不相同则无解，如果没有给出颜色为黄色的点则解不唯一，否则可以判断出所有点的颜色。</p>
+<p>这道题的难点主要在于用异或的形式来确定每个点所处空间的颜色。</p>
+<h1 id="1012-Circles-Game"><a href="#1012-Circles-Game" class="headerlink" title="1012. Circles Game"></a>1012. Circles Game</h1><hr>
+<p>扫描线+树上SG</p>
+<p>题目大意：在平面上有20000个圆，他们彼此之间没有交点，A，B两人进行博弈。其中一人选取其中的一个圆后，其中的每一个园（包括本身）都会消失。当其中一人没有圆可选，那么他就输了。</p>
+<p>首先应该表示圆之间的位置关系。利用扫描线，首先将圆分为上半圆和下半圆，考虑任意的一个上半圆，如果在此时的x值（扫描线）下，他上面最近的一个圆弧是上半圆，那么它被这个圆直接包含。如果是下半圆，这个圆和这个圆被同一个圆包含，或是都没有被圆包含。下面离他最近的圆弧(不含它本身)，也是同样的考虑。</p>
+<p>建立好圆之间的关系后可以发现，必然是多颗树。</p>
+<p>这个时候利用树上nim计算sg 函数的值，先把每个根节点由同一个新建的节点为父节点。Sg ^= (sg[son] + 1);dfs一下就好。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Multi-University/" rel="tag"># Multi-University</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/18/primeproblem/" rel="next" title="与质数有关的几个问题">
+                <i class="fa fa-chevron-left"></i> 与质数有关的几个问题
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/24/2015Multi-University2/" rel="prev" title="2015 Multi-University Training Contest 2总结">
+                2015 Multi-University Training Contest 2总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1001-OO’s-Sequence"><span class="nav-number">1.</span> <span class="nav-text">1001. OO’s Sequence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1002-Assignment"><span class="nav-number">2.</span> <span class="nav-text">1002. Assignment</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1003-Bombing-plan"><span class="nav-number">3.</span> <span class="nav-text">1003. Bombing plan</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1004-Candy-Distribution"><span class="nav-number">4.</span> <span class="nav-text">1004. Candy Distribution</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1005-Pocket-Cube"><span class="nav-number">5.</span> <span class="nav-text">1005. Pocket Cube</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1006-Tree-chain-problem"><span class="nav-number">6.</span> <span class="nav-text">1006. Tree chain problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1007-Tricks-Device"><span class="nav-number">7.</span> <span class="nav-text">1007. Tricks Device</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1008-Unstable"><span class="nav-number">8.</span> <span class="nav-text">1008. Unstable</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1009-Annoying-problem"><span class="nav-number">9.</span> <span class="nav-text">1009. Annoying problem</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1010-Y-sequence"><span class="nav-number">10.</span> <span class="nav-text">1010. Y sequence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1011-Solid-Geometry-Homework"><span class="nav-number">11.</span> <span class="nav-text">1011. Solid Geometry Homework</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1012-Circles-Game"><span class="nav-number">12.</span> <span class="nav-text">1012. Circles Game</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

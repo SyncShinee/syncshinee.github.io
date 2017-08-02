@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="帝都弱校连萌," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="这次选拔赛都是一些考思想的题目，没有模板题，只不过有些题目描述过于晦涩，较难理解。最近感觉做这种类型的题目偏多，是时候刷一些模板题了……">
+<meta name="keywords" content="帝都弱校连萌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="北航暑期集训选拔赛第一场总结">
+<meta property="og:url" content="http://yoursite.com/2015/04/19/BUAASummerTrials1/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="这次选拔赛都是一些考思想的题目，没有模板题，只不过有些题目描述过于晦涩，较难理解。最近感觉做这种类型的题目偏多，是时候刷一些模板题了……">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://yoursite.com/img/ACM/Bit.png">
+<meta property="og:updated_time" content="2015-05-07T07:03:45.273Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="北航暑期集训选拔赛第一场总结">
+<meta name="twitter:description" content="这次选拔赛都是一些考思想的题目，没有模板题，只不过有些题目描述过于晦涩，较难理解。最近感觉做这种类型的题目偏多，是时候刷一些模板题了……">
+<meta name="twitter:image" content="http://yoursite.com/img/ACM/Bit.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/04/19/BUAASummerTrials1/"/>
+
+
+
+
+
+  <title>北航暑期集训选拔赛第一场总结 | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/19/BUAASummerTrials1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">北航暑期集训选拔赛第一场总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-04-19T16:08:14+08:00">
+                2015-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这次选拔赛都是一些考思想的题目，没有模板题，只不过有些题目描述过于晦涩，较难理解。最近感觉做这种类型的题目偏多，是时候刷一些模板题了……<br><a id="more"></a></p>
+<h2 id="A-Martix"><a href="#A-Martix" class="headerlink" title="A.Martix"></a>A.Martix</h2><p>很简单的dp。</p>
+<p>题目大意：给出一个矩阵A，求出矩阵B， 满足</p>
+<blockquote>
+<p>B[i,j]=min{ A[x,y] : (y&gt;=j) and (x&gt;=i+j-y) }</p>
+</blockquote>
+<p>预处理出F[i][j]为位于(i,j)位置右下方的数的最小值，则很容易写出状态转移方程：</p>
+<p><code>B[i][j] = min(B[i-1][j+1], F[i][j])</code></p>
+<h2 id="B-Tower-of-Hanoi"><a href="#B-Tower-of-Hanoi" class="headerlink" title="B.Tower of Hanoi"></a>B.Tower of Hanoi</h2><p>也是很简单的递推。</p>
+<p>题目大意：对于Tower of Hanoi游戏，给出将一个盘子从一根柱子转移到另一根柱子的花费，求将n个盘子从第一根柱子转移到第三根柱子的最小花费。</p>
+<p>为了叙述方便，将三根柱子命名为a,b,c。将i个盘子从柱子t转移到柱子k有两种方法：</p>
+<blockquote>
+<p>方法1：</p>
+<ol>
+<li>i-1个盘子从a转移到b; </li>
+<li>第i个盘子从a转移到c; </li>
+<li>i-1个盘子从b转移到c。</li>
+</ol>
+<p>方法2：</p>
+<ol>
+<li>i-1个盘子从a转移到c; </li>
+<li>第i个盘子从a转移到b; </li>
+<li>i-1个盘子从c转移到a;</li>
+<li>第i个盘子从b转移到c;</li>
+<li>i-1个盘子从a转移到c。</li>
+</ol>
+</blockquote>
+<p>从这两种情况中取最优即可。</p>
+<h2 id="C-Martix"><a href="#C-Martix" class="headerlink" title="C.Martix"></a>C.Martix</h2><p>构造。 </p>
+<p>题目大意：对一个 2^n 行， 2^m 列的矩阵，将 0 ~ 2^(n+m) -1 填进去，使得矩阵中相邻的数的二进制均相差1，最左边和最右边，最上边和最下边也是相邻的。</p>
+<p>这其实是一个格雷码的扩展问题。可以采用和格雷码相似的构造方法，分形倍增或直接采用异或构造均可，这里介绍分形倍增的构造方法。</p>
+<p>首先将0和1分别填入矩阵的(0,0),(0,1)位置，之后对横竖两个方向进行倍增，每次将已有的数倒序复制过来，然后在二进制的最前面加一个1(相当于每个数加了 2^i ),这样即可保证题目要求。</p>
+<h2 id="D-Join-the-Strings"><a href="#D-Join-the-Strings" class="headerlink" title="D.Join the Strings"></a>D.Join the Strings</h2><p>贪心。</p>
+<p>题目大意：将给出的n个字符串串联起来，使得所得的字符串字典序最小。</p>
+<p>注意直接按照字典序排序是不对的，一种较为简单的方法是重载string的&lt;运算符，对于两个字符串a、b的比较，如果字符串ab的字典序小于字符串ba的字典序，则返回a &lt; b。这样可以正确的给字符串排序。</p>
+<h2 id="E-Idempotent-Filter"><a href="#E-Idempotent-Filter" class="headerlink" title="E.Idempotent Filter"></a>E.Idempotent Filter</h2><p>题目描述不太清楚，如果读懂题了就很容易解出。</p>
+<p><img src="/img/ACM/Bit.png" alt="bit"></p>
+<p>题目大意：给出一个128位的01串c，这个串表示一种变换规则，它的含义是图中位置为3的格子会变为c[i]。其中<code>i = sum( bit[j] × 2^j )</code>。bit[j] 是指位置为j的格子的数字。</p>
+<p>如果我们应用了两次这种规则和应用一次这种规则效果相同（即应用了一次规则后再次应用这种规则原图不会发生任何变化）,就称这种规则为幂等的。 对于给出的规则，请你判断他它是不是幂等的。</p>
+<p>我们可以知道某个格子的变化只与和他相邻的格子有关。由于需要判断应用两次规则与应用一次规则效果是否相同，因此仅对他应用规则是不够的，还需要对和他相邻的格子相邻的格子应用规则，应用一次规则后，他和他相邻的6个格子均有可能发生变化，之后在对他应用这个规则，检查他有没有再次变化即可。 需要枚举的时间复杂度为 2^19 ，可以接受。</p>
+<h2 id="F-Flowers"><a href="#F-Flowers" class="headerlink" title="F.Flowers"></a>F.Flowers</h2><p>三分或贪心</p>
+<p>题目大意：给出n种花，每种花有一个临界值，如果它的营养超出了临界值就会开，所有花的初始营养值均为0.给花浇水或施肥会导致他们的营养值发生变化。浇水和施肥都有花费，求使所有花开的最小花费。</p>
+<p>比赛时虽然也想到了三分，但是由于没有仔细证明正确性，最后还是选择了贪心的写法，不过三分思维量更加小。</p>
+<p>贪心的话，就是判断当前是浇水好还是施肥好。因为如果浇的水确定了的话，那么让所有花开的花费就已经确定了。通过先求出让所有的花全都施肥的单位花费，可以o(1)的判断当前是浇水好还是施肥好。总的时间复杂度是<code>O(nlogn)</code>。</p>
+<h2 id="G-Square-in-Circles"><a href="#G-Square-in-Circles" class="headerlink" title="G.Square in Circles"></a>G.Square in Circles</h2><p>二分+线段覆盖</p>
+<p>题目大意：给出n个圆，每个圆圆心都在x轴上且每没有相互包含的圆。求在这些圆覆盖的面积中存在的最大的正方形的变长。</p>
+<p>最开始我以为正方形的边长只有可能是圆半径的根号2倍或是两个圆相交的割线长，后来才发现以割线为边长有可能不能构成一个正方形，于是就想到了二分。</p>
+<p>但是仅仅是局限于两个圆里的二分，仍然不能处理所有情况。</p>
+<p>后来在<code>tangjz</code>同学的指点下，才想明白了二分边长之后直接把每个圆在保证当前边长的前提下的最宽的宽度以线段的形式记录下来，那么只需要判断这些线段合并之后有没有一条长度大于等于二分的边长即可。</p>
+<h2 id="H-Coockie-Counter"><a href="#H-Coockie-Counter" class="headerlink" title="H.Coockie Counter"></a>H.Coockie Counter</h2><p>dp</p>
+<p>题目大意：有n个糖果需要d天吃完，每天可以不吃，但最多吃x-1颗，问有多少种吃法。</p>
+<p>由于天数非常大，有许多天都是一颗糖都不吃的，我们可以先忽略这种情况，假设每天都至少吃一块糖。设f[i][j]表示i天吃了j块糖的情况数，那么最终结果就是在d天中选i天吃糖，</p>
+<p> <code>ans = sum(f[i][n] × C(d,i))</code></p>
+<p>但是朴素的dp状态转移是<code>O(n)</code>的，会超时，于是我们可以再用一个数组记录f[i][j]的前缀和，这样就可以<code>O(1)</code>的进行状态转移。总的时间复杂度是<code>O( n^2 )</code>。</p>
+<h2 id="I-The-King’s-Ups-and-Downs"><a href="#I-The-King’s-Ups-and-Downs" class="headerlink" title="I.The King’s Ups and Downs"></a>I.The King’s Ups and Downs</h2><p>题目大意：给出n个不同的数，求把它们排列成一个交错的数列有多少种排法。</p>
+<p>之前做过类似的题目。题目要求的序列有两种情况：</p>
+<ol>
+<li>大小大小大……</li>
+<li>小大小大小……</li>
+</ol>
+<p>设长度为i的第一种序列的个数为f[i],第二种序列的个数为g[i]<br>则通过枚举最大的数的位置，可求出他们之间的转换关系：<code>f[i] = sum(g[j-1] × g[i-j] × C(i,j-1))</code></p>
+<p>并且可发现<code>f[i] = g[i]</code> 因此f和g仅求一个即可。</p>
+<h2 id="J-Students’-Revenge"><a href="#J-Students’-Revenge" class="headerlink" title="J.Students’ Revenge"></a>J.Students’ Revenge</h2><p>贪心</p>
+<p>题目大意：同学们从n个工作中选出p个让学生会去做，学生会只能从这p个工作里面选k个去做，每个工作如果被做了会增加学生会的劳累值，如果不被做会使校领导不高兴。学生会首先会保证校领导不高兴的值尽量小，然后会使他们的劳累值尽量小，而学生们首先想要学生会的劳累值尽量大，然后会让校领导尽量不高兴。问学生该如何选择这p个工作。</p>
+<p>读题就读吐了……</p>
+<p>首先选出p-k个不高兴值最小的，这些工作学生会肯定不会去做。</p>
+<p>之后从剩下的里面选出k个劳累值尽量大的，这样就保证了学生会的劳累值最大，</p>
+<p>之后从剩下的n-p个加上之前的p-k个里面选p-k个不开心值尽量大但是小于之前选定的k个里面最小的不开心值的工作。 这样就保证了校领导的不开心值最大。</p>
+<p>注意如果出现相等的情况一定要考虑清楚。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/帝都弱校连萌/" rel="tag"># 帝都弱校连萌</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/01/05/bcpctenonline/" rel="next" title="第十届北航程序设计竞赛网络赛题解">
+                <i class="fa fa-chevron-left"></i> 第十届北航程序设计竞赛网络赛题解
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/04/19/GCJ2015Round1A/" rel="prev" title="Google CodeJam 2015 Round1A 总结">
+                Google CodeJam 2015 Round1A 总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Martix"><span class="nav-number">1.</span> <span class="nav-text">A.Martix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Tower-of-Hanoi"><span class="nav-number">2.</span> <span class="nav-text">B.Tower of Hanoi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Martix"><span class="nav-number">3.</span> <span class="nav-text">C.Martix</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Join-the-Strings"><span class="nav-number">4.</span> <span class="nav-text">D.Join the Strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Idempotent-Filter"><span class="nav-number">5.</span> <span class="nav-text">E.Idempotent Filter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Flowers"><span class="nav-number">6.</span> <span class="nav-text">F.Flowers</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Square-in-Circles"><span class="nav-number">7.</span> <span class="nav-text">G.Square in Circles</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H-Coockie-Counter"><span class="nav-number">8.</span> <span class="nav-text">H.Coockie Counter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-The-King’s-Ups-and-Downs"><span class="nav-number">9.</span> <span class="nav-text">I.The King’s Ups and Downs</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-Students’-Revenge"><span class="nav-number">10.</span> <span class="nav-text">J.Students’ Revenge</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

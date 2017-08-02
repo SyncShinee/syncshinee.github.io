@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Moodle API," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="Page API用于对当前的页面进行设置，包括添加javaScript脚本以及设置页面的展示方式。 概述Page API对任何Moodle页面来说都是不可分割的一部分。它允许开发者按照他们设想的方式来对页面进行设置。通过Page API你可以对标题（title）、页面首部（heading）、导航栏（navigation）、页面布局（layout）等进行设置。 这篇文档从一个简单的例子出发，之后对如">
+<meta name="keywords" content="Moodle API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moodle API文档 —— Page API">
+<meta property="og:url" content="http://yoursite.com/2016/01/19/moodlePageAPI/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="Page API用于对当前的页面进行设置，包括添加javaScript脚本以及设置页面的展示方式。 概述Page API对任何Moodle页面来说都是不可分割的一部分。它允许开发者按照他们设想的方式来对页面进行设置。通过Page API你可以对标题（title）、页面首部（heading）、导航栏（navigation）、页面布局（layout）等进行设置。 这篇文档从一个简单的例子出发，之后对如">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-19T12:50:23.507Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Moodle API文档 —— Page API">
+<meta name="twitter:description" content="Page API用于对当前的页面进行设置，包括添加javaScript脚本以及设置页面的展示方式。 概述Page API对任何Moodle页面来说都是不可分割的一部分。它允许开发者按照他们设想的方式来对页面进行设置。通过Page API你可以对标题（title）、页面首部（heading）、导航栏（navigation）、页面布局（layout）等进行设置。 这篇文档从一个简单的例子出发，之后对如">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/19/moodlePageAPI/"/>
+
+
+
+
+
+  <title>Moodle API文档 —— Page API | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/19/moodlePageAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Moodle API文档 —— Page API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-19T18:47:04+08:00">
+                2016-01-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Page API用于对当前的页面进行设置，包括添加javaScript脚本以及设置页面的展示方式。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Page API对任何Moodle页面来说都是不可分割的一部分。它允许开发者按照他们设想的方式来对页面进行设置。通过Page API你可以对标题（title）、页面首部（heading）、导航栏（navigation）、页面布局（layout）等进行设置。</p>
+<p>这篇文档从一个简单的例子出发，之后对如何设置页面的展示效果进行了更全面的阐述。</p>
+<a id="more"></a>
+<h2 id="一个简单的例子"><a href="#一个简单的例子" class="headerlink" title="一个简单的例子"></a>一个简单的例子</h2><p>这个例子涉及到如何在一个活动插件（activity plugin，即课程模块插件）中进行简单的页面设置。这绝对是一个最简单的例子了，因为许多基础设置都在后台自动进行。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// File: /mod/mymodulename/view.php</span></div><div class="line"><span class="keyword">require_once</span>(<span class="string">'../../config.php'</span>);</div><div class="line">$cmid = required_param(<span class="string">'id'</span>, PARAM_INT);</div><div class="line">$cm = get_coursemodule_from_id(<span class="string">'mymodulename'</span>, $cmid, <span class="number">0</span>, <span class="keyword">false</span>, MUST_EXIST);</div><div class="line">$course = $DB-&gt;get_record(<span class="string">'course'</span>, <span class="keyword">array</span>(<span class="string">'id'</span> =&gt; $cm-&gt;course), <span class="string">'*'</span>, MUST_EXIST);</div><div class="line"> </div><div class="line">require_login($course, <span class="keyword">true</span>, $cm);</div><div class="line">$PAGE-&gt;set_url(<span class="string">'/mod/mymodulename/view.php'</span>, <span class="keyword">array</span>(<span class="string">'id'</span> =&gt; $cm-&gt;id));</div><div class="line">$PAGE-&gt;set_title(<span class="string">'My modules page title'</span>);</div><div class="line">$PAGE-&gt;set_heading(<span class="string">'My modules page heading'</span>);</div><div class="line"> </div><div class="line"><span class="comment">// The rest of your code goes below this.</span></div></pre></td></tr></table></figure>
+<p>我们假定你已经明白了最开始的四行代码的作用。如果你不明白它是做什么的，说明你不应该从这篇文章开始看。</p>
+<p>那么我们就从<code>require_login()</code>函数开始分析，假定我们已经准备好了即将用到的course和course module对象。在你调用<code>require_login()</code>函数时，它会自动设置当前页面的基础信息。</p>
+<p>在上面的代码中，由于我们向<code>require_login()</code>函数传入了course和course module对象，这个函数为我们做了许多关于当前页面的配置工作，它把course和course module对象传给了当前页面，设置当前页面的上下文为course modules的上下文，并且将当前的页面布局设置为<code>incourse</code>，即课程模块的标准布局。</p>
+<p>我们必须要做的事情有：</p>
+<ol>
+<li>设置页面的URL，这是必须的</li>
+<li>设置当前页面的标题，即以<code>&lt;title&gt;</code>标签展示的内容</li>
+<li>设置当前页面的页面首部，通常会使用pages header</li>
+</ol>
+<blockquote>
+<p>注意：在进行页面的输出前，这些设置必须要完成。这意味着你必须在页面的header输出和实例化任何表单之前就要进行这些设置。<br>如果在这之前你添加了一点点输出，那么你就会得到一个已经设置好的其他模块的页面。</p>
+</blockquote>
+<h2 id="Moodle页面全局变量-PAGE"><a href="#Moodle页面全局变量-PAGE" class="headerlink" title="Moodle页面全局变量$PAGE"></a>Moodle页面全局变量$PAGE</h2><p>对每个页面你可能都要请求moodle设置多个全局的结构。例如数据库对象<code>$DB</code>和保存着配置文件的<code>$CFG</code>就是两个你可能已经意识到的全局变量。<code>$PAGE</code>是当前文章的焦点，是moodle_page类的对象，存储着所有的页面信息并且在展示页面的时候需要用到output库<code>$OUTPUT</code>。<code>$PAGE</code>用来设置页面，<code>$OUTPUT</code>用来输出页面。<code>$PAGE</code>包含许多内部逻辑和神奇的魔法，而<code>$OUTPUT</code>仅仅是用来展示的库，它除了生成HTML代码之外几乎不做什么。</p>
+<h2 id="页面设置"><a href="#页面设置" class="headerlink" title="页面设置"></a>页面设置</h2><p>在moodle中创建页面时，你有许多事情要做。一些东西已经为你设置好了，但是并不总是这样。</p>
+<h3 id="URL"><a href="#URL" class="headerlink" title="URL"></a>URL</h3><p>这绝对是必须要设置的，这个设置失败会使moodle报”url不存在”的error。</p>
+<p>可以按照如下几种方式设置URL：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$PAGE-&gt;set_url(<span class="keyword">new</span> moodle_url(<span class="string">'/page/to/your/file.php'</span>, <span class="keyword">array</span>(<span class="string">'key'</span> =&gt; <span class="string">'value'</span>, <span class="string">'id'</span> =&gt; <span class="number">3</span>)));</div><div class="line">$PAGE-&gt;set_url(<span class="string">'/page/to/your/file.php'</span>, <span class="keyword">array</span>(<span class="string">'key'</span> =&gt; <span class="string">'value'</span>, <span class="string">'id'</span> =&gt; <span class="number">3</span>));</div><div class="line">$PAGE-&gt;set_url(<span class="string">'/page/to/your/file.php?key=value&amp;id=3'</span>);</div></pre></td></tr></table></figure>
+<p>上面的代码列出了三种不同的设置URL的方式。我们推荐使用前面两种方式来对url进行设置，因为这种方式保证了在传递url的时候是绝对准确的。<code>set_url()</code>函数内部是将你传入的参数赋给一个moodle_url对象。</p>
+<p>你传给页面的url会被许多Moodle API调用，最重要的是，它会用来为你的页面创建导航栏，因此需要你准确的对它进行设置。</p>
+<h3 id="上下文（Context）"><a href="#上下文（Context）" class="headerlink" title="上下文（Context）"></a>上下文（Context）</h3><p>这也是必须要设置的，然而在很多情况下，moodle都会自动为你进行设置。</p>
+<p>为了给页面设置上下文，你需要提供给它一个context对象。在Moodle2.2及以上版本中，可以按照如下方式进行设置：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Moodle 2.2 and greater</span></div><div class="line">$PAGE-&gt;set_context(context_system::instance());</div><div class="line">$PAGE-&gt;set_context(context_coursecat::instance($categoryid));</div><div class="line">$PAGE-&gt;set_context(context_course::instance($courseid));</div><div class="line">$PAGE-&gt;set_context(context_module::instance($moduleid));</div></pre></td></tr></table></figure>
+<p>在Moodle2.0+和Moodle2.1+版本中，如下代码和上述代码等价：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Moodle 2.0 and 2.1</span></div><div class="line">$PAGE-&gt;set_context(get_system_context());</div><div class="line">$PAGE-&gt;set_context(get_context_instance(CONTEXT_COURSECAT, $categoryid));</div><div class="line">$PAGE-&gt;set_context(get_context_instance(CONTEXT_COURSE, $courseid));</div><div class="line">$PAGE-&gt;set_context(get_context_instance(CONTEXT_MODULE, $moduleid));</div></pre></td></tr></table></figure>
+<p>在上面的两个例子中，都多次进行了context的设置，然而，你应该将上下文设置为最符合当前页面的上下文。</p>
+<p>如果这是一个插件，那么上下文应该是你用于权限检查的上下文。</p>
+<p>正如之前提到的那样，有些时候Moodle会自动的设置上下文。</p>
+<p>如果你的脚本调用了<code>require_login()</code>（大多数脚本都需要调用该函数），并且你传入了course对象或module对象，那么你不再需要再调用<code>set_context()</code>。这是因为<code>require_login()</code>已经自动的进行了处理。</p>
+<p>如果你的脚本没有调用<code>require_login()</code>，或者你没有给它传入moodle对象也没有传入module对象，那么你必须自己对上下文进行设置。</p>
+<h3 id="可选的设置"><a href="#可选的设置" class="headerlink" title="可选的设置"></a>可选的设置</h3><p>下面是一些可选的设置，你会在Moodle中经常见到这些设置。</p>
+<h4 id="页面布局（page-layout）"><a href="#页面布局（page-layout）" class="headerlink" title="页面布局（page layout）"></a>页面布局（page layout）</h4><p>如下代码可将页面布局设为标准布局（standard layout），最常见的一种布局。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$PAGE-&gt;set_pagelayout(<span class="string">'standard'</span>);</div></pre></td></tr></table></figure>
+<p>在设置页面布局时，你应该使用最接近你当前要创建的页面的布局。布局被主题（theme）调用，主题决定要展示的样式。布局之间最大的区别就在于他们对板块（block）区域的支持。默认的布局<code>base</code>不支持板块区域，<code>standard</code>布局是最常见的布局，支持一些板块区域。</p>
+<p>Moodle有许多种布局，Moodle中大量的使用了它们，你也可以在你自己的代码中使用。你可以在<code>theme/base/config.php</code>文件中查看所有的布局，下面的列表中也列出了所有的布局。</p>
+<blockquote>
+<p>注意: 主题决定了布局的样式，以及哪种布局是可用的。如果你选择了一个当前主题不支持的布局，那么它会变为当前主题的默认布局。</p>
+</blockquote>
+<p>主题也可以指定新的布局。需要指出的一点是，一个主题自设的布局可能在其他主题下不能正常使用。</p>
+<h4 id="Base主题的页面布局"><a href="#Base主题的页面布局" class="headerlink" title="Base主题的页面布局"></a>Base主题的页面布局</h4><p>下面是一个Base主题中含有的布局的列表。主题设计器（Theme designer）鼓励第三方的主题继承于Base主题，从而保证在99%的情况下，这些布局都是可用的。</p>
+<table>
+<thead>
+<tr>
+<th>Layout</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>base</td>
+<td>Most backwards compatible layout without the blocks. This is the layout used by default.</td>
+</tr>
+<tr>
+<td>standard</td>
+<td>Standard layout with blocks, this is recommended for most pages with general information</td>
+</tr>
+<tr>
+<td>course</td>
+<td>The course main page uses this layout.</td>
+</tr>
+<tr>
+<td>coursecategory</td>
+<td>Category course listings.</td>
+</tr>
+<tr>
+<td>incourse</td>
+<td>Used for areas within a course, typical for modules. Default page layout if $cm specified in require_login().</td>
+</tr>
+<tr>
+<td>frontpage</td>
+<td>The site home page uses this.</td>
+</tr>
+<tr>
+<td>admin</td>
+<td>Admin and settings pages as well as server administration scripts.</td>
+</tr>
+<tr>
+<td>mydashboard</td>
+<td>The users dashboard.</td>
+</tr>
+<tr>
+<td>mypublic</td>
+<td>A users public profile uses this layout.</td>
+</tr>
+<tr>
+<td>login</td>
+<td>The login screen.</td>
+</tr>
+<tr>
+<td>popup</td>
+<td>Pages that appear in popup windows, usually no navigation, blocks, or header.</td>
+</tr>
+<tr>
+<td>frametop</td>
+<td>Used for the outermost content of a page constructed with frames. Usually no blocks and minimal footer.</td>
+</tr>
+<tr>
+<td>embedded</td>
+<td>Embedded pages such as content for iframes/objects. Needs as much space as possible usually no blocks, header, or footer.</td>
+</tr>
+<tr>
+<td>maintenance</td>
+<td>Used during upgrade, installation, and when maintenance mode is enabled.</td>
+</tr>
+<tr>
+<td>print</td>
+<td>Gets used when printing a page. Normally just a simple header and no blocks.</td>
+</tr>
+<tr>
+<td>redirect</td>
+<td>A special layout used during a redirect. Normally with content only.</td>
+</tr>
+<tr>
+<td>report</td>
+<td>Used for reports within Moodle. Special layout designed to handle horizontal scrolling in a nice way.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="标题（title）"><a href="#标题（title）" class="headerlink" title="标题（title）"></a>标题（title）</h4><p>对任何设计好的页面来说，标题都是必不可少的。虽然这是可选的，但是我们还是强烈建议你设置页面的标题。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$PAGE-&gt;set_title(<span class="string">'This is my title'</span>);</div></pre></td></tr></table></figure>
+<p>在设置标题时，你需要提供你希望的标题字符串，这个字符串不应含有html标签，任何html标签都会被过滤掉，Moodle会使用<code>&lt;title&gt;</code>标签来显示标题。</p>
+<h4 id="页面首部（heading）"><a href="#页面首部（heading）" class="headerlink" title="页面首部（heading）"></a>页面首部（heading）</h4><p>和标题一样，我们强烈推荐你为页面设置一个有意义的页面首部，尽管这是可选项。</p>
+<p>页面首部通常会被展示在页面的最上方，这决定于你当前使用的主题。不是所有的主题都会显示页面首部，然而即使你在使用一个不支持页面首部的主题，我们仍然鼓励你设置页面首部。通过下列方式设置的页面首部不会干扰到某些主题设置的对所有页面都相同的页面首部。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$PAGE-&gt;set_heading(get_string(<span class="string">'pluginname'</span>, <span class="string">'local_myplugin'</span>), <span class="number">3</span>);</div></pre></td></tr></table></figure>
+<p>页面首部的文字也应该是不带有任何html格式的。（有关这个问题仍存在争议）</p>
+<h3 id="后面的部分明天更新"><a href="#后面的部分明天更新" class="headerlink" title="后面的部分明天更新"></a>后面的部分明天更新</h3><h3 id="高级设置"><a href="#高级设置" class="headerlink" title="高级设置"></a>高级设置</h3><h2 id="获取页面信息"><a href="#获取页面信息" class="headerlink" title="获取页面信息"></a>获取页面信息</h2><h2 id="问题及解决方案"><a href="#问题及解决方案" class="headerlink" title="问题及解决方案"></a>问题及解决方案</h2><h2 id="相关的API"><a href="#相关的API" class="headerlink" title="相关的API"></a>相关的API</h2>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Moodle-API/" rel="tag"># Moodle API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/18/moodleNavigationAPI/" rel="next" title="Moodle API文档 —— Navigation API">
+                <i class="fa fa-chevron-left"></i> Moodle API文档 —— Navigation API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/21/2015DaejeonRegional/" rel="prev" title="2015 Daejeon Regional Analysis">
+                2015 Daejeon Regional Analysis <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一个简单的例子"><span class="nav-number">2.</span> <span class="nav-text">一个简单的例子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Moodle页面全局变量-PAGE"><span class="nav-number">3.</span> <span class="nav-text">Moodle页面全局变量$PAGE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#页面设置"><span class="nav-number">4.</span> <span class="nav-text">页面设置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URL"><span class="nav-number">4.1.</span> <span class="nav-text">URL</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上下文（Context）"><span class="nav-number">4.2.</span> <span class="nav-text">上下文（Context）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#可选的设置"><span class="nav-number">4.3.</span> <span class="nav-text">可选的设置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#页面布局（page-layout）"><span class="nav-number">4.3.1.</span> <span class="nav-text">页面布局（page layout）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#Base主题的页面布局"><span class="nav-number">4.3.2.</span> <span class="nav-text">Base主题的页面布局</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#标题（title）"><span class="nav-number">4.3.3.</span> <span class="nav-text">标题（title）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#页面首部（heading）"><span class="nav-number">4.3.4.</span> <span class="nav-text">页面首部（heading）</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后面的部分明天更新"><span class="nav-number">4.4.</span> <span class="nav-text">后面的部分明天更新</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#高级设置"><span class="nav-number">4.5.</span> <span class="nav-text">高级设置</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取页面信息"><span class="nav-number">5.</span> <span class="nav-text">获取页面信息</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#问题及解决方案"><span class="nav-number">6.</span> <span class="nav-text">问题及解决方案</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#相关的API"><span class="nav-number">7.</span> <span class="nav-text">相关的API</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

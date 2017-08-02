@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Multi-University," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="第三场多校刚开始做的特别不顺，在过了两道水题后，我们04读错题了，调了好久也没发现，01线段树也写残了，卡题卡了好久。不过后来队友把线段树调出来了，之后我们也发现了04读错题了，于是04也调过了，之后我们开了03、09、10，09写到一半发现思路错了，需要用到二维树状数组，空间开不下，不过队友找到性质把10过了，之后我们开始调03，在比赛还有五分钟结束的时候，队友在clarification中发现">
+<meta name="keywords" content="Multi-University">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2015 Multi-University Training Contest 3总结">
+<meta property="og:url" content="http://yoursite.com/2015/07/31/2015Multi-University3/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="第三场多校刚开始做的特别不顺，在过了两道水题后，我们04读错题了，调了好久也没发现，01线段树也写残了，卡题卡了好久。不过后来队友把线段树调出来了，之后我们也发现了04读错题了，于是04也调过了，之后我们开了03、09、10，09写到一半发现思路错了，需要用到二维树状数组，空间开不下，不过队友找到性质把10过了，之后我们开始调03，在比赛还有五分钟结束的时候，队友在clarification中发现">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-18T09:00:40.117Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2015 Multi-University Training Contest 3总结">
+<meta name="twitter:description" content="第三场多校刚开始做的特别不顺，在过了两道水题后，我们04读错题了，调了好久也没发现，01线段树也写残了，卡题卡了好久。不过后来队友把线段树调出来了，之后我们也发现了04读错题了，于是04也调过了，之后我们开了03、09、10，09写到一半发现思路错了，需要用到二维树状数组，空间开不下，不过队友找到性质把10过了，之后我们开始调03，在比赛还有五分钟结束的时候，队友在clarification中发现">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/07/31/2015Multi-University3/"/>
+
+
+
+
+
+  <title>2015 Multi-University Training Contest 3总结 | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/31/2015Multi-University3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2015 Multi-University Training Contest 3总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-31T23:01:59+08:00">
+                2015-07-31
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>第三场多校刚开始做的特别不顺，在过了两道水题后，我们04读错题了，调了好久也没发现，01线段树也写残了，卡题卡了好久。不过后来队友把线段树调出来了，之后我们也发现了04读错题了，于是04也调过了，之后我们开了03、09、10，09写到一半发现思路错了，需要用到二维树状数组，空间开不下，不过队友找到性质把10过了，之后我们开始调03，在比赛还有五分钟结束的时候，队友在clarification中发现03需要去掉重复出现的字符串，于是我们在4：58终于A掉了03。</p>
+<p>这次多校虽然刚开始不太顺，但是还好后来找到了感觉。</p>
+<a id="more"></a>
+<ul>
+<li><p><a href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=2015+Multi-University+Training+Contest+3&amp;source=1&amp;searchmode=source" target="_blank" rel="external">题目链接</a></p>
+</li>
+<li><p><a href="https://github.com/SyncShinee/ACM-ICPC/tree/master/ACMContest/2015Multi-UniversityTraining/Contest3" target="_blank" rel="external">代码链接</a></p>
+</li>
+</ul>
+<h2 id="1001-Magician"><a href="#1001-Magician" class="headerlink" title="1001. Magician"></a>1001. Magician</h2><p>题目大意：一个数列，有两个操作</p>
+<ol>
+<li>修改其中的一个数</li>
+<li>求出一个区间的最大子列使得子列中相邻的两项在原数列中的位置的奇偶性不同。</li>
+</ol>
+<p>线段树直接维护，一个节点存放四个值，表示这个子列以奇数or偶数起始，以奇数or偶数结尾的最大值，接着就一样的单点修改就行。</p>
+<h2 id="1002-RGCDQ"><a href="#1002-RGCDQ" class="headerlink" title="1002. RGCDQ"></a>1002. RGCDQ</h2><p>质数的简单性质及模拟</p>
+<p>题目大意：定义f[i]表示i所含的质因子的种类数，例如12 = 2 × 3 × 3 则f[12] = 2。有q个询问，对每个询问，给出闭区间[l, r]求出该区间中任两个数的gcd的最大值。（q，l, r &lt;= 1e6）</p>
+<p>看数据范围想到O(1)的时间来解决每个询问。注意到8个最小的质数相乘已经超过了1e6，所以在题目所给的范围内f[i]不超过7， 于是就记录每种f[i]的个数，统计前缀和，对每次给出的区间，先统计出区间中有几个1，几个2，…，几个7，之后根据其数目求出最大公约数的最大值。</p>
+<h2 id="1003-The-Goddess-Of-The-Moon"><a href="#1003-The-Goddess-Of-The-Moon" class="headerlink" title="1003. The Goddess Of The Moon"></a>1003. The Goddess Of The Moon</h2><p>图论+线代</p>
+<p>题目大意：给出n种字符串，每种字符串有无数个，两种字符串能够拼接在一起，当且仅当前一个字符串的某个后缀是后一个字符串的前缀，（这个后缀的长度必须大于1）。问从这n种字符串中挑出m个串能组成的不同的字符串有几种。（11 + 111 和111 + 11也被认为是不同的。）</p>
+<p>m为1e9，n为50，看数据范围就知道是矩阵快速幂，我们构造矩阵A[i][j] == 1 当且仅当第i个字符串后面能接第j个字符串，那么我们初状态为每种字符串均为1，即一个（1，1，1，…，1）1 × n的向量，要取出m个字符串进行拼接，相当于这个向量乘了A的m-1次方，最终又得到一个向量，其含义就是以每种字符串开头的由m个字符串组成的串的种类数。这些数相加即为所有的种类数。</p>
+<h2 id="1004-Painter"><a href="#1004-Painter" class="headerlink" title="1004. Painter"></a>1004. Painter</h2><p>贪心（二分图匹配）</p>
+<p>题目大意：有一个n × m的画板，画家在画板上斜着画了一些线，（即左上到右下’\’或右上到左下’/‘），这些线有两种颜色，红和蓝，斜向左下的只会是蓝色，斜向右下的只会是红色，每种颜色仅会染每个格子一次，如果一个格子同时染了红色和蓝色，那么它就会变成绿色。现在给出画板的最终状态，问画家最少画了几次线。</p>
+<p>如果每个方向染的颜色不同，那这题就变成了一个非常简单的贪心了。如果两个方向都可以染两种颜色，那么可以通过拆点之后求二分图最大匹配来解决这个问题。</p>
+<h2 id="1005-Fan-Li"><a href="#1005-Fan-Li" class="headerlink" title="1005. Fan Li"></a>1005. Fan Li</h2><p>dp并输出方案</p>
+<p>待解决</p>
+<h2 id="1006-Beautiful-Set"><a href="#1006-Beautiful-Set" class="headerlink" title="1006. Beautiful Set"></a>1006. Beautiful Set</h2><p>mobius</p>
+<p>题目大意：给出一个集合中的元素，有以下两种计数方式</p>
+<ol>
+<li>所有排列中的所有区间的最大公约数之和</li>
+<li>选出k个数。k * (gcd of the k chosen numbers).</li>
+</ol>
+<p>我们定义F[i]为gcd为i的倍数的种类数；f[i]为gcd为i的种类数，则有：</p>
+<p>F[i] = sigma（C（cnt[i],k） <em>  k! </em> (n-k)! * (n-k+1)）</p>
+<p>因为集合中每个数不同所以cnt[i]最大为1e5/I;计算F所用时间最大为nlogn</p>
+<p>用莫比乌斯反演用F[i]求出f[i]</p>
+<p>F[i] = cnt[i]*(x^(cnt[i]-1)):gcd为I的方案数；接下来的过程同第一问。</p>
+<h2 id="1007-Hope"><a href="#1007-Hope" class="headerlink" title="1007. Hope"></a>1007. Hope</h2><p>树形dp或找性质</p>
+<p>题目大意：给出一棵树,n~5e5, 每个点都有一个权值.找出点个数最多的这样的链. 链的要求是</p>
+<ol>
+<li>链本身是联通的,中间不能够隔着没有选的点.</li>
+<li>如果按照权值大小排序,我们看每一对相邻权值的点,i, j,w[i] &lt; w[j]</li>
+</ol>
+<p>主要是一道性质题. </p>
+<p>解法一:树形dp的思维. 因为保证了连通性,所以可以这样做.我们看当前的小根节点u. 以u为中心向它的儿子扩展.儿子v. 下面是一个重要的性质:</p>
+<p>一个u连接的两个儿子v1, v2,如果v1和v2都比u小,那么一定不行. 如果是两个都比u大,或者只有一个小的就行. 那么我们dp状态要记录,u下面的一层v,是否取过比u小的,或者全部都是比u大的. 状态转移: dp[u][0]表示下面一层v都比u大,dp[u][1],表示u下面一层有一个且仅有一个比u小. dp[u][0]枚举所有的比u大的v,并且只能从dp[v][0] 转移过来. 而dp[u][1]其实就是dp[u][0]+tmp, tmp是 比u小的儿子中所有dp[v][0/1]的最大值.这样就转移过来了. </p>
+<p>重点是发现了u的两端只有两个都是小于的才会不合法. 并且u的转移只会引起u和v的不合法. </p>
+<p>解法二:题解的思路.更加直接.看最优链的最小值.枚举最小值的话,那么流向它的所有的递减的链都是满足的.那么从他递增的链满足吗?如果只有一个,是满足的,有两个就不满足了. 这种情况说明他并不是最小的,我们应该枚举它能够流到的更小的值作为最小值. 具体写法可以统计入度然后遍历一次.之前的建立wi&gt;wj的有向边.</p>
+<p>重点：</p>
+<p>法一:观察出不合法的结构,用dp来数合法结构中个数最多的. </p>
+<p>法二:根据性质贪心的找合法的最好的.并且枚举强制限定最小值也是很重要的思路.</p>
+<h2 id="1008-Solve-this-interesting-problem"><a href="#1008-Solve-this-interesting-problem" class="headerlink" title="1008. Solve this interesting problem"></a>1008. Solve this interesting problem</h2><p>暴力</p>
+<p>题目大意：给出一个线段树区间，判断使得这个区间合法的最小的n。数据满足：l，r &lt;= 1e9 并且 l / (r – l + 1) &lt;= 2015</p>
+<p>这道题的关键在于这个数据，暴搜的话每次有四种情况，但是每一次暴搜，2015这个最大值缩小一半。即是说我们在log2015次即可达到，所以总复杂度是4^(log2015)</p>
+<h2 id="1009-Boring-Class"><a href="#1009-Boring-Class" class="headerlink" title="1009. Boring Class"></a>1009. Boring Class</h2><p>cdq分治</p>
+<p>题目大意：给出两个序列L[i], R[i],求出最长的子序列v[i]满足：</p>
+<blockquote>
+<p>v(1) ≥ 1, v(m) ≤ n,v(i) &lt; v(i + 1). (for i from 1 to m - 1)</p>
+<p>L(v(i)) ≥ L(v(i + 1)), R(v(i)) ≤ R(v(i + 1))(for i from 1 to m - 1)</p>
+</blockquote>
+<p>这道题目的本质是求在两个序列中同时上升的最长子序列。对于仅有一个序列的问题，我们有一种利用树状数组来解决的算法：</p>
+<p>首先对序列从小到大进行排序，之后依次将其放入原数列中，我们考虑第i个数放入原数列的过程，那么比他小的已经都在原数列中了，我们就需要找在他之前的最大的f[j]，这个j就满足了比他小并且在他之前，那么f[i]就等于f[j] + 1, 这个过程可以通过树状数组来维护。</p>
+<p>现在我们考虑有两个序列的情况。<br>如果我们仍然采用上述方法，在按照关键字L排序后，还剩余两个关键字（R和他自己的标号），这样就需要用二维树状数组来解决，但是n是1e5，二维树状数组开不下，不过树套树还是可以强行AC掉这道题的。</p>
+<p>我们考虑另外一种方法：cdq分治。普通分治算法分成的两块区间互相是不影响的，我们可以先递归计算左右两边，再将两边合并。但是这道题如果直接分成两块计算，右边的f[i]没有计算左边的值，是不对的，因此需要先递归计算左边，之后考虑左边对右边产生的影响，之后再计算右边。</p>
+<p>这样在考虑左边对右边的影响时，由于左边的标号一定小于右边，因此相当于去掉了一维，我们仅需要考虑L和R了，这样就可以利用之前的方法，维护树状数组来解决这个问题了。</p>
+<h2 id="1010-Crazy-Bobo"><a href="#1010-Crazy-Bobo" class="headerlink" title="1010. Crazy Bobo"></a>1010. Crazy Bobo</h2><p>数学公式</p>
+<p>题目大意：10000组测试数据,n(1 ≤ n ≤ 100000). 意思是n的所有全排列. 对于每一种全排列的价值这样定义:</p>
+<blockquote>
+<p>For each Ai, if there exists a minimum j satisfies j&gt;i and Aj&gt;Ai , then connect an edge between Ai and Aj. </p>
+</blockquote>
+<p>然后看有几个联通块,数一数每个联通块内部的点的个数.然后把这些个数乘起来得到p.那么p^2就是这个排列的价值. 问这么多全排列的价值的和.</p>
+<p>首先是分析题意,这样要直接考虑给定一个i,所有排列i对答案的贡献度.而不是一种一种排列去算. 算dp[n], 要缩小规模.发现n其实很特殊.n放在i的话,那么1~i的一定是一个联通块(这个是一个重点,i包括i以前的是一个特殊情况).i之后的n-i是一个子问题, 可以表示为dp[n-i],然后加上组合数,加上阶乘,能够写出来式子.</p>
+<p> dp[n] = sum(dp[n - j] / (n - j)! × j^2)(j从1到n). </p>
+<p>剩下是两种方法快速求dp.首先(n - j)!可以无视.带上dp整体设为f[n - j]. </p>
+<p>法一:观察f[n-j]的系数:1 4 9 16…. 差分 3 5 7… 再差分 2 2 2 2….仔细一点维护3个sum值就可以o(1)的dp. </p>
+<p>法二:将f[n-j]看做一部分, j^j 看做一部分, 发现对于n的贡献可以看做是一个卷积,次数和为n的j和n-j的权重系数的相乘. 但是我们并不知道前一部分的dp值. 这里就用到了cdq分治.</p>
+<p>dp 1到n.那么取一个mid,先递归求1到mid, 然后考虑1到mid 对mid+1到n部分的影响.之后在影响的基础上再做mid+1到n的递归. 影响怎么算? 就可以用到卷积的和为n的性质. 构造用fft. 两边系数分别是f[i]和j*j. 然后乘起来, 把结果中次数为i的对应到mid+1的后面. 次数对应是几以及构造fft式子时候的细节认真处理下.另外要用到ntt. 对于这个mod,我们可以用他的原根3来搞.</p>
+<p>重点：</p>
+<ol>
+<li>考虑对答案的直接贡献. </li>
+<li>dp缩小规模.并且全排列想到n的位置,特殊处理. </li>
+<li>n放在i位,那么i和i之前的是一个已经定了的特殊情况,不是子问题. i之后的才是一个独立的子问题. </li>
+<li>推导公式中有阶乘有组合数.把组合数拆掉和阶乘搞到一起.可以化简. </li>
+<li><p>最后的递推式两种加速方式.</p>
+</li>
+<li><p>Work</p>
+</li>
+</ol>
+<hr>
+<p>签到题</p>
+<p>题目大意：给定一棵树，问其中子树节点和为k的节点共有几个</p>
+<p>简单的dfs即可解决。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Multi-University/" rel="tag"># Multi-University</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/24/2015Multi-University2/" rel="next" title="2015 Multi-University Training Contest 2总结">
+                <i class="fa fa-chevron-left"></i> 2015 Multi-University Training Contest 2总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/15/moodleAccessAPI/" rel="prev" title="Moodle API文档 —— Access API">
+                Moodle API文档 —— Access API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1001-Magician"><span class="nav-number">1.</span> <span class="nav-text">1001. Magician</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1002-RGCDQ"><span class="nav-number">2.</span> <span class="nav-text">1002. RGCDQ</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1003-The-Goddess-Of-The-Moon"><span class="nav-number">3.</span> <span class="nav-text">1003. The Goddess Of The Moon</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1004-Painter"><span class="nav-number">4.</span> <span class="nav-text">1004. Painter</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1005-Fan-Li"><span class="nav-number">5.</span> <span class="nav-text">1005. Fan Li</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1006-Beautiful-Set"><span class="nav-number">6.</span> <span class="nav-text">1006. Beautiful Set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1007-Hope"><span class="nav-number">7.</span> <span class="nav-text">1007. Hope</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1008-Solve-this-interesting-problem"><span class="nav-number">8.</span> <span class="nav-text">1008. Solve this interesting problem</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1009-Boring-Class"><span class="nav-number">9.</span> <span class="nav-text">1009. Boring Class</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1010-Crazy-Bobo"><span class="nav-number">10.</span> <span class="nav-text">1010. Crazy Bobo</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

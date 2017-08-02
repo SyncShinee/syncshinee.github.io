@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Moodle API," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="moodle的Data manipulation API中介绍了用于访问数据库的一些函数。你应该仅通过使用这些函数来进行数据库操作，因为这些函数对数据库操作进行了抽象，并保证这些操作会在不同的DBMS上正常执行。">
+<meta name="keywords" content="Moodle API">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Moodle API文档 —— Data manipulation API">
+<meta property="og:url" content="http://yoursite.com/2016/01/15/moodleDataManipulationAPI/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="moodle的Data manipulation API中介绍了用于访问数据库的一些函数。你应该仅通过使用这些函数来进行数据库操作，因为这些函数对数据库操作进行了抽象，并保证这些操作会在不同的DBMS上正常执行。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-18T09:36:28.308Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Moodle API文档 —— Data manipulation API">
+<meta name="twitter:description" content="moodle的Data manipulation API中介绍了用于访问数据库的一些函数。你应该仅通过使用这些函数来进行数据库操作，因为这些函数对数据库操作进行了抽象，并保证这些操作会在不同的DBMS上正常执行。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/01/15/moodleDataManipulationAPI/"/>
+
+
+
+
+
+  <title>Moodle API文档 —— Data manipulation API | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2016/01/15/moodleDataManipulationAPI/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Moodle API文档 —— Data manipulation API</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2016-01-15T14:39:39+08:00">
+                2016-01-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>moodle的Data manipulation API中介绍了用于访问数据库的一些函数。你应该仅通过使用这些函数来进行数据库操作，因为这些函数对数据库操作进行了抽象，并保证这些操作会在不同的DBMS上正常执行。</p>
+<a id="more"></a>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>所有的涉及到数据操纵的函数都是全局对象<code>$DB</code>的公共方法。因此首先你需要“导入”这个全局对象：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">global</span> $DB;</div></pre></td></tr></table></figure>
+<ul>
+<li>全局对象<code>$DB</code>是一个<code>moodle_database</code>类的对象，这个类定义在<code>moodle_database.php</code>中。</li>
+<li>其参数中所有的表名(<code>$table</code>)都是不带系统默认添加的前缀的。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$user = $DB-&gt;get_record(<span class="string">'user'</span>, <span class="keyword">array</span>(<span class="string">'id'</span>=&gt;<span class="string">'1'</span>));</div></pre></td></tr></table></figure>
+<ul>
+<li>在使用<code>xxx_sql()</code>函数时，表名必须用大括号括起来</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$user = $DB-&gt;get_record_sql(<span class="string">'SELECT * FROM &#123;user&#125; WHERE id = ?'</span>, <span class="keyword">array</span>(<span class="number">1</span>));</div></pre></td></tr></table></figure>
+<ul>
+<li>参数中所有的条件（<code>$condition</code>）都应以数组（域名 =&gt; 域值）的形式列出</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$user = $DB-&gt;get_record(<span class="string">'user'</span>, <span class="keyword">array</span>(<span class="string">'firstname'</span>=&gt;<span class="string">'Martin'</span>, <span class="string">'lastname'</span>=&gt;<span class="string">'Dougiamas'</span>));</div></pre></td></tr></table></figure>
+<ul>
+<li>参数中所有的sql参数（<code>$params</code>）都应该为sql语句，其中允许有问号和占位符。不过占位符必须是唯一的，即使两个占位符所传递的值相同。</li>
+</ul>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/// Question mark placeholders:</span></div><div class="line">   $DB-&gt;get_record_sql(<span class="string">'SELECT * FROM &#123;user&#125; WHERE firstname = ? AND lastname = ?'</span>, </div><div class="line">                       <span class="keyword">array</span>(<span class="string">'Martin'</span>, <span class="string">'Dougiamas'</span>));</div><div class="line"> </div><div class="line"><span class="comment">/// Named placeholders:</span></div><div class="line">   $DB-&gt;get_record_sql(<span class="string">'SELECT * FROM &#123;user&#125; WHERE firstname = :firstname AND lastname = :lastname'</span>,</div><div class="line">                       <span class="keyword">array</span>(<span class="string">'firstname'</span>=&gt;<span class="string">'Martin'</span>, <span class="string">'lastname'</span>=&gt;<span class="string">'Dougiamas'</span>));</div></pre></td></tr></table></figure>
+<h2 id="可能用到的函数"><a href="#可能用到的函数" class="headerlink" title="可能用到的函数"></a>可能用到的函数</h2><h3 id="获取一条记录"><a href="#获取一条记录" class="headerlink" title="获取一条记录"></a>获取一条记录</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$DB-&gt;get_record($table, <span class="keyword">array</span> $conditions, $fields=<span class="string">'*'</span>, $strictness=IGNORE_MISSING) </div><div class="line"><span class="comment">/// Get a single database record as an object where all the given conditions met.</span></div><div class="line"><span class="comment">/// @param int $strictness IGNORE_MISSING means compatible mode, false returned if record not found, debug message if more found;</span></div><div class="line"><span class="comment">///                        IGNORE_MULTIPLE means return first, ignore multiple records found(not recommended);</span></div><div class="line"><span class="comment">///                        MUST_EXIST means throw exception if no record or multiple records found</span></div><div class="line">$DB-&gt;get_record_select($table, $select, <span class="keyword">array</span> $params=<span class="keyword">null</span>, $fields=<span class="string">'*'</span>, $strictness=IGNORE_MISSING)</div><div class="line"><span class="comment">/// Get a single database record as an object which match a particular WHERE clause.</span></div><div class="line">$DB-&gt;get_record_sql($sql, <span class="keyword">array</span> $params=<span class="keyword">null</span>, $strictness=IGNORE_MISSING)</div><div class="line"><span class="comment">/// Get a single database record as an object using a SQL statement.</span></div></pre></td></tr></table></figure>
+<h3 id="获取多条记录"><a href="#获取多条记录" class="headerlink" title="获取多条记录"></a>获取多条记录</h3><p>每一个获取多条记录的函数都会返回一个数组，这个数组会以查询到的数据的第一列的值作为索引，因此在查询时请保证你要查询的表的第一列是项目id。(在创建额外的表时一定要注意这一点！)</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">$DB-&gt;get_records($table, <span class="keyword">array</span> $conditions=<span class="keyword">null</span>, $sort=<span class="string">''</span>, $fields=<span class="string">'*'</span>, $limitfrom=<span class="number">0</span>, $limitnum=<span class="number">0</span>) </div><div class="line"><span class="comment">/// Get a number of records as an array of objects where all the given conditions met.</span></div><div class="line">$DB-&gt;get_records_select($table, $select, <span class="keyword">array</span> $params=<span class="keyword">null</span>, $sort=<span class="string">''</span>, $fields=<span class="string">'*'</span>, $limitfrom=<span class="number">0</span>, $limitnum=<span class="number">0</span>) </div><div class="line"><span class="comment">/// Get a number of records as an array of objects which match a particular WHERE clause.</span></div><div class="line">$DB-&gt;get_records_sql($sql, <span class="keyword">array</span> $params=<span class="keyword">null</span>, $limitfrom=<span class="number">0</span>, $limitnum=<span class="number">0</span>)</div><div class="line"><span class="comment">/// Get a number of records as an array of objects using a SQL statement.</span></div><div class="line">$DB-&gt;get_records_list($table, $field, <span class="keyword">array</span> $values, $sort=<span class="string">''</span>, $fields=<span class="string">'*'</span>, $limitfrom=<span class="string">''</span>, $limitnum=<span class="string">''</span>) </div><div class="line"><span class="comment">/// Get a number of records as an array of objects where one field match one list of values.</span></div></pre></td></tr></table></figure>
+<h3 id="以键值对的形式获取数据"><a href="#以键值对的形式获取数据" class="headerlink" title="以键值对的形式获取数据"></a>以键值对的形式获取数据</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$DB-&gt;get_records_menu($table, <span class="keyword">array</span> $conditions=<span class="keyword">null</span>, $sort=<span class="string">''</span>, $fields=<span class="string">'*'</span>, $limitfrom=<span class="number">0</span>, $limitnum=<span class="number">0</span>) </div><div class="line"><span class="comment">/// Get the first two columns from a number of records as an associative array where all the given conditions met.</span></div><div class="line">$DB-&gt;get_records_select_menu($table, $select, <span class="keyword">array</span> $params=<span class="keyword">null</span>, $sort=<span class="string">''</span>, $fields=<span class="string">'*'</span>, $limitfrom=<span class="number">0</span>, $limitnum=<span class="number">0</span>)</div><div class="line"><span class="comment">/// Get the first two columns from a number of records as an associative array which match a particular WHERE clause.</span></div><div class="line">$DB-&gt;get_records_sql_menu($sql, <span class="keyword">array</span> $params=<span class="keyword">null</span>, $limitfrom=<span class="number">0</span>, $limitnum=<span class="number">0</span>)</div><div class="line"><span class="comment">/// Get the first two columns from a number of records as an associative array using a SQL statement.</span></div></pre></td></tr></table></figure>
+<h3 id="获取查找到的数据条目数量"><a href="#获取查找到的数据条目数量" class="headerlink" title="获取查找到的数据条目数量"></a>获取查找到的数据条目数量</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$DB-&gt;count_records($table, <span class="keyword">array</span> $conditions=<span class="keyword">null</span>) </div><div class="line"><span class="comment">/// Count the records in a table where all the given conditions met.</span></div><div class="line">$DB-&gt;count_records_select($table, $select, <span class="keyword">array</span> $params=<span class="keyword">null</span>, $countitem=<span class="string">"COUNT('x')"</span>) </div><div class="line"><span class="comment">/// Count the records in a table which match a particular WHERE clause.</span></div><div class="line">$DB-&gt;count_records_sql($sql, <span class="keyword">array</span> $params=<span class="keyword">null</span>) </div><div class="line"><span class="comment">/// Get the result of an SQL SELECT COUNT(...) query.</span></div></pre></td></tr></table></figure>
+<h3 id="检查某条记录是否存在"><a href="#检查某条记录是否存在" class="headerlink" title="检查某条记录是否存在"></a>检查某条记录是否存在</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$DB-&gt;record_exists($table, <span class="keyword">array</span> $conditions=<span class="keyword">null</span>) </div><div class="line"><span class="comment">/// Test whether a record exists in a table where all the given conditions met.</span></div><div class="line">$DB-&gt;record_exists_select($table, $select, <span class="keyword">array</span> $params=<span class="keyword">null</span>) </div><div class="line"><span class="comment">/// Test whether any records exists in a table which match a particular WHERE clause.</span></div><div class="line">$DB-&gt;record_exists_sql($sql, <span class="keyword">array</span> $params=<span class="keyword">null</span>) </div><div class="line"><span class="comment">/// Test whether a SQL SELECT statement returns any records.</span></div></pre></td></tr></table></figure>
+<h3 id="插入数据"><a href="#插入数据" class="headerlink" title="插入数据"></a>插入数据</h3><p>insert_record()方法有四个参数。但是第四个参数”bulk”大多数情况都是不会用到的。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$DB-&gt;insert_record($table, $dataobject, $returnid=<span class="keyword">true</span>, $bulk=<span class="keyword">false</span>) </div><div class="line"><span class="comment">/// Insert a record into a table and return the "id" field if required.</span></div></pre></td></tr></table></figure>
+<p>在moodle2.7之后的版本中，进一步解决了批量插入”bulk”的问题。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/**</span></div><div class="line"><span class="comment">* Insert multiple records into database as fast as possible.</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">* Order of inserts is maintained, but the operation is not atomic, use transactions if necessary.</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">* This method is intended for inserting of large number of small objects, do not use for huge objects with text or binary fields.</span></div><div class="line"><span class="comment">*</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> string $table  The database table to be inserted into</span></div><div class="line"><span class="comment">* <span class="doctag">@param</span> array|Traversable $dataobjects list of objects to be inserted, must be compatible with foreach</span></div><div class="line"><span class="comment">* <span class="doctag">@return</span> void does not return new record ids</span></div><div class="line"><span class="comment">*/</span></div><div class="line">  $DB-&gt;insert_records($table, $dataobjects)</div></pre></td></tr></table></figure>
+<h3 id="更新数据"><a href="#更新数据" class="headerlink" title="更新数据"></a>更新数据</h3><figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">$DB-&gt;update_record($table, $dataobject, $bulk=<span class="keyword">false</span>)</div><div class="line">  <span class="comment">/// Update a record in a table.</span></div><div class="line">  <span class="comment">/// </span></div><div class="line">  <span class="comment">/// $dataobject is an object containing needed data</span></div><div class="line">  <span class="comment">/// Relies on $dataobject having a variable "id" to</span></div><div class="line">  <span class="comment">/// specify the record to update</span></div><div class="line">  <span class="comment">/// </span></div><div class="line">  <span class="comment">/// @param string $table The database table to be checked against.</span></div><div class="line">  <span class="comment">/// @param object $dataobject An object with contents equal to fieldname=&gt;fieldvalue.</span></div><div class="line">  <span class="comment">///        Must have an entry for 'id' to map to the table specified.</span></div><div class="line">  <span class="comment">/// @param bool $bulk true means repeated updates expected</span></div><div class="line">  <span class="comment">/// @return bool true</span></div><div class="line">  <span class="comment">/// @throws dml_exception if an error occurs.</span></div></pre></td></tr></table></figure>
+<p>如果你需要使用sql语句执行更复杂的更新操作，你可以使用<code>execute()</code>函数，请尽量避免使用这个函数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$DB-&gt;execute($sql, array $parms=null)</div><div class="line">  /// Executes a general sql query. Should be used only when no other method suitable.</div><div class="line">  /// Do NOT use this to make changes in db structure, use database_manager methods instead!</div><div class="line">  /// @param string $sql query</div><div class="line">  /// @param array $params query parameters</div><div class="line">  /// @return bool true</div><div class="line">  /// @throws dml_exception A DML specific exception is thrown for any errors.</div></pre></td></tr></table></figure>
+<h3 id="使用记录集的形式访问数据"><a href="#使用记录集的形式访问数据" class="headerlink" title="使用记录集的形式访问数据"></a>使用记录集的形式访问数据</h3><h3 id="事务机制"><a href="#事务机制" class="headerlink" title="事务机制"></a>事务机制</h3><ul>
+<li>请注意一些数据库不支持事务机制（例如 MyISAM MySQL ），然而我们强烈建议将数据库部署到支持事务的数据库上（例如 InnoDB MySQL ）。</li>
+<li>从moodle2.0开始，采用了DML层模拟委托事务，因此支持事务的嵌套。</li>
+<li>事务不应该在moodle核心部分被使用，它用于一些需要web服务，身份认证等功能的插件中。</li>
+<li>moodle的一些子系统（例如messaging）不支持事务技术，因为它无法回滚。</li>
+</ul>
+<p>一个事务的开始标志为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$transaction = $DB-&gt;start_delegated_transaction();</div></pre></td></tr></table></figure>
+<p>结束标志为：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$transaction-&gt;allow_commit();</div></pre></td></tr></table></figure>
+<p>通常一项事务如果执行失败的话，会进行回滚:<code>$transaction-&gt;rollback($ex);</code>。请谨慎使用该函数，因为它在不支持事务机制的数据库中运行可能会存在一些兼容性问题。</p>
+<h3 id="debug函数"><a href="#debug函数" class="headerlink" title="debug函数"></a>debug函数</h3><p>如果你执行<code>$DB-&gt;set_debug(true)</code>，那么$DB会按照时间顺序输出每个查询的sql语句，这可能会对你的程序调试有些帮助。当然，最终你需要把这条语句从代码中删掉。</p>
+<h3 id="get-course-和-get-courses"><a href="#get-course-和-get-courses" class="headerlink" title="get_course 和 get_courses"></a>get_course 和 get_courses</h3><p>从moodle2.5.1开始，moodle引入了一个新的函数get_course(),来替代查询课程的操作。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$course = get_course($courseid);</div></pre></td></tr></table></figure>
+<p>来替代</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$course = $DB-&gt;get_record(<span class="string">'course'</span>, <span class="keyword">array</span>(<span class="string">'id'</span> =&gt; $courseid), <span class="string">'*'</span>, MUST_EXIST);</div></pre></td></tr></table></figure>
+<p>另外，如果你想获取当前的所有课程，你可以直接使用<code>get_courses()</code>函数，不需要任何参数。</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$courses = get_courses();</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Moodle-API/" rel="tag"># Moodle API</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/01/15/moodleAccessAPI/" rel="next" title="Moodle API文档 —— Access API">
+                <i class="fa fa-chevron-left"></i> Moodle API文档 —— Access API
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/01/16/moodleFileAPI/" rel="prev" title="Moodle API文档 —— File API">
+                Moodle API文档 —— File API <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#概述"><span class="nav-number">1.</span> <span class="nav-text">概述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可能用到的函数"><span class="nav-number">2.</span> <span class="nav-text">可能用到的函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#获取一条记录"><span class="nav-number">2.1.</span> <span class="nav-text">获取一条记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取多条记录"><span class="nav-number">2.2.</span> <span class="nav-text">获取多条记录</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#以键值对的形式获取数据"><span class="nav-number">2.3.</span> <span class="nav-text">以键值对的形式获取数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取查找到的数据条目数量"><span class="nav-number">2.4.</span> <span class="nav-text">获取查找到的数据条目数量</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#检查某条记录是否存在"><span class="nav-number">2.5.</span> <span class="nav-text">检查某条记录是否存在</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#插入数据"><span class="nav-number">2.6.</span> <span class="nav-text">插入数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#更新数据"><span class="nav-number">2.7.</span> <span class="nav-text">更新数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用记录集的形式访问数据"><span class="nav-number">2.8.</span> <span class="nav-text">使用记录集的形式访问数据</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#事务机制"><span class="nav-number">2.9.</span> <span class="nav-text">事务机制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#debug函数"><span class="nav-number">2.10.</span> <span class="nav-text">debug函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#get-course-和-get-courses"><span class="nav-number">2.11.</span> <span class="nav-text">get_course 和 get_courses</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

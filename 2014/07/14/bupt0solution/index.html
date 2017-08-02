@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="帝都弱校连萌," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="前几天打了BUPT的新生归来赛，感觉题目难度还可以吧，有几道题的确是需要费一些脑筋。下面我就来写一下这次比赛的解题报告。">
+<meta name="keywords" content="帝都弱校连萌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="BUPT新生归来赛 Solution">
+<meta property="og:url" content="http://yoursite.com/2014/07/14/bupt0solution/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="前几天打了BUPT的新生归来赛，感觉题目难度还可以吧，有几道题的确是需要费一些脑筋。下面我就来写一下这次比赛的解题报告。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2015-05-07T07:07:09.277Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="BUPT新生归来赛 Solution">
+<meta name="twitter:description" content="前几天打了BUPT的新生归来赛，感觉题目难度还可以吧，有几道题的确是需要费一些脑筋。下面我就来写一下这次比赛的解题报告。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2014/07/14/bupt0solution/"/>
+
+
+
+
+
+  <title>BUPT新生归来赛 Solution | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2014/07/14/bupt0solution/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">BUPT新生归来赛 Solution</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2014-07-14T22:34:45+08:00">
+                2014-07-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前几天打了BUPT的新生归来赛，感觉题目难度还可以吧，有几道题的确是需要费一些脑筋。下面我就来写一下这次比赛的解题报告。<br><a id="more"></a></p>
+<h2 id="A-Hard-Game"><a href="#A-Hard-Game" class="headerlink" title="A. Hard Game"></a><a href="http://code.bupt.edu.cn/problem/contest/101/problem/A/" target="_blank" rel="external">A. Hard Game</a></h2><p>题目大意是给你n堆硬币，每堆有k个，每次只能从一堆硬币中取若干个，不能不取。谁最后没有石子可取就判为输。Alice先手取，Bob后手取，问对给定的n，k，谁会获胜。</p>
+<p>很明显，在堆数为奇数时，Alice有必胜策略。我们可以给Alice这样的策略，第一次取k个，这样会剩下k-1堆。若Bob也取k个，则Alice再取k个；若Bob取a个(a &lt; k)则Alice在另外一堆里同样取a个。这样总会剩下偶数堆，并且这些堆中的硬币数两两相同。这样Alice必定会最后取完所有的硬币。</p>
+<p>事实上，这个问题是Nim问题的简化版。Nim问题为，有n堆硬币，每堆有ki个，每次只能从一堆硬币中取若干个，不能不取。谁最后没有石子可取就判为输。这个问题可通过判断S=k1 ^ k2  …… ^ kn的值来判断是否先手必胜(不为0则先手必胜)。</p>
+<blockquote>
+<p>附证明：<br>称一个先手必胜的局面为P局面，反之称之为N局面。</p>
+<ol>
+<li><p>当k1=k2=……=kn=0时，满足中状态时P局面。</p>
+</li>
+<li><p>若S=0，若从堆i中取若干硬币使其剩下ki’个(ki’ &lt; ki)，<br>则ki ^ ki’ != 0。又S’ ^ ki ^ ki’ = S = 0，故S’ = ki ^ ki’ != 0。<br>满足P局面的所有子局面都是N局面。</p>
+</li>
+<li><p>若S != 0，设S的二进制位为A1A2……An，考虑第一位是1的。<br>在P中取出该位同是1的，不放设为P1。可知P1 ^ S &lt; P1，</p>
+<p>令P1’ = P1 ^ S，则P1’ ^ P2 ^ …… ^ Pn=0。满足N局面存在至少一个P局面。</p>
+</li>
+</ol>
+<p>证毕。</p>
+</blockquote>
+<p>而这道题其实就是所有的ki相等的情况，则在n为奇数时，S不为零。这也验证了我们的结论。</p>
+<p>Nim问题还有很多扩展问题，这里就不再赘述了，有兴趣的可以自行google。</p>
+<p>附<a href="/pages/bupt0/bupt0asource/">源代码</a></p>
+<h2 id="B-Prime-Judge"><a href="#B-Prime-Judge" class="headerlink" title="B. Prime Judge"></a><a href="http://code.bupt.edu.cn/problem/contest/101/problem/B/" target="_blank" rel="external">B. Prime Judge</a></h2><p>题目大意是给你一个复数判断它是不是复素数。复素数的定义为</p>
+<blockquote>
+<p>如果a+bi能被分解为(a1 + b1i) * (a2 + b2i)的形式，那么该数不是素数；否则，该数是素数。</p>
+<p>其中a1 、b1、 a2 、b2均为整数，且1，-1，0，i，-i不能作为被分解的因子。</p>
+</blockquote>
+<p>刚开始拿到这题确实没什么思路。因为a、b、a1、b1、a2、b2都有可能是负数，枚举也无从下手。后来，通过whn同学的提醒，我终于找到了解题思路。</p>
+<p>我们可以发现如果a + bi=(a1 + b1i) × (a2 + b2i),则|a + bi| = |a1 + b1i| × |a2 + b2i|，即a^2 + b^2 = (a1^2 + b1^2) × (a2^2 + b2^2)。这样，就把原问题转化为一个正数的分解因数。而这我们可以在O(sqrt(n))的时间内解决。</p>
+<p>不过还有一个要求就是这两个因数都必须是两个数的平方和，判断这个问题可以通过枚举a1，然后a2 = 因数1 - a1^2 ;</p>
+<p>再判断sqrt(a2)^2 是不是等于a2，如果相等，证明因数1是合法的对因数，对因数2可采取同样措施。这个复杂度为O(sqrt(sqrt(n)))。而n为a^2 + b^2 ，因此总的时间复杂度为O(a*sqrt(a))，可以接受。</p>
+<p>whn同学还告诉我一种更加简洁的解法，具体可以参考<a href="http://blog.csdn.net/whn757397540/article/details/37742457" target="_blank" rel="external">这篇博文</a></p>
+<p>附<a href="/pages/bupt0/bupt0bsource/">源代码</a></p>
+<h2 id="C-Freeway"><a href="#C-Freeway" class="headerlink" title="C. Freeway"></a><a href="http://code.bupt.edu.cn/problem/contest/101/problem/C/" target="_blank" rel="external">C. Freeway</a></h2><p>题目大意是给你一个无根树，这个树的一些边是有向的，一些边是无向的。现在希望改变一些边的方向，使得我们可以从某一个点出发到达任意一点。改变边的方向的花费即为这条边的权值。现在请你找出花费最小的方案。</p>
+<p>这道题出的很有迷惑性。刚拿到题目时，我以为从每一个点出发都有许多方案可以选择，而且还有可能从不同的点出发，感觉这题太难了。</p>
+<p>赛后才发现，原来这是一棵树。也就是说如果你确定了要从某一个点出发，那么这个图的所有边的方向已经都确定了。而且我们还可以发现，从某个点出发所需的花费与从与它相邻的点出发所需的花费之间的差别仅在这两点间的边上。</p>
+<p>因此我们可以任选一个点来遍历整个树，求出他的花费，然后再遍历一次，更新所有点的花费。时间复杂度仅为O(n)。</p>
+<p>附<a href="/pages/bupt0/bupt0csource/">源代码</a></p>
+<h2 id="D-Who-Is-Joyful"><a href="#D-Who-Is-Joyful" class="headerlink" title="D. Who Is Joyful"></a><a href="http://code.bupt.edu.cn/problem/contest/101/problem/D/" target="_blank" rel="external">D. Who Is Joyful</a></h2><p>题目大意是给你n个点，每个点都有一个高度值。接下来有q次询问。每次询问指定闭区间[l,r]，问在该区间内有多少点是joyful的。一个点是joyful的当且仅当它前面有比他小的点并且它后面有比他大的点，每次询问的区间外的点对区间内的点没有影响。</p>
+<p>这道题由于每次询问的区间是变化的，而一个点是否是joyful的也随着区间的变化而变化，因此没有想出有效的算法。赛后通过阅读大神AC的代码，我才恍然大悟。</p>
+<p>其实这道题等价于在区间中寻找三元组(a&lt; b &lt; c)的个数。而这样的三元组我们只用考虑长度最短的即对每个b找到它后面第一个比他大的和它前面第一个比他小的即可。</p>
+<p>但是这样还是没有简化问题。我们先把所有的询问按区间右端点排序，然后依次求解。我们把这个三元组的个数记录在a点，添加三元组的标记记录在c点，也就是说，对每一次询问，我们把所有c点位于上次的r到这次的r之间的三元组添加到树状数组的a点中，这样，我们就可以通过树状数组来实现log(n)的维护和查询。并且时间复杂度允许。</p>
+<p>附<a href="/pages/bupt0/bupt0dsource/">源代码</a></p>
+<h2 id="E-最小距离查询"><a href="#E-最小距离查询" class="headerlink" title="E. 最小距离查询"></a><a href="http://code.bupt.edu.cn/problem/contest/101/problem/E/" target="_blank" rel="external">E. 最小距离查询</a></h2><p>题目大意是初始时给你一个字符串，接下来有m次操作，操作共有两种，一种是在已有的字符串末尾添加一个字符，一种是询问对于位置x，在S当中和S[x]相等且距x最近的字符与x的距离</p>
+<p>这道题也比较水，通过两个数组<code>front[i][j]</code>，<code>behind[i][j]</code>分别记录下来i点前后距离i点最近的j字母的位置。初始化可以通过递推完成，维护的时间复杂度也不高，询问就直接取front、behind中的最小值。</p>
+<p>这道题whn同学还有另一种解法，具体可以参考<a href="http://blog.csdn.net/whn757397540/article/details/37729251" target="_blank" rel="external">这篇博文</a>。</p>
+<p>附<a href="/pages/bupt0/bupt0esource/">源代码</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/帝都弱校连萌/" rel="tag"># 帝都弱校连萌</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2014/07/13/developnote1/" rel="next" title="HandyBUAA开发笔记（一）">
+                <i class="fa fa-chevron-left"></i> HandyBUAA开发笔记（一）
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2014/07/15/bupt1solution/" rel="prev" title="BUPT新生暑假个人排位赛01 Solution">
+                BUPT新生暑假个人排位赛01 Solution <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Hard-Game"><span class="nav-number">1.</span> <span class="nav-text">A. Hard Game</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Prime-Judge"><span class="nav-number">2.</span> <span class="nav-text">B. Prime Judge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Freeway"><span class="nav-number">3.</span> <span class="nav-text">C. Freeway</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Who-Is-Joyful"><span class="nav-number">4.</span> <span class="nav-text">D. Who Is Joyful</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-最小距离查询"><span class="nav-number">5.</span> <span class="nav-text">E. 最小距离查询</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

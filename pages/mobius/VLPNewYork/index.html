@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="题目链接: poj3090 题目大意：对于二维坐标系中的点{(x,y)(0 &amp;lt;= x &amp;lt;= N, 0 &amp;lt;= y &amp;lt;= N)}，问这些点中有哪些是原点可以看到的。(原点除外) 题目可以转化为求gcd(x, y) == 1 的有序对(x, y)的数目。 这道题数据范围较小，并且是求x，y互质的数的个数，我们可以采用多种方法来解决。 解法1.欧拉函数若加一个限制条件：x &amp;lt;">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Visible Lattice Points(Greater New York 2006)">
+<meta property="og:url" content="http://yoursite.com/pages/mobius/VLPNewYork/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="题目链接: poj3090 题目大意：对于二维坐标系中的点{(x,y)(0 &amp;lt;= x &amp;lt;= N, 0 &amp;lt;= y &amp;lt;= N)}，问这些点中有哪些是原点可以看到的。(原点除外) 题目可以转化为求gcd(x, y) == 1 的有序对(x, y)的数目。 这道题数据范围较小，并且是求x，y互质的数的个数，我们可以采用多种方法来解决。 解法1.欧拉函数若加一个限制条件：x &amp;lt;">
+<meta property="og:locale" content="zh">
+<meta property="og:image" content="http://yoursite.com/img/mobius/4.PNG">
+<meta property="og:image" content="http://yoursite.com/img/mobius/5.PNG">
+<meta property="og:image" content="http://yoursite.com/img/mobius/6.PNG">
+<meta property="og:updated_time" content="2015-05-18T01:50:34.876Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Visible Lattice Points(Greater New York 2006)">
+<meta name="twitter:description" content="题目链接: poj3090 题目大意：对于二维坐标系中的点{(x,y)(0 &amp;lt;= x &amp;lt;= N, 0 &amp;lt;= y &amp;lt;= N)}，问这些点中有哪些是原点可以看到的。(原点除外) 题目可以转化为求gcd(x, y) == 1 的有序对(x, y)的数目。 这道题数据范围较小，并且是求x，y互质的数的个数，我们可以采用多种方法来解决。 解法1.欧拉函数若加一个限制条件：x &amp;lt;">
+<meta name="twitter:image" content="http://yoursite.com/img/mobius/4.PNG">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/pages/mobius/VLPNewYork/"/>
+
+
+
+
+
+  <title>Visible Lattice Points(Greater New York 2006) | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+    
+    
+    <div class="post-block page">
+      <header class="post-header">
+
+	<h1 class="post-title" itemprop="name headline">Visible Lattice Points(Greater New York 2006)</h1>
+
+
+
+</header>
+
+      
+      
+      
+      <div class="post-body">
+        
+        
+          <p>题目链接: <a href="http://acm.hust.edu.cn/vjudge/problem/viewProblem.action?id=10261" target="_blank" rel="external">poj3090</a></p>
+<p>题目大意：对于二维坐标系中的点{(x,y)(0 &lt;= x &lt;= N, 0 &lt;= y &lt;= N)}，问这些点中有哪些是原点可以看到的。(原点除外)</p>
+<p>题目可以转化为求gcd(x, y) == 1 的有序对(x, y)的数目。</p>
+<p>这道题数据范围较小，并且是求x，y互质的数的个数，我们可以采用多种方法来解决。</p>
+<h2 id="解法1-欧拉函数"><a href="#解法1-欧拉函数" class="headerlink" title="解法1.欧拉函数"></a>解法1.欧拉函数</h2><p>若加一个限制条件：x &lt; y,这其实就是求欧拉函数φ。它的定义是小于等于i的所有与i互质的数的个数。</p>
+<p>那么在求出欧拉函数后，乘2就是所有的gcd(x, y) == 1的值了。不过在y = 1时，x和y相等，不用乘2.</p>
+<p>另外，这样求的实际上是 1 &lt;= x &lt;= N, 1 &lt;= y &lt;= N的所有情况，还要加上x或y等于0的情况。</p>
+<p>欧拉函数可以通过Euler筛法线性得到。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1024</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> phi[N], p[N], tot;</div><div class="line"><span class="keyword">bool</span> flag[N];</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">Euler</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> tmp;</div><div class="line">    phi[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">    tot = <span class="number">0</span>;</div><div class="line">    <span class="built_in">memset</span>(flag, <span class="number">0</span>, <span class="keyword">sizeof</span>(flag));</div><div class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; N; ++i) &#123;</div><div class="line">        <span class="keyword">if</span>(!flag[i]) &#123;</div><div class="line">            p[tot++] = i;</div><div class="line">        	phi[i] = i - <span class="number">1</span>;</div><div class="line">        &#125;</div><div class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot &amp;&amp; i * p[j] &lt; N; ++j) &#123;</div><div class="line">            tmp = i * p[j];</div><div class="line">            flag[tmp] = <span class="literal">true</span>;</div><div class="line">            <span class="keyword">if</span>(i % p[j]) &#123;</div><div class="line">            	phi[tmp] = phi[i] * (p[j] - <span class="number">1</span>);</div><div class="line">            &#125;</div><div class="line">            <span class="keyword">else</span> &#123;</div><div class="line">            	phi[tmp] = phi[i] * p[j];</div><div class="line">            	<span class="keyword">break</span>;</div><div class="line">            &#125;</div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	Euler();</div><div class="line">	<span class="keyword">int</span> T, ans, n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cas = <span class="number">1</span>; cas &lt;= T; ++cas) &#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">		ans = <span class="number">1</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</div><div class="line">			ans += (phi[i] &lt;&lt; <span class="number">1</span>);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, cas, n, ans);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="解法2-dp"><a href="#解法2-dp" class="headerlink" title="解法2.dp"></a>解法2.dp</h2><p>这道题还可以通过dp来解决。其实dp的主要思想和mobius反演相同。我们考虑如下定义的F(d)和f(d):</p>
+<blockquote>
+<p>f(d) = | {(x, y) | gcd(x, y) == d}, x &lt;= N, y &lt;= N} |</p>
+<p>F(d) = | {(x, y) | (d | gcd(x, y)), x &lt;= N, y &lt;= N} |</p>
+</blockquote>
+<p>F(d)我们可以很容易求出，它就等于(N / d) × (N / d)，那么如何通过F(d)求出f(d)呢？</p>
+<p>我们再来看看F(d)和f(d)的定义，f(d)代表x和y的最大公约数等于d的个数，F(d)表示x和y的公约数(不一定最大)等于d的个数。那么将F(d)中最大公约数大于d的所有个数去掉就是f(d)了。因此我们可以通过枚举d的倍数求出</p>
+<blockquote>
+<p>f(d) = F(d) - f(2d) - f(3d) - ……</p>
+</blockquote>
+<p>根据调和级数的性质，这个可以在O(nlogn)的时间复杂度内完成。我们要求的其实就是f(1)。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1024</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"></div><div class="line"><span class="keyword">int</span> num[N], dp[N], n;</div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="keyword">int</span> T, ans;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cas = <span class="number">1</span>; cas &lt;= T; ++cas) &#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</div><div class="line">			num[i] = (n / i) * (n / i);</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = n; i &gt; <span class="number">0</span>; --i) &#123;</div><div class="line">			dp[i] = num[i];</div><div class="line">			<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">2</span> * i; j &lt;= n; j += i)</div><div class="line">				dp[i] -= dp[j];</div><div class="line">		&#125;</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, cas, n, dp[<span class="number">1</span>] + <span class="number">2</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>解法3.mobius反演<br>此外，我们还可以通过mobius反演来求出gcd(x, y) == 1的个数。首先，我们考虑如上含义的f(d)， F(d)，则有</p>
+<p><img src="/img/mobius/4.PNG" alt="mobius4">,</p>
+<p>反演得</p>
+<p><img src="/img/mobius/5.PNG" alt="mobius5"></p>
+<p>同时还有F(d) = (N / d) × (N / d)，代入反演后的式子则有</p>
+<p><img src="/img/mobius/6.PNG" alt="mobius5"></p>
+<p>而我们要求的就是f(1)。 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></div><div class="line"><span class="meta">#<span class="meta-keyword">define</span> N 1024</span></div><div class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</div><div class="line"><span class="keyword">int</span> miu[N], p[N], tot;</div><div class="line"><span class="keyword">bool</span> flag[N];</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">mobius</span><span class="params">()</span> </span>&#123;</div><div class="line">	<span class="built_in">memset</span>(flag, <span class="number">0</span>, <span class="keyword">sizeof</span>(flag));</div><div class="line">	tot = <span class="number">0</span>;</div><div class="line">	miu[<span class="number">1</span>] = <span class="number">1</span>;</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">2</span>; i &lt; N; ++i) &#123;</div><div class="line">		<span class="keyword">if</span> (!flag[i]) &#123;</div><div class="line">			p[tot++] = i;</div><div class="line">			miu[i] = <span class="number">-1</span>;</div><div class="line">		&#125;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; tot &amp;&amp; i * p[j] &lt; N; ++j) &#123;</div><div class="line">			flag[i * p[j]] = <span class="literal">true</span>;</div><div class="line">			<span class="keyword">if</span> (i % p[j]) &#123;</div><div class="line">				miu[i * p[j]] = -miu[i];</div><div class="line">			&#125;</div><div class="line">			<span class="keyword">else</span> &#123;</div><div class="line">				miu[i * p[j]] = <span class="number">0</span>;</div><div class="line">				<span class="keyword">break</span>;</div><div class="line">			&#125;</div><div class="line">		&#125;</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</div><div class="line">	mobius();</div><div class="line">	<span class="keyword">int</span> T, ans, n;</div><div class="line">	<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;T);</div><div class="line">	<span class="keyword">for</span> (<span class="keyword">int</span> cas = <span class="number">1</span>; cas &lt;= T; ++cas) &#123;</div><div class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</div><div class="line">		ans = <span class="number">2</span>;</div><div class="line">		<span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i)</div><div class="line">			ans += miu[i] * (n / i) * (n / i);</div><div class="line">		<span class="built_in">printf</span>(<span class="string">"%d %d %d\n"</span>, cas, n, ans);</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+      </div>
+      
+      
+      
+    </div>
+    
+    
+    
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#解法1-欧拉函数"><span class="nav-number">1.</span> <span class="nav-text">解法1.欧拉函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#解法2-dp"><span class="nav-number">2.</span> <span class="nav-text">解法2.dp</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

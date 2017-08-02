@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Multi-University," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="第二场多校题目比较难想，我们场上只过了1002和1006两道水题，第九题由于没有考虑分数，所以5的方案没有构造出来。第一题本来以为可做，但是后来发现少看了一个条件。第四题想了一个非常复杂的贪心，虽然挖掘了一些性质但是最关键的仅会走一整圈这个性质没有考虑到。其他几题都没有读题。">
+<meta name="keywords" content="Multi-University">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2015 Multi-University Training Contest 2总结">
+<meta property="og:url" content="http://yoursite.com/2015/07/24/2015Multi-University2/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="第二场多校题目比较难想，我们场上只过了1002和1006两道水题，第九题由于没有考虑分数，所以5的方案没有构造出来。第一题本来以为可做，但是后来发现少看了一个条件。第四题想了一个非常复杂的贪心，虽然挖掘了一些性质但是最关键的仅会走一整圈这个性质没有考虑到。其他几题都没有读题。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-18T09:00:03.726Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2015 Multi-University Training Contest 2总结">
+<meta name="twitter:description" content="第二场多校题目比较难想，我们场上只过了1002和1006两道水题，第九题由于没有考虑分数，所以5的方案没有构造出来。第一题本来以为可做，但是后来发现少看了一个条件。第四题想了一个非常复杂的贪心，虽然挖掘了一些性质但是最关键的仅会走一整圈这个性质没有考虑到。其他几题都没有读题。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/07/24/2015Multi-University2/"/>
+
+
+
+
+
+  <title>2015 Multi-University Training Contest 2总结 | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/07/24/2015Multi-University2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2015 Multi-University Training Contest 2总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-07-24T18:59:38+08:00">
+                2015-07-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>第二场多校题目比较难想，我们场上只过了1002和1006两道水题，第九题由于没有考虑分数，所以5的方案没有构造出来。第一题本来以为可做，但是后来发现少看了一个条件。第四题想了一个非常复杂的贪心，虽然挖掘了一些性质但是最关键的<code>仅会走一整圈</code>这个性质没有考虑到。其他几题都没有读题。</p>
+<a id="more"></a>
+<ul>
+<li><p><a href="http://acm.hdu.edu.cn/search.php?field=problem&amp;key=2015+Multi-University+Training+Contest+2&amp;source=1&amp;searchmode=source" target="_blank" rel="external">题目链接</a></p>
+</li>
+<li><p><a href="https://github.com/SyncShinee/ACM-ICPC/tree/master/ACMContest/2015Multi-UniversityTraining/Contest2" target="_blank" rel="external">代码链接</a></p>
+</li>
+</ul>
+<h1 id="1001-Angry-Trees"><a href="#1001-Angry-Trees" class="headerlink" title="1001. Angry Trees"></a>1001. Angry Trees</h1><hr>
+<p>so hard</p>
+<h1 id="1002-Buildings"><a href="#1002-Buildings" class="headerlink" title="1002. Buildings"></a>1002. Buildings</h1><hr>
+<p>模拟</p>
+<p>题目大意：给出n×m的方格，其中有一个格子是坏的，将其余的格子分成a×b的小矩形，并使每一个小矩形都有一个边位于整个n×m的矩形的边缘。问面积最大的矩形最小是多少。</p>
+<p>为了使矩形的面积尽量小，我们一定会将大矩形分为1 × n的小矩形。</p>
+<p>如果不考虑坏点，那么我们仅需要考虑位于中间的点向四周延伸至边缘最短为多少，其他矩形都不会超过这个面积。</p>
+<p>如果有坏点，他会挡住一些点，使得这些点仅能从一边延伸至边缘，被影响的点共有4个，即位于该点上下左右的四个。我们就考虑这四个点中最小值最大的和中间点可延伸的最小值取一个较大的即可。</p>
+<h1 id="1003-Connect-the-Graph"><a href="#1003-Connect-the-Graph" class="headerlink" title="1003. Connect the Graph"></a>1003. Connect the Graph</h1><hr>
+<p>构造</p>
+<p>题目大意：一个图中有黑白两种边，其中每个点的黑边的度和白边的度都仅可能为0，1，2，并且图中没有自环和重边（连接相同两点的不同颜色的边也算重边），给出图中白点度为0、1、2的点分别有多少个以及黑点度为0、1、2的点分别有多少个，求出图的一种构造方案。</p>
+<p>如果度为1的点有奇数个，那么显然无解。</p>
+<p>如果两种边的和超过了完全图的边数，那么也无解。</p>
+<p>除此之外，注意到每种点都大于等于1个，那么就可以仅通过构造许多链来解决这个问题。</p>
+<p>对于其中一种颜色的边，可以将1, 2, 3, 4, 5, …, n连成几条链，另一种颜色的边，则将 1, 3, 5, 7, …, n - 1, 2, 4, 6, …, n连成几条链，这样可以保证不会有重边。</p>
+<h1 id="1004-Delicious-Apples"><a href="#1004-Delicious-Apples" class="headerlink" title="1004. Delicious Apples"></a>1004. Delicious Apples</h1><hr>
+<p>dp</p>
+<p>题目大意：在一个环上有n个苹果树，每个苹果树上有ai个苹果，每个点到起始点的顺时针距离已知，现在有容量为k的篮子，问通过这个篮子将所有苹果送至起始点所要走的最短距离是多少。</p>
+<p>我们刚开始看这道题时，想出了一种非常复杂的贪心策略，后来发现需要讨论的情况太多，就没有继续想。</p>
+<p>其实，这道题有一个非常重要的结论就是：绕过整个圈来取苹果的情况仅会出现一次。因为如果我绕了两圈，那么我可以从这个圆的中点将路径断开，分别从两边将苹果取回来(两边苹果数量相等)，或绕第一圈时将一边的苹果取完，第二次仅需要走不到半圈并原路返回将剩下的苹果取完（两边苹果数不等）。这样会比绕两圈来取苹果更优。</p>
+<p>有了这个结论，我们就想到枚举哪几个苹果是在绕一圈的时候取的，那么剩下的苹果都可以仅在半圈里考虑，就可以通过简单的贪心或dp来解决了。</p>
+<p>而且绕一圈一定是取的连续的k个，所以我们就枚举这个区间的位置，剩余部分就随便做了。</p>
+<h1 id="1005-Eastest-Magical-Day-Seep-Group’s-Summer"><a href="#1005-Eastest-Magical-Day-Seep-Group’s-Summer" class="headerlink" title="1005. Eastest Magical Day Seep Group’s Summer"></a>1005. Eastest Magical Day Seep Group’s Summer</h1><hr>
+<p>状压dp + 生成树计数</p>
+<p>题目大意：给出n个点，m条边的联通图（n &lt;= 16），从中去掉m - n条边，使得剩余的仍是一个连通图，问有几种删边方案。</p>
+<p>如果是删掉m - n + 1条边，就变成了求一个图的生成树个数了，多了一条边就相当于是在生成树的基础上加了一条边，变成了一个基环外向树。由于n非常小，我们可以暴力枚举是由那几个点构成的环，这样将环缩点就变成了经典的生成树个数的问题了，通过Kirchhoff矩阵即可求出。</p>
+<blockquote>
+<p>Matrix-Tree定理：</p>
+<p>1、G的度数矩阵D[G]是一个n*n的矩阵，并且满足：当i≠j时,dij=0；当i=j时，dij等于vi的度数。</p>
+<p>2、G的邻接矩阵A[G]也是一个n*n的矩阵， 并且满足：如果vi、vj之间有边直接相连，则aij=1，否则为0。</p>
+<p>我们定义G的Kirchhoff矩阵(也称为拉普拉斯算子)C[G]为C[G]=D[G]-A[G]，则Matrix-Tree定理可以描述为：G的所有不同的生成树的个数等于其Kirchhoff矩阵C[G]任何一个n-1阶主子式的行列式的绝对值。</p>
+</blockquote>
+<p>这样还有一个问题就是这几个点组成的环究竟有多少种情况，这可以通过类似求哈密顿回路的状压dp求出方案数。</p>
+<h1 id="1006-Friends"><a href="#1006-Friends" class="headerlink" title="1006. Friends"></a>1006. Friends</h1><hr>
+<p>暴力</p>
+<p>题目大意：有n个点，m条边的图(n &lt;= 8)，现在将边分为两种，要求每个人连的两种边的条数相同，问有几种分边方案。</p>
+<p>8个点,最多28条边.如果挑一个点和它相关的边不管,剩下的边都枚举,那么就是21条边.可以直接状态枚举21条边的情况.但是有100组数据. 发现每一个点度数一定是偶数,那么这满足偶数的图,除去一个点之后的边数一定小于21,因为一个点不能向外连7个边,只能连6条. 所以暴力加度数提前判断就好了.</p>
+<p>重点：</p>
+<p>首先去掉一个点枚举边.然后发现度数是偶数才能对.可以减少情况.</p>
+<h1 id="1007-Gorgeous-Sequence"><a href="#1007-Gorgeous-Sequence" class="headerlink" title="1007. Gorgeous Sequence"></a>1007. Gorgeous Sequence</h1><hr>
+<p>神奇的数据结构题。</p>
+<p>题目大意：一个长为n的数列，有以下三种操作</p>
+<ol>
+<li>将一个区间的数变为它本身和x的最小值</li>
+<li>询问一个区间的最大值</li>
+<li>询问一个区间的sum</li>
+</ol>
+<p>不看第一的操作的话就是一颗水水的线段树，操作一会使得该区间的最大值变为x，并且若是需要被修改的区间被一个已经被修改的区间覆盖并且大区间的标记值小于此次修改的值，那么此次修改是不必要的。于是我们得到，大区间的标记值大于子区间的标记值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">struct T</div><div class="line">&#123;</div><div class="line">    int Maxtag,Max,Tag,s,cover;</div><div class="line">    int Tagtag;</div><div class="line">    ll sum;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>在对大区间进行标记的时候，需要对所有子区间标记值大于该标记的部分进行清空。我们维护一个区间标记的最大值，那么当修改值大于这个最大值就不修改返回。这个清空的操作看似会超时。研究题解和标程，我的想法是，因为每一次清空的tag都需要一次附上tag，将一次打tag和删除tag看作一组操作的话，均摊复杂度是logn的。（待考证，题解的没看怎么懂）</p>
+<p>计算sum值，需要维护一个cover，表示该节点的除该节点的tag外被控制的节点数，即sum值包含的节点数，这些节点由子树的tag控制，那么属于该树的tag值控制的即为此节点的size-cover，这些值都是tag的值。（好虐）</p>
+<h1 id="1008-He-is-Flying"><a href="#1008-He-is-Flying" class="headerlink" title="1008. He is Flying"></a>1008. He is Flying</h1><hr>
+<p>FFT</p>
+<p>题目大意：1≤n≤100000 n个区间,每个区间有一个长度.,也可以看做权值. n个区间是按照实际的顺序给的. 现在一个人,要连续的跑这些区间,跑j-i+1个区间的话,会获得j-i+1的hp值,这个区间长度为s[i]+到+s[j]. 限定给出的所有的s的和0≤s≤50000. 问跑长度为0的段段的所有可能情况的hp值的和,长度为1的…长度为s的 都要输出. 注意s[i]可能为0.</p>
+<p>1e5的区间数不能枚举左右端点.我们发现有连续这个要求,因此想到分治. </p>
+<h4 id="法一-分治"><a href="#法一-分治" class="headerlink" title="法一:分治."></a>法一:分治.</h4><p>左边递归,右边递归. 只剩跨过中间的值. 我们向左统计区间长度是i的种类数,放在numl中,向右统计长度是i的种类数,放在numr中.现在要算出所有的区间长度的每一个区间长度的hp和. 是经典的加扩展的fft算. 左边l,右边r.要算l+r的情况数. </p>
+<p>但是本题不是情况数,而是有hp值的加权. 其实是一个经典的问题.我们再处理左边的长度是i的总的hp值放在hpl中,那么这些值对答案的贡献要乘上他们的情况数. 其实就是hpl和numr做fft. 同理 hpr和numl做fft. 这样就算出来了. </p>
+<p>但是分治有两个重点:</p>
+<p>(1)不是找中点,因为fft的复杂度和他们的最大值s的和值有关,所以找尽量均分s的点作为分治点.</p>
+<p>(2)如果s均是0,那么我们每次只会去掉一个.这样是不好的.这样的情况特判或者取中点就好了.</p>
+<h4 id="法二-写出来母函数-之后用fft算"><a href="#法二-写出来母函数-之后用fft算" class="headerlink" title="法二:写出来母函数, 之后用fft算."></a>法二:写出来母函数, 之后用fft算.</h4><p>母函数把hp值看作两次求. 先定为 i到j的hp值为j. 这样写出母函数. 然后再减去母函数 i到jhp值为i-1. 这样就弄好了hp值(因为每种情况的个数两次算法都一样).</p>
+<p>重点：</p>
+<p>法一:</p>
+<ol>
+<li>连续的区间想分治. </li>
+<li>经典的fft拓展算权值. </li>
+<li>分治不看mid,根据fft划分. </li>
+<li>分析出000的情况.特判 </li>
+</ol>
+<p>法二:</p>
+<ol>
+<li>母函数写带权值只能带一个数,将hp值重新定义</li>
+</ol>
+<h1 id="1009-I-Wanna-Become-A-24-Point-Master"><a href="#1009-I-Wanna-Become-A-24-Point-Master" class="headerlink" title="1009. I Wanna Become A 24-Point Master"></a>1009. I Wanna Become A 24-Point Master</h1><hr>
+<p>构造</p>
+<p>题目大意：给出n，问由n个n通过四则运算能否凑出24， 每个数只能用一次</p>
+<p>场上这道题坑了两个多小时最终也没调出来。主要是没有考虑会出现分数的情况。</p>
+<p>对于n = 1、2、3，很容易证明这是无解的。</p>
+<p>对于n = 4， 样例给出了一组解。</p>
+<p>对于n &gt;= 12, 由于5个数能凑出4（<code>(i + i + i + i)/i = 4</code>）, 四个数能凑出3（<code>(i + i + i) / i = 3</code>）, 三个数能凑出2（<code>(i + i) / i</code>）。因此12个数就可凑出24，如果有再多的数就可通过<code>+ (i - i) * i ^ (n - 14)</code> 这样的操作来保证结果为24。</p>
+<p>那么仅需要将小于12的情况构造出来(上述构造方法还不能解决13，也需要单独构造)</p>
+<p>比较坑的就是5的构造方法：（5 - 5 / 5 / 5） × 5</p>
+<h1 id="1010-JRY-is-Fighting"><a href="#1010-JRY-is-Fighting" class="headerlink" title="1010. JRY is Fighting"></a>1010. JRY is Fighting</h1><hr>
+<p>二分+dp乱搞</p>
+<p>题目大意：一开始有一个初始的生命值m，之后每一秒都会掉a[i] 的血，另外有一个血瓶，在打完每只怪物后都会增加k的血量，在这之后你可以选择喝掉所有的血并且回复相同数值的生命值（可以超过原生命值），现在要在尽量不死的基础上使得没最短的相邻两次嗑药的时间差尽可能的大。</p>
+<p>首先我们可以得到这么一个性质：我们在第i秒喝了药，那么第i秒得到的血量不受之前喝药情况的影响。</p>
+<p>所以在打第I 只怪物前，我们承受了sigma（a[i]）的伤害，不吃药的话生命值为m减去上述的值。若为负值表明我们在打怪之前必须要吃药。并且我们最晚一次吃药的数值要使得血量为正数，即f = sigma（a[i]）- m + 1, f/k向上取证的值为l，区间[l,i-1]极为打第I只怪之前必须吃药的区间（当然要合法）。</p>
+<p>接下来我们要去掉包含的区间，排好区间的序，倒序扫一遍，维护现有区间的最小值，即可去包含区间（保留小区间）。</p>
+<p>二分答案最小距离是x，定义dp[i] 为在i点嗑药是否合法，倒着回推，那么i点合法的条件是[i+x,右边紧邻区间的右端点]内有合法的点，O（n）可以实现。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Multi-University/" rel="tag"># Multi-University</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/07/22/2015Multi-University1/" rel="next" title="2015 Multi-University Training Contest 1总结">
+                <i class="fa fa-chevron-left"></i> 2015 Multi-University Training Contest 1总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/07/31/2015Multi-University3/" rel="prev" title="2015 Multi-University Training Contest 3总结">
+                2015 Multi-University Training Contest 3总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1001-Angry-Trees"><span class="nav-number">1.</span> <span class="nav-text">1001. Angry Trees</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1002-Buildings"><span class="nav-number">2.</span> <span class="nav-text">1002. Buildings</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1003-Connect-the-Graph"><span class="nav-number">3.</span> <span class="nav-text">1003. Connect the Graph</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1004-Delicious-Apples"><span class="nav-number">4.</span> <span class="nav-text">1004. Delicious Apples</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1005-Eastest-Magical-Day-Seep-Group’s-Summer"><span class="nav-number">5.</span> <span class="nav-text">1005. Eastest Magical Day Seep Group’s Summer</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1006-Friends"><span class="nav-number">6.</span> <span class="nav-text">1006. Friends</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1007-Gorgeous-Sequence"><span class="nav-number">7.</span> <span class="nav-text">1007. Gorgeous Sequence</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1008-He-is-Flying"><span class="nav-number">8.</span> <span class="nav-text">1008. He is Flying</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#法一-分治"><span class="nav-number">8.0.0.1.</span> <span class="nav-text">法一:分治.</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#法二-写出来母函数-之后用fft算"><span class="nav-number">8.0.0.2.</span> <span class="nav-text">法二:写出来母函数, 之后用fft算.</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1009-I-Wanna-Become-A-24-Point-Master"><span class="nav-number">9.</span> <span class="nav-text">1009. I Wanna Become A 24-Point Master</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#1010-JRY-is-Fighting"><span class="nav-number">10.</span> <span class="nav-text">1010. JRY is Fighting</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

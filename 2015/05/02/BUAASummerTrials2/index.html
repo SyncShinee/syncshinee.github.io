@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="帝都弱校连萌," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="这次比赛从4月30号晚上就开始了，晚上读了几道题，发现有一些题是之前写过的，于是果断找了一个没人过的题拿了个一血（不过被GNU C++坑的WA了两发）。 后来就断网了，只能把读了的题都写了，但是没法提交。第二天早上7点起床，交了几道就出门了，下午回来又写，断断续续的终于AK了。">
+<meta name="keywords" content="帝都弱校连萌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="北航暑期集训选拔赛第二场总结">
+<meta property="og:url" content="http://yoursite.com/2015/05/02/BUAASummerTrials2/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="这次比赛从4月30号晚上就开始了，晚上读了几道题，发现有一些题是之前写过的，于是果断找了一个没人过的题拿了个一血（不过被GNU C++坑的WA了两发）。 后来就断网了，只能把读了的题都写了，但是没法提交。第二天早上7点起床，交了几道就出门了，下午回来又写，断断续续的终于AK了。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-18T10:16:40.803Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="北航暑期集训选拔赛第二场总结">
+<meta name="twitter:description" content="这次比赛从4月30号晚上就开始了，晚上读了几道题，发现有一些题是之前写过的，于是果断找了一个没人过的题拿了个一血（不过被GNU C++坑的WA了两发）。 后来就断网了，只能把读了的题都写了，但是没法提交。第二天早上7点起床，交了几道就出门了，下午回来又写，断断续续的终于AK了。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/05/02/BUAASummerTrials2/"/>
+
+
+
+
+
+  <title>北航暑期集训选拔赛第二场总结 | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/05/02/BUAASummerTrials2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">北航暑期集训选拔赛第二场总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-05-02T18:22:16+08:00">
+                2015-05-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这次比赛从4月30号晚上就开始了，晚上读了几道题，发现有一些题是之前写过的，于是果断找了一个没人过的题拿了个一血（不过被GNU C++坑的WA了两发）。</p>
+<p>后来就断网了，只能把读了的题都写了，但是没法提交。第二天早上7点起床，交了几道就出门了，下午回来又写，断断续续的终于AK了。<br><a id="more"></a></p>
+<h2 id="A-Little-Dima-and-Equation"><a href="#A-Little-Dima-and-Equation" class="headerlink" title="A.Little Dima and Equation"></a>A.Little Dima and Equation</h2><p>签到题。只要想到换一种方式枚举就是一道非常水的题目了。</p>
+<p>题目大意：找出所有的$10^9$以内的数$x$，满足：</p>
+<blockquote>
+<p>$x = b·s(x)^a + c$<br>其中$s(x)$定义为$x$的各位数之和。</p>
+</blockquote>
+<p>某次CF原题……由于$x$大小为$10^9$，所以$s(x$)不超过$81$，枚举$s(x)$之后判定即可。</p>
+<h2 id="B-Levko-and-Strings"><a href="#B-Levko-and-Strings" class="headerlink" title="B.Levko and Strings"></a>B.Levko and Strings</h2><p>这是一道明显的dp题。</p>
+<p>题目大意：给出一个字符串s，找出所有的字符串T，使得满足s[i..j] &lt; T[i..j]的(i,j)对数为k，求出这样的字符串t的数量。</p>
+<p>对于字符串T的每一位i，都有三种情况：大于s[i]，等于s[i],小于s[i]。</p>
+<p>T中每有一T[i]大于s[i]，显然，它会带来的(i,j)对数为$(i-t)*(n-i+1)$；其中，t是i之前第一个满足s[t] != T[t]的数。</p>
+<p>我们设计状态f[i][j]表示考虑前i位中的字符，他们提供的对数为j时的方案数。</p>
+<p>若T[i] &lt;= s[i]，则有 </p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f[i][j] = f[i<span class="number">-1</span>][j] * (s[i] - <span class="string">'a'</span> + <span class="number">1</span>)</div></pre></td></tr></table></figure>
+<p>若T[i] &gt;= s[i]，则需枚举在i之前满足s等于T的长度t，则有：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">f[i][j] = sum(f[i - t][j - t × (n - i + <span class="number">1</span>)] - f[i - t - <span class="number">1</span>][j - t × (n - i + <span class="number">1</span>)]) × (<span class="string">'z'</span> - s[i])</div></pre></td></tr></table></figure>
+<p>之所以要减去<code>f[i - t - 1][j - t × (n - i + 1)]</code>，是为了要保证T[i - t]不等于s[i - t]。</p>
+<p>根据调和级数的性质，时间复杂度为$O(n^2 \log n)$</p>
+<h2 id="C-Subsegments"><a href="#C-Subsegments" class="headerlink" title="C.Subsegments"></a>C.Subsegments</h2><p>STL乱搞</p>
+<p>题目大意：给出长为$n$的序列$A$， 对$A$的每一个长为$k$的子区间，求在其中只出现$1$次且最大的数。</p>
+<p>每一个子区间转化为下一个子区间时，仅有两端的数字会发生变化，右边加了一个数，左边减了一个数。我们用一个map维护当前区间中所有数字的个数，这样可以$O(\log n)$的实现区间的转移。</p>
+<p>此外，再维护一个大根堆，每有一个数字的个数变为1就将它加入堆中，之后输出堆顶元素。</p>
+<p>涉及到从堆中删除元素的操作通过对每一个数字记录它的修改时间来实现。</p>
+<h2 id="D-Palindrome-Degree"><a href="#D-Palindrome-Degree" class="headerlink" title="D.Palindrome Degree"></a>D.Palindrome Degree</h2><p>Manacher算法</p>
+<p>题目大意：定义k回文串：s是回文串，且s的前半段和后半段都是k-1回文串，则s称为k回文串。对给出的字符串s，求它所有的前缀的k之和。</p>
+<p>如果学过Manacher算法，这道题就变得非常简单。</p>
+<p>Manacher算法通过在字符串s中添加’#’字符，可以在O(n)的时间复杂度下求出以字符串s的每一位为中间点的最长回文串的长度。</p>
+<p>如果我们知道了这个，那么对s的每一个前缀，我们只需要判断以这个前缀的中间位置为回文串中点的回文串长度是否大于等于当前前缀，如不是，则当前前缀的k值为0，否则当前前缀的k值为当前前缀的前半段的k值加1。</p>
+<p>此外，这道题还可以通过hash来做，这需要我们找到一个好的hash函数。</p>
+<h2 id="E-Little-Bishops"><a href="#E-Little-Bishops" class="headerlink" title="E.Little Bishops"></a>E.Little Bishops</h2><p>dp</p>
+<p>题目大意：给出n×n的棋盘，在其中放一些象(国际象棋中的象)，象可以斜着移动并吃掉位于这条路径上的其他象。问在其中放k个象，使他们互相不能攻击到的方案数。</p>
+<p>最初看到数据范围想到的是搜索。不过这道题和N皇后问题相比，少了不同行不同列的限制，这就导致答案可能会非常多。</p>
+<p>后来发现将棋盘旋转45度后就变成了不同行不同列的问题了。这样就可以通过dp来解决它了。</p>
+<p>行数为奇数和偶数是互相不影响的，所以应该分两个dp来做。</p>
+<p>设dp[i][j]为前i行放了j个象的方案数。</p>
+<ul>
+<li>如果当前行不放象，那么<code>dp[i][j] = dp[i-1][j]</code>。</li>
+<li>如果当前行放象，则<code>dp[i][j] = dp[i-1][j-1] × (len-j+1)</code>。</li>
+<li>len为当前行的格子总数。</li>
+</ul>
+<p>注意行的长度是先增大后减小的，为了使dp成立，需要先将长度排序。</p>
+<h2 id="F-Y"><a href="#F-Y" class="headerlink" title="F.Y"></a>F.Y</h2><p>树形dp</p>
+<p>题目大意：给出一棵树，找出所有的集合{a,b,c}满足不存在一条简单路径同时覆盖a，b，c。</p>
+<p>这道题在<code>Ruclion</code>刷树形dp时见到过……</p>
+<p>如果我们知道所有的可以被一条简单路径覆盖的集合数目，那么<code>ans = C(n,3) - sum</code>。现在我们的目标就是求sum。</p>
+<p>考虑以i为根的子树，如果i是位于路径中间的点，那么通过枚举i的子树和i上面的一坨，可求出i对sum的贡献。累加和即可。</p>
+<h2 id="G-Editor"><a href="#G-Editor" class="headerlink" title="G.Editor"></a>G.Editor</h2><p>很巧妙的在线查询问题。</p>
+<p>题目大意：对一个编辑器，有5种中操作：</p>
+<ol>
+<li><p>I x    表示在光标所处位置之后插入一个数x</p>
+</li>
+<li><p>D    表示删除光标所处位置的数字</p>
+</li>
+<li><p>Q k    表示询问k之前的前缀和的最大值(k &lt;= 当前光标)</p>
+</li>
+<li><p>L    光标左移</p>
+</li>
+<li><p>R    光标右移</p>
+</li>
+</ol>
+<p>对每个询问，输出ans</p>
+<p>通过链表存储，由于询问都是小于等于当前光标位置的，所以我们只需维护当前光标之前的前缀和最大值即可。</p>
+<p>对于I操作，插入并维护前缀和最值。</p>
+<p>对于D操作，删除，此时位于光标之前的前缀和最值并不发生改变。</p>
+<p>对于L操作，左移光标，此时位于光标之前的前缀和最值也不发生改变。</p>
+<p>对于R操作，右移光标，并更新前缀和及最值。</p>
+<h2 id="H-Sum"><a href="#H-Sum" class="headerlink" title="H.Sum"></a>H.Sum</h2><p>数学题。</p>
+<p>题目大意：定义S(k)为满足sum(x[i]) = n (1 &lt;= i &lt;=k， x[i] &gt; 0)的有序对(x1,x2,…,xk)的数目。求sum(S(i)) (1 &lt;= i &lt;= n)</p>
+<p>通过隔板法，S(k) = C(n-1,k) 故要求的就是sum(C(n-1, i)) = 2^(n-1)</p>
+<p>根据费马小定理，若k，p互质，则k^(p-1) % p 等于 1。</p>
+<p>因此2^(n-1) % MOD = 2^((n-1) % (MOD-1)) % MOD。在n-1模MOD-1之后，可用快速幂计算。</p>
+<h2 id="I-Exam"><a href="#I-Exam" class="headerlink" title="I.Exam"></a>I.Exam</h2><p>如果想通的话，也是非常简单的题。</p>
+<p>题目大意：定义f[x]为满足a × b | n的有序对(a,b)的个数。求sum(f[i]) (1 &lt;= i &lt;= n)</p>
+<p>初看这题并没有什么思路。不过后来发现我们没必要求出每个f[i]。</p>
+<p>对于a × b | n这个条件，我们可以看作有序对a<em>b</em>c = n。那么我们要求的就是所有的有序对满足</p>
+<blockquote>
+<p>a × b × c &lt;= n</p>
+</blockquote>
+<p>若a，b，c相等，这样的有序对共有pow(n, 1/3)</p>
+<p>若a，b，c中有两个相等，通过枚举相等的那个数i(i&lt;= sqqrt(n))可得到的方案数有n/i × 3个。(若n/i &gt;= i，则需去掉n/i与i相等的情况)。</p>
+<p>若a，b，c均不相等，不妨设a &lt; b &lt; c，通过枚举a(a &lt;= pow(n, 1/3)),b(b &lt;= sqrt(n/a))<br>可得到的方案数为(n / a / b - b) × 6.</p>
+<h2 id="J-Zombie’s-Treasure-Chest"><a href="#J-Zombie’s-Treasure-Chest" class="headerlink" title="J.Zombie’s Treasure Chest"></a>J.Zombie’s Treasure Chest</h2><p>部分贪心。</p>
+<p>题目大意：有两种物品，每种物品的体积和价值已知，给容量为N的背包，求背包能装下的最大价值。</p>
+<p>由于背包很大，所以直接做完全背包是不行的。</p>
+<p>如果某种物品的体积大于1000，则可以在10^6的时间复杂度内枚举它的个数，从而求出最优解。</p>
+<p>如果两种物品的体积均小于1000，则先留出容量为v1*v2体积的背包，剩余的贪心求解，之后将贪心剩下的和预留的容量进行完全背包即可。</p>
+<p>事实上，在贪心完后，可以直接枚举某种物品的数量求最优解了。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/帝都弱校连萌/" rel="tag"># 帝都弱校连萌</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/24/2014BangkokRegional/" rel="next" title="2014 Bangkok Regional Analysis">
+                <i class="fa fa-chevron-left"></i> 2014 Bangkok Regional Analysis
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/07/GCJ2015Round1B/" rel="prev" title="Google CodeJam 2015 Round1B 总结">
+                Google CodeJam 2015 Round1B 总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Little-Dima-and-Equation"><span class="nav-number">1.</span> <span class="nav-text">A.Little Dima and Equation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Levko-and-Strings"><span class="nav-number">2.</span> <span class="nav-text">B.Levko and Strings</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Subsegments"><span class="nav-number">3.</span> <span class="nav-text">C.Subsegments</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#D-Palindrome-Degree"><span class="nav-number">4.</span> <span class="nav-text">D.Palindrome Degree</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Little-Bishops"><span class="nav-number">5.</span> <span class="nav-text">E.Little Bishops</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Y"><span class="nav-number">6.</span> <span class="nav-text">F.Y</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Editor"><span class="nav-number">7.</span> <span class="nav-text">G.Editor</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H-Sum"><span class="nav-number">8.</span> <span class="nav-text">H.Sum</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-Exam"><span class="nav-number">9.</span> <span class="nav-text">I.Exam</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-Zombie’s-Treasure-Chest"><span class="nav-number">10.</span> <span class="nav-text">J.Zombie’s Treasure Chest</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>

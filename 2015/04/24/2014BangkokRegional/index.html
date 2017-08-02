@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Regional," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="这两天，在vjudge上找了一套曼谷的区域赛来做，大部分的题目都是很水的，有两道题完全没思路，剩余的几道都是稍微想一想就能出解的。">
+<meta name="keywords" content="Regional">
+<meta property="og:type" content="article">
+<meta property="og:title" content="2014 Bangkok Regional Analysis">
+<meta property="og:url" content="http://yoursite.com/2015/04/24/2014BangkokRegional/index.html">
+<meta property="og:site_name" content="SyncShinee">
+<meta property="og:description" content="这两天，在vjudge上找了一套曼谷的区域赛来做，大部分的题目都是很水的，有两道题完全没思路，剩余的几道都是稍微想一想就能出解的。">
+<meta property="og:locale" content="zh">
+<meta property="og:updated_time" content="2016-01-24T14:43:41.270Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="2014 Bangkok Regional Analysis">
+<meta name="twitter:description" content="这两天，在vjudge上找了一套曼谷的区域赛来做，大部分的题目都是很水的，有两道题完全没思路，剩余的几道都是稍微想一想就能出解的。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2015/04/24/2014BangkokRegional/"/>
+
+
+
+
+
+  <title>2014 Bangkok Regional Analysis | SyncShinee</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">SyncShinee</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2015/04/24/2014BangkokRegional/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="skyxuan">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="SyncShinee">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">2014 Bangkok Regional Analysis</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2015-04-24T21:05:43+08:00">
+                2015-04-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>这两天，在vjudge上找了一套曼谷的区域赛来做，大部分的题目都是很水的，有两道题完全没思路，剩余的几道都是稍微想一想就能出解的。<br><a id="more"></a></p>
+<h2 id="A-Volume-Control"><a href="#A-Volume-Control" class="headerlink" title="A.Volume Control"></a>A.Volume Control</h2><h3 id="题目大意"><a href="#题目大意" class="headerlink" title="题目大意"></a>题目大意</h3><p>对给出的n，求出所有不同的i×j，(0&lt;=i,j&lt;=n)</p>
+<h3 id="做法"><a href="#做法" class="headerlink" title="做法"></a>做法</h3><p>这题最初并没有什么思路，n的范围是30000，时限是7s，所以我想有没有什么稍微暴力一点的方法。</p>
+<p>首先想有没有可能从ans[i-1]推出ans[i]。</p>
+<p>其实每多一个数i，增加数字一定都在<code>i×j (j&lt;=i)</code>集合里。</p>
+<p>那么这个集合里有多少是和之前重复的呢？</p>
+<p>如果i×j和之前的重复了，那么必有<code>i × j == s × t</code>，其中<code>s, t &lt; i</code>。</p>
+<p>设<code>i = a × b，s = p × a，t = q × b, (p &lt; a, q &lt; b)</code>，则<code>j = p × q</code>。</p>
+<p>因此，把所有满足<code>j == p × q</code>的j去掉，那么剩余的就是增加i后增加的个数。</p>
+<p>通过枚举i的约数a，之后枚举p，q，即可得出所有的j。</p>
+<p>注意在枚举a的时候，a是逐渐变大的，所以p的范围越来越大，q的范围越来越小。而且在枚举p，q的时候会有一些重复。</p>
+<p>因此我们可以直接另p递增，而不是每次枚举约数a的时候都需要重新枚举。</p>
+<h2 id="B-Combination"><a href="#B-Combination" class="headerlink" title="B.Combination"></a>B.Combination</h2><h3 id="知识点"><a href="#知识点" class="headerlink" title="知识点"></a>知识点</h3><p>打表找规律……</p>
+<h3 id="题目大意-1"><a href="#题目大意-1" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出l，r，求<code>C(i,j)(l&lt;=i&lt;=r, 0&lt;=j&lt;=i)</code>中奇数的个数。</p>
+<h3 id="做法-1"><a href="#做法-1" class="headerlink" title="做法"></a>做法</h3><p>首先可以感觉到对每一个i，从C(i,0)到C(i,i)都要算，所以先对每一个i打一个<code>sum(C(i,j))</code>的表。</p>
+<p>打表会发现从2^i开始就会重复出现之前的，而且从2^i到2^(i+1)的和是从2^(i-1)到2^i的和的三倍。</p>
+<p>因此对整段的2^i到2^(i+1)直接累加，对两端的通过递归求解。</p>
+<h2 id="C-Mesh-Cutter-And-D-Location"><a href="#C-Mesh-Cutter-And-D-Location" class="headerlink" title="C.Mesh Cutter And  D.Location"></a>C.Mesh Cutter And  D.Location</h2><p>这两题看起来是两道计算几何，没有思路……</p>
+<h2 id="E-Zeroes"><a href="#E-Zeroes" class="headerlink" title="E.Zeroes"></a>E.Zeroes</h2><p>签到题。</p>
+<h3 id="题目大意-2"><a href="#题目大意-2" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出l到r求出对所有的l &lt;= i &lt;= r，i！的末尾的0的个数有几种不同的情况。</p>
+<h3 id="做法-2"><a href="#做法-2" class="headerlink" title="做法"></a>做法</h3><p>可以发现，从l到r中有几个5的倍数就会有几个不同的0的个数。于是求出l和r-1中5的倍数的个数即可。</p>
+<h2 id="F-Fishing"><a href="#F-Fishing" class="headerlink" title="F.Fishing"></a>F.Fishing</h2><h3 id="知识点-1"><a href="#知识点-1" class="headerlink" title="知识点"></a>知识点</h3><p>简单的dp</p>
+<h3 id="题目大意-3"><a href="#题目大意-3" class="headerlink" title="题目大意"></a>题目大意</h3><p>R × C (1 &lt;= R, C &lt;= 100)的矩阵，上面有个数，代表打鱼的收益，也代表放鱼失去的收益，然后现在规定：放两次鱼，打一次鱼，每次放鱼，都要求本次放鱼的ij均大于上次放鱼的ij，捕鱼也是这样，但是捕鱼和放鱼之间没有限制的联系。求这样的最大收益。不限制打渔次数。</p>
+<h3 id="做法-3"><a href="#做法-3" class="headerlink" title="做法"></a>做法</h3><p>设f[i][j][k]是捕k次鱼，最后捕鱼的位置&lt;=i，j的最大值，而g[i][j][k]是放k次放鱼，最后放鱼的位置&lt;=i，j的最小值。两个状态转移方程相似，只不过一个是min一个是max。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">f[t][i][j] = max(f[t<span class="number">-1</span>][i<span class="number">-1</span>][j<span class="number">-1</span>] + a[i][j], max(f[t][i<span class="number">-1</span>][j], f[t][i][j<span class="number">-1</span>]));</div><div class="line"></div><div class="line">g[t][i][j] = min(g[t<span class="number">-1</span>][i<span class="number">-1</span>][j<span class="number">-1</span>] + a[i][j], min(g[t][i<span class="number">-1</span>][j], g[t][i][j<span class="number">-1</span>]));</div></pre></td></tr></table></figure>
+<p>最后求捕i次鱼同时放2×i次鱼的最大值即可。</p>
+<h2 id="G-Landmine-Cleaner"><a href="#G-Landmine-Cleaner" class="headerlink" title="G.Landmine Cleaner"></a>G.Landmine Cleaner</h2><h3 id="知识点-2"><a href="#知识点-2" class="headerlink" title="知识点"></a>知识点</h3><p>推理。</p>
+<h3 id="题目大意-4"><a href="#题目大意-4" class="headerlink" title="题目大意"></a>题目大意</h3><p>1000×1000的方块，每块有可能有一个‘L’标记，并且每一块可以算出来一个值：由它周围有效的9（包括自己）块推出来，如果它有就额外+3，然后9个中有几个L就+几，最大12.现在，给出一个有效状态的转化之后的方块，求出初始状态。</p>
+<h3 id="做法-4"><a href="#做法-4" class="headerlink" title="做法"></a>做法</h3><p>显然从最左上的开始试着推，左上可以确定，然后（1,2）怎么搞？发现（1,1）（2，1）（1,2）（2,2）的总数因为（1,1）已经知道了，只剩（1,3）（2,3）两块了，又能够无视它定出来（1,2）。</p>
+<p>然后想（1,3），虽然（1,3）还是能够定出来，但是（1,4）就不好弄了，关键是（2，x）的都不知道，重点来了：我们不妨把（2，x）同时确定下来，这样两行一块推。</p>
+<p>（2,1）好定，（2,2）由于4个定了3个，这个发现也很重要，可以定（2,2），之后发现已经行了，因为之后的（1,3）可以定了，那么（2,3）呢？因为（1,2）周围定了5个，所以减一下就好了。</p>
+<p>之后一直推完第一行，然后第三行，先把第二行信息弄掉就和刚才的一样了。</p>
+<p>重点：首先试着去推，发现（1,4）不行去想（2，x），然后很重到的是（2,2）的减法，搞出来了，然后（1,3）之后（2,3）同样的减法。</p>
+<p>群里某大神说高斯消元可做，但是并没有尝试去写……</p>
+<h2 id="H-Hidden-Plus-Signs"><a href="#H-Hidden-Plus-Signs" class="headerlink" title="H.Hidden Plus Signs"></a>H.Hidden Plus Signs</h2><h3 id="知识点-3"><a href="#知识点-3" class="headerlink" title="知识点"></a>知识点</h3><p>搜索。</p>
+<p>###题目大意</p>
+<p>30×30的方格，在一些方格中填1可以构成一个’+’号，它的长度只有可能是3、5、7、9、11，而且长宽相等，这些加号可以重叠，如果某一个格子有i个’+’号覆盖，那么这个格子的数字为i。不过每个加号的中心不能再其他加号上。求对于给出的矩阵，里面有多少个加号。最多不超过9个。</p>
+<h3 id="做法-5"><a href="#做法-5" class="headerlink" title="做法"></a>做法</h3><p>由于加号数目较少，则可以通过枚举加号的中心来进行搜索。一个格子如果是加号的中心，那么他必须是’1’，而且他四周的数字必须都大于1。</p>
+<h2 id="I-The-Programmers"><a href="#I-The-Programmers" class="headerlink" title="I.The Programmers"></a>I.The Programmers</h2><h3 id="知识点-4"><a href="#知识点-4" class="headerlink" title="知识点"></a>知识点</h3><p>裸的网络流。</p>
+<h3 id="题目大意-5"><a href="#题目大意-5" class="headerlink" title="题目大意"></a>题目大意</h3><p>有p个人，s个参赛地点，每个参赛地点的容量为C，每个人只会去某几个地点参赛，问最多有几个人可以参赛。</p>
+<h3 id="做法-6"><a href="#做法-6" class="headerlink" title="做法"></a>做法</h3><p>可以发现这是一个二分图，从源点向每个人连一条容量为1的边，从每个人向他想去的参赛地点连一条容量为1的边，从每个地点向汇点连一条容量为C的边，之后跑最大流即可。数据比较水，很快就能过。</p>
+<h2 id="J-Blanket"><a href="#J-Blanket" class="headerlink" title="J.Blanket"></a>J.Blanket</h2><h3 id="知识点-5"><a href="#知识点-5" class="headerlink" title="知识点"></a>知识点</h3><p>从数据范围小的入手，暴力。</p>
+<h3 id="题目大意-6"><a href="#题目大意-6" class="headerlink" title="题目大意"></a>题目大意</h3><p>给出n个毯子，每个毯子长度无限，但是每a段是厚的，b-a段是薄的。有M个人坐标在0~M-1，问对每个人有几个毯子的厚的部分覆盖到了他。</p>
+<h3 id="做法-7"><a href="#做法-7" class="headerlink" title="做法"></a>做法</h3><p>由于a，b很小(&lt;=16)，所以直接暴力求出前16个的结果，后面的可以映射到前面。</p>
+<h2 id="K-Concert-Tour"><a href="#K-Concert-Tour" class="headerlink" title="K.Concert Tour"></a>K.Concert Tour</h2><p>也是简单的dp。题目大概说的是有i个城市，每两个城市之间可以直接联通，花费给出，第i个月在地j个城市的收益也给出，求最大收益。</p>
+<p>直接dp就好。</p>
+<h2 id="L-City"><a href="#L-City" class="headerlink" title="L.City"></a>L.City</h2><p>水题……想通了就很简单。</p>
+<h3 id="题目大意-7"><a href="#题目大意-7" class="headerlink" title="题目大意"></a>题目大意</h3><p>有n×m块格子，每个格子可能与他上下左右四个格子连任意条边，现在给出每个格子的度，但是有一个格子未给出，求这个格子的度。</p>
+<h3 id="做法-8"><a href="#做法-8" class="headerlink" title="做法"></a>做法</h3><p>这明显是一个二分图。二分染色后把两个集合的度之和相减即可得出。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Regional/" rel="tag"># Regional</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2015/04/19/GCJ2015Round1A/" rel="next" title="Google CodeJam 2015 Round1A 总结">
+                <i class="fa fa-chevron-left"></i> Google CodeJam 2015 Round1A 总结
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2015/05/02/BUAASummerTrials2/" rel="prev" title="北航暑期集训选拔赛第二场总结">
+                北航暑期集训选拔赛第二场总结 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="skyxuan" />
+          <p class="site-author-name" itemprop="name">skyxuan</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">29</span>
+                <span class="site-state-item-name">Artikel</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-name">Tags</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-Volume-Control"><span class="nav-number">1.</span> <span class="nav-text">A.Volume Control</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意"><span class="nav-number">1.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法"><span class="nav-number">1.2.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#B-Combination"><span class="nav-number">2.</span> <span class="nav-text">B.Combination</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点"><span class="nav-number">2.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-1"><span class="nav-number">2.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-1"><span class="nav-number">2.3.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#C-Mesh-Cutter-And-D-Location"><span class="nav-number">3.</span> <span class="nav-text">C.Mesh Cutter And  D.Location</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#E-Zeroes"><span class="nav-number">4.</span> <span class="nav-text">E.Zeroes</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-2"><span class="nav-number">4.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-2"><span class="nav-number">4.2.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#F-Fishing"><span class="nav-number">5.</span> <span class="nav-text">F.Fishing</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-1"><span class="nav-number">5.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-3"><span class="nav-number">5.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-3"><span class="nav-number">5.3.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#G-Landmine-Cleaner"><span class="nav-number">6.</span> <span class="nav-text">G.Landmine Cleaner</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-2"><span class="nav-number">6.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-4"><span class="nav-number">6.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-4"><span class="nav-number">6.3.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#H-Hidden-Plus-Signs"><span class="nav-number">7.</span> <span class="nav-text">H.Hidden Plus Signs</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-3"><span class="nav-number">7.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-5"><span class="nav-number">7.2.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#I-The-Programmers"><span class="nav-number">8.</span> <span class="nav-text">I.The Programmers</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-4"><span class="nav-number">8.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-5"><span class="nav-number">8.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-6"><span class="nav-number">8.3.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#J-Blanket"><span class="nav-number">9.</span> <span class="nav-text">J.Blanket</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#知识点-5"><span class="nav-number">9.1.</span> <span class="nav-text">知识点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-6"><span class="nav-number">9.2.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-7"><span class="nav-number">9.3.</span> <span class="nav-text">做法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#K-Concert-Tour"><span class="nav-number">10.</span> <span class="nav-text">K.Concert Tour</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#L-City"><span class="nav-number">11.</span> <span class="nav-text">L.City</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#题目大意-7"><span class="nav-number">11.1.</span> <span class="nav-text">题目大意</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#做法-8"><span class="nav-number">11.2.</span> <span class="nav-text">做法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">skyxuan</span>
+</div>
+
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Gemini
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
